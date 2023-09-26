@@ -33,6 +33,7 @@ Route::get('profile', [ProfileController::class, 'index']);
 
 Route::resource('anggota', AnggotaController::class);
 Route::get('anggota/{id}', [AnggotaController::class, 'edit']); 
+Route::post('anggota/{id}', [AnggotaController::class, 'create']);
 Route::put('anggota/{id}', [AnggotaController::class, 'update']);
 
 Route::resource('pinjaman', PinjamanController::class);

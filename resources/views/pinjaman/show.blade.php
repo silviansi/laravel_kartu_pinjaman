@@ -4,7 +4,7 @@
     <head>
     
         <meta charset="utf-8">
-        <title>Dashboard | Veltrix - Admin & Dashboard</title>
+        <title>Data Pinjaman | DashLoan</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="Premium Multipurpose Admin & Dashboard Template" name="description">
         <meta content="Themesbrand" name="author">
@@ -74,7 +74,23 @@
                     <div class="card">
                         <div class="card-body">
                             <h4 class="card-title"><i class="dripicons-document"></i>  Daftar Pinjaman</h4>
-
+                            
+                            @if (Session::has('success'))
+                                <div class="alert alert-success">
+                                    {{ Session::get('success') }}
+                                </div>
+                                    
+                                @endif
+                                @if($errors->any())
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                        @foreach ($errors->all() as $item)
+                                            <li>{{ $item }}</li>
+                                        @endforeach
+                                        </ul>
+                                    </div>
+    
+                                @endif
                             <table class="table">
 
                                 <thead>
@@ -111,9 +127,6 @@
                                     <tr>
                                         <th colspan="6">JUMLAH :</th>
                                     </tr>
-                                    <tr>
-                                        <th colspan="6"></th>
-                                    </tr>
                                 </tbody>
                         </div>
                     </div>
@@ -123,15 +136,7 @@
         </div>
     </div>    
 </div>
-<footer class="footer">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-12">
-                © <script>document.write(new Date().getFullYear())</script> Veltrix<span class="d-none d-sm-inline-block"> - Crafted with <i class="mdi mdi-heart text-danger"></i> by Themesbrand.</span>
-            </div>
-        </div>
-    </div>
-</footer>
+
 
 <!-- JAVASCRIPT -->
 <script src="/assets/libs/jquery/jquery.min.js"></script>
@@ -146,7 +151,7 @@
 
 <script src="/assets/js/pages/dashboard.init.js"></script>
 <script src="/assets/libs/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
-        <script src="/assets/js/pages/form-advanced.init.js"></script>
+<script src="/assets/js/pages/form-advanced.init.js"></script>
 <script src="/assets/js/app.js"></script>
 </body>
 

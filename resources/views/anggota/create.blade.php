@@ -1,4 +1,4 @@
-<form action="{{ url('anggota.create') }}" method="POST" enctype="multipart/form-data">
+<form action="{{ url('anggota') }}" method="POST" enctype="multipart/form-data">
 <div class="modal fade text-left" id="ModalCreate" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -7,7 +7,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="{{ url('anggota/'.$item->noVak) }}" method="POST">
+                <form action="{{ url('anggota') }}" method="POST">
                     @csrf
                     <div class="row mb-3">
                         <label for="example-text-input" class="col-sm-2 col-form-label">Nama</label>

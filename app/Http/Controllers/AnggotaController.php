@@ -13,7 +13,7 @@ class AnggotaController extends Controller
         return view('anggota.index')->with('data', $data);
     }
     public function create() {
-        return view('anggota.create');
+        return view('anggota');
     }
     public function store(Request $request) {
         Session::flash('nama', $request->nama);
