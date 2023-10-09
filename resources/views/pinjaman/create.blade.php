@@ -14,7 +14,7 @@
                         <div class="col-sm-10">
                             <div class="input-group" id="datepicker2">
                                 <input type="text" class="form-control" placeholder="dd/mm/yyyy" 
-                                data-date-format="dd/mm/yyyy" data-date-container='#datepicker2' data-provide="datepicker"
+                                data-date-format="yyyy/mm/dd" id="tanggal" name="tanggal" value="{{ Session::get('tanggal') }}" data-date-container='#datepicker2' data-provide="datepicker"
                                 data-date-autoclose="true">
 
                                 <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
@@ -25,32 +25,30 @@
                     <div class="row mb-3">
                         <label for="example-search-input" class="col-sm-2 col-form-label">No. Bukti</label>
                         <div class="col-sm-10">
-                            <input class="form-control" type="text" placeholder="KSB230306060" id="example-search-input">
+                            <input class="form-control" type="text" placeholder="KSB230306060" value="{{ Session::get('noBukti') }}" id="noBukti" name="noBukti">
                         </div>
                     </div>
                     <div class="row mb-3">
                         <label for="example-email-input" class="col-sm-2 col-form-label">Debet</label>
                         <div class="col-sm-10">
-                            <input class="form-control" type="text" placeholder="71,932,320" id="example-email-input">
+                            <input class="form-control" type="text" placeholder="71,932,320" value="{{ Session::get('debet') }}" id="debet" name="debet">
                         </div>
                     </div>
                     <div class="row mb-3">
                         <label for="example-url-input" class="col-sm-2 col-form-label">Kredit</label>
                         <div class="col-sm-10">
-                            <input class="form-control" type="number" placeholder="0" id="example-url-input">
+                            <input class="form-control" type="number" placeholder="0" value="{{ Session::get('kredit') }}" id="kredit" name="kredit">
                         </div>
                     </div>
                     <div class="row mb-3">
                         <label for="example-tel-input" class="col-sm-2 col-form-label">Uraian</label>
                         <div class="col-sm-10">
-                            <textarea type="text" id="uraian-input"></textarea>
+                            <textarea type="text" value="{{ Session::get('uraian') }}" id="uraian" name="uraian"></textarea>
                         </div>
                     </div>
                     </form>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary"
-                        data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Simpan</button>
+                        <input type="submit" value="Tambah" class="btn btn-success btn-md">
                     </div>
                 </div>
             </div>

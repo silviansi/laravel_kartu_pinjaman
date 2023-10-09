@@ -41,12 +41,11 @@
                 <div class="dropdown d-inline-block">
                     <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img class="rounded-circle header-profile-user" src="assets/images/users/user-4.jpg"
-                            alt="Header Avatar"> {{ Auth::user()->name }}
+                        <img class="rounded-circle header-profile-user" src="assets/images/avatar-admin.jpg"
+                            alt="Header Avatar"> {{ Auth::user()->username }}
                     </button>
                     <div class="dropdown-menu dropdown-menu-end">
                         <!-- item-->
-                        <a class="dropdown-item" href="profile"><i class="mdi mdi-account-circle font-size-17 align-middle me-1"></i> Profile</a>
                         <a class="dropdown-item text-danger" href="logout"><i class="bx bx-power-off font-size-17 align-middle me-1 text-danger"></i> Logout</a>
                     </div>
                 </div>
@@ -94,9 +93,16 @@
               </li>
 
               <li>
+                <a href="depan" class=" waves-effect">
+                    <i class="ti-new-window"></i>
+                    <span>Website</span>
+                </a>
+            </li>
+
+              <li>
                   <a href="pages-laporan.html" class=" waves-effect">
                       <i class="ti-clipboard"></i>
-                      <span>Laporan</span>
+                      <span>Laporan Pabrikasi</span>
                   </a>
               </li>
 

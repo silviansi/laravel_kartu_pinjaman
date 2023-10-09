@@ -17,9 +17,10 @@ class isLogin
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::check()) {
-            return $next($request);
+        if(Auth::user()->role_id != 1) {
+            return redirect('profile');
         }
-        return redirect('login')->withErrors('Silakan login terlebih dahulu');
+
+        return $next($request);
     }
 }

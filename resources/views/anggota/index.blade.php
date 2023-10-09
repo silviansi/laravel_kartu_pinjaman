@@ -21,11 +21,6 @@
             <!-- end page title -->
 
             <!-- TOMBOL TAMBAH DATA -->
-            <div class="pb-3">
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalCreate">
-                    + Tambah Data
-                </button>
-            </div>
 
             <div class="container">
                 <div class="row pt-3">
@@ -52,14 +47,10 @@
                                         <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                         <thead>
                                             <tr>
-                                                <th>Nama</th>
+                                                <th>Nama Lengkap</th>
                                                 <th>Kebun</th>
-                                                <th>No. Vak</th>
-                                                <th>Luas Baku</th>
-                                                <th>No. Kontrak</th>
-                                                <th>Kategori</th>
-                                                <th>Periode</th>
-                                                <th>Aksi</th>
+                                                <th>Kecamatan</th>
+                                                <th>Kota</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -67,17 +58,10 @@
                                             <tr>
                                                 <td>{{ $item->nama }}</td>
                                                 <td>{{ $item->kebun }}</td>
-                                                <td>{{ $item->noVak }}</td>
-                                                <td>{{ $item->luasBaku }}</td>
-                                                <td>{{ $item->noKontrak }}</td>
-                                                <td>{{ $item->kategori }}</td>
-                                                <td>{{ $item->periode }}</td>
+                                                <td>{{ $item->kecamatan }}</td>
+                                                <td>{{ $item->kota }}</td>
                                                 <td>
-                                                    <a href="{{ url('anggota/'.$item->noVak) }}"
-                                                         data-bs-toggle="modal" data-bs-target="#ModalEdit-{{ $item->noVak }}" class="btn btn-warning btn-sm">
-                                                        <i class="fas fa-pencil-alt"></i>
-                                                    </a>
-                                                    <form onsubmit="return confirm('Yakin mau hapus data?')" class='d-inline' action="{{ 'anggota/'.$item->noVak }}" method='post'>
+                                                    <form onsubmit="return confirm('Yakin mau hapus data?')" class='d-inline' action="{{ 'anggota/'.$item->id }}" method='post'>
                                                         @csrf
                                                         @method('DELETE')
                                                         <button class="btn btn-danger btn-sm" type="submit"><i class="fas fa-trash-alt"></i></button>

@@ -11,15 +11,17 @@ class Profile extends Model
 
     protected $table = "profile";
     protected $fillable =[
-    'npm',
-    'prodi',
-    'alamat',
-    'noTelp',
-    'photoProfile',
-    'users_id'
+    'nama',
+    'kebun',
+    'luas_kebun',
+    'no_vak',
+    'no_kontrak',
+    'kecamatan',
+    'kota',
+    'user_id'
     ];
 
     public function user(){
-        return $this->belongsTo(User::class,'users_id');
+        return $this->belongsTo(User::class,'user_id');
     }
 }

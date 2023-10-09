@@ -32,11 +32,12 @@
                                                                 <tr>
                                                                     <th>Nama</th>
                                                                     <th>Kebun</th>
-                                                                    <th>No. Vak</th>
                                                                     <th>Luas Baku</th>
+                                                                    <th>No. Vak</th>
                                                                     <th>No. Kontrak</th>
                                                                     <th>Kategori</th>
-                                                                    <th>Periode</th>
+                                                                    <th>Kecamatan</th>
+                                                                    <th>Kota</th>
                                                                     <th>Aksi</th>
                                                                 </tr>
                                                             </thead>
@@ -45,13 +46,14 @@
                                                                 <tr>
                                                                     <td>{{ $item->nama }}</td>
                                                                     <td>{{ $item->kebun }}</td>
-                                                                    <td>{{ $item->noVak }}</td>
-                                                                    <td>{{ $item->luasBaku }}</td>
-                                                                    <td>{{ $item->noKontrak }}</td>
+                                                                    <td>{{ $item->no_vak }}</td>
+                                                                    <td>{{ $item->luas_baku }}</td>
+                                                                    <td>{{ $item->no_kontrak }}</td>
                                                                     <td>{{ $item->kategori }}</td>
-                                                                    <td>{{ $item->periode }}</td>
+                                                                    <td>{{ $item->kecamatan }}</td>
+                                                                    <td>{{ $item->kota }}</td>
                                                                     <td>
-                                                                        <a href="{{ url('pinjaman/'.$item->noVak) }}" class="btn btn-primary btn-md active" role="button" aria-disabled="true">
+                                                                        <a href="{{ url('pinjaman/'.$item->id) }}" class="btn btn-primary btn-md active" role="button" aria-disabled="true">
                                                                             <i class="ion ion-md-arrow-round-forward"></i>
                                                                         </a>
                                                                     </td>
