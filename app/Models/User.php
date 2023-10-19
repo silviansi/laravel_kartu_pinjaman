@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
+use App\Models\Pinjaman;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -53,4 +55,10 @@ class User extends Authenticatable
     protected $attributes = [
         'role_id' => 2
     ];
+    public function profile() {
+        return $this->hasOne(Profile::class, 'user_id');
+    }
+    public function pinjaman():BelongsToMany {
+        return $this->belongsToMany(Pinjaman::class, 'pinjaman', 'user_id', 'pinjaman_id');
+    }
 }

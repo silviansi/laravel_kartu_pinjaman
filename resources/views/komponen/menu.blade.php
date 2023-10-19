@@ -38,7 +38,7 @@
                     </button>
                 </div>
 
-                <div class="dropdown d-inline-block">
+                <div class="drorpdown d-inline-block">
                     <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <img class="rounded-circle header-profile-user" src="assets/images/avatar-admin.jpg"
@@ -46,7 +46,8 @@
                     </button>
                     <div class="dropdown-menu dropdown-menu-end">
                         <!-- item-->
-                        <a class="dropdown-item text-danger" href="logout"><i class="bx bx-power-off font-size-17 align-middle me-1 text-danger"></i> Logout</a>
+                        <a class="dropdown-item text-danger" href="logout"><i class="bx bx-power-off font-size-17 align-middle me-1 text-danger"></i> 
+                            Logout</a>
                     </div>
                 </div>
 
@@ -88,8 +89,15 @@
               <li>
                   <a href="pinjaman" class=" waves-effect">
                       <i class="ti-write"></i>
-                      <span>Pinjaman</span>
+                      <span>Data Pinjaman</span>
                   </a>
+              </li>
+
+              <li>
+                <a href="pabrikasi" class=" waves-effect">
+                    <i class="ti-clipboard"></i>
+                    <span>Data Pabrikasi</span>
+                </a>
               </li>
 
               <li>
@@ -98,13 +106,6 @@
                     <span>Website</span>
                 </a>
             </li>
-
-              <li>
-                  <a href="pages-laporan.html" class=" waves-effect">
-                      <i class="ti-clipboard"></i>
-                      <span>Laporan Pabrikasi</span>
-                  </a>
-              </li>
 
               <li>
                   <a href="pages-help.html" class=" waves-effect">

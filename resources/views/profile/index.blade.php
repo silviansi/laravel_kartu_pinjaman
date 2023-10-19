@@ -71,6 +71,32 @@
                                   <div class="container">
                                     <div class="row">
                                       <div class="col">
+                                        Kecamatan
+                                      </div>
+                                      <div class="col">
+                                        :
+                                      </div>
+                                      <div class="col">
+                                        {{ $profile->kecamatan }}
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="container">
+                                    <div class="row">
+                                      <div class="col">
+                                        Kota
+                                      </div>
+                                      <div class="col">
+                                        :
+                                      </div>
+                                      <div class="col">
+                                        {{ $profile->kota }}
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="container">
+                                    <div class="row">
+                                      <div class="col">
                                         No. Vak
                                       </div>
                                       <div class="col">
@@ -104,32 +130,6 @@
                                       </div>
                                       <div class="col">
                                         {{ $profile->kategori }}
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <div class="container">
-                                    <div class="row">
-                                      <div class="col">
-                                        Kecamatan
-                                      </div>
-                                      <div class="col">
-                                        :
-                                      </div>
-                                      <div class="col">
-                                        {{ $profile->kecamatan }}
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <div class="container">
-                                    <div class="row">
-                                      <div class="col">
-                                        Kota
-                                      </div>
-                                      <div class="col">
-                                        :
-                                      </div>
-                                      <div class="col">
-                                        {{ $profile->kota }}
                                       </div>
                                     </div>
                                   </div>

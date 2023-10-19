@@ -91,7 +91,7 @@
                                                 <img src="assets/images/services-icon/004.png" height="50" alt="">
                                             </div>
                                             <h5 class="font-size-16 text-uppercase text-white-50">Per. Hasil</h5>
-                                            <h4 class="fw-medium font-size-24"> {{ $perhitungan_hasil }}</h4>
+                                            <h4 class="fw-medium font-size-24"></h4>
                                         </div>
                                         <div class="pt-2">
                                             <div class="float-end">

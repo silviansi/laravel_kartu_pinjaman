@@ -49,8 +49,11 @@
                                             <tr>
                                                 <th>Nama Lengkap</th>
                                                 <th>Kebun</th>
+                                                <th>No. Vak</th>
+                                                <th>No. Kontrak</th>
+                                                <th>Kategori</th>
                                                 <th>Kecamatan</th>
-                                                <th>Kota</th>
+                                                <th>Aksi</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -58,14 +61,23 @@
                                             <tr>
                                                 <td>{{ $item->nama }}</td>
                                                 <td>{{ $item->kebun }}</td>
+                                                <td>{{ $item->no_vak }}</td>
+                                                <td>{{ $item->no_kontrak }}</td>
+                                                <td>{{ $item->kategori }}</td>
                                                 <td>{{ $item->kecamatan }}</td>
-                                                <td>{{ $item->kota }}</td>
                                                 <td>
+                                                    <a href="{{ url('anggota/'.$item->id) }}"
+                                                        data-bs-toggle="modal" data-bs-target="#ModalEdit-{{ $item->id }}" class="btn btn-warning btn-sm">
+                                                       <i class="fas fa-pencil-alt"></i>
+                                                   </a>
                                                     <form onsubmit="return confirm('Yakin mau hapus data?')" class='d-inline' action="{{ 'anggota/'.$item->id }}" method='post'>
                                                         @csrf
                                                         @method('DELETE')
                                                         <button class="btn btn-danger btn-sm" type="submit"><i class="fas fa-trash-alt"></i></button>
                                                     </form>
+                                                    <a href="{{ url('anggota/'.$item->user_id) }}" class="btn btn-primary btn-sm" role="button" aria-disabled="true">
+                                                        <i class="fas fa-print"></i>
+                                                    </a>
                                                 </td>
                                             </tr>
                                             @endforeach
@@ -80,6 +92,5 @@
                 </div>
                 
                 <!-- End Page-content -->
-                @include('anggota.create')
                 @include('anggota.update')
 @endsection

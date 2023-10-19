@@ -7,14 +7,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class LogsPinjaman extends Model
+class Pabrikasi extends Model
 {
     use HasFactory;
-    protected $table = 'pinjaman_logs';
-
-    protected $fillable = [
-        'user_id', 'tanggal', 'no_bukti', 'jumlah_pinjaman', 'uraian'
-    ];
+    protected $table = 'laporan_pabrikasi';
+    protected $fillable = ['user_id', 'tebu_giling', 'rendemen_petani', 'gula_petani', 'tetes_petani', 'gula_masuk'];
 
     public function user(): BelongsTo
     {

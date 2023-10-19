@@ -57,8 +57,28 @@
                                         </div>
     
                                         <div class="mb-3">
-                                            <label class="form-label" for="email">Email</label>
-                                            <input type="text" name="email" value="{{ Session::get('email') }}" class="form-control" id="email" placeholder="Enter email">
+                                            <label class="form-label" for="nama">Nama Lengkap</label>
+                                            <input type="text" name="nama" value="{{ Session::get('nama') }}" class="form-control" id="nama" placeholder="Enter nama lengkap">
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label class="form-label" for="kebun">Kebun</label>
+                                            <input type="text" name="kebun" value="{{ Session::get('kebun') }}" class="form-control" id="kebun" placeholder="Enter kebun">
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label class="form-label" for="luas_kebun">Luas Kebun</label>
+                                            <input type="text" name="luas_kebun" value="{{ Session::get('luas_kebun') }}" class="form-control" id="luas_kebun" placeholder="Enter luas kebun">
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label class="form-label" for="kecamatan">Kecamatan</label>
+                                            <input type="text" name="kecamatan" value="{{ Session::get('kecamatan') }}" class="form-control" id="kecamatan" placeholder="Enter kecamatan">
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label class="form-label" for="kota">Kota</label>
+                                            <input type="text" name="kota" value="{{ Session::get('kota') }}" class="form-control" id="kota" placeholder="Enter kota">
                                         </div>
     
                                         <div class="mb-3">

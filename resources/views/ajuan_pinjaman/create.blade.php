@@ -19,7 +19,7 @@
                                     <div class="row mb-3">
                                         <div class="mb-3">
                                             <label class="form-label">Tanggal</label>
-                                            <input placeholder="Select your date" type="text" name="tanggal" id="tanggal" value="" class="form-control"></i>
+                                            <input placeholder="Select your date" type="text" name="tanggal" id="datepicker" value="" class="form-control"></i>
                                         </div>
     
                                     <div class="mb-3">
@@ -42,9 +42,9 @@
                                             <button type="submit" class="btn btn-primary waves-effect waves-light me-1">
                                                 Submit
                                             </button>
-                                            <button type="reset" class="btn btn-secondary waves-effect">
+                                            <a href="{{ url('ajuan_pinjaman') }}" type="reset" class="btn btn-secondary waves-effect">
                                                 Cancel
-                                            </button>
+                                            </a>
                                         </div>
                                     </div>
                                 </form>

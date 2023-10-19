@@ -2,13 +2,12 @@
 
 use App\Http\Controllers\AjuanController;
 use App\Http\Controllers\DepanController;
+use App\Http\Controllers\PabrikasiController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AnggotaController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\DataPinjamanController;
 use App\Http\Controllers\PinjamanController;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\DaftarPinjamanUser;
 use App\Http\Controllers\ProfileController;
 
 /*
@@ -41,7 +40,6 @@ Route::middleware('auth')->group(function () {
     Route::middleware('OnlyClient')->group(function () {
         Route::resource('profile', ProfileController::class)->only('index','update','edit');
         Route::resource('ajuan_pinjaman', AjuanController::class);
-        //Route::get('ajuan_pinjaman', [AjuanController::class, 'create']);
         Route::post('ajuan_pinjaman', [AjuanController::class, 'store']);
     });
 
@@ -52,11 +50,13 @@ Route::middleware('auth')->group(function () {
         Route::get('anggota/{id}', [AnggotaController::class, 'edit']); 
         Route::post('anggota/{id}', [AnggotaController::class, 'create']);
         Route::put('anggota/{id}', [AnggotaController::class, 'update']);
+        Route::get('anggota/{user_id}', [AnggotaController::class, 'show']);
 
         Route::resource('pinjaman', PinjamanController::class);
-        Route::get('pinjaman/{id}', [PinjamanController::class, 'show']);
+        Route::get('pinjaman/{id}', [PinjamanController::class, 'store']);
+        Route::put('pinjaman/{id}', [PinjamanController::class, 'create']);
 
-        Route::get('pinjaman/{id}', [DataPinjamanController::class, 'store']);
-        Route::post('pinjaman/{id}', [DataPinjamanController::class, 'create']);
+        Route::resource('pabrikasi', PabrikasiController::class);
+        Route::post('pabrikasi', [PabrikasiController::class, 'store']);
     });
 });

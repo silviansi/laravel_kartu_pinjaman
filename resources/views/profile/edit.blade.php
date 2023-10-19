@@ -42,33 +42,6 @@
                                     @error('luas_kebun')
                                         <div class="alert-danger mx-2"> {{ $message }}</div>
                                     @enderror
-                        
-                                    <div class="form-group mx-4 my-2">
-                                        <label for="nama" class="text-md font-weight-bold">No. Vak</label>
-                                        <input type="text" name="no_vak" class="form-control" value="{{ old('no_vak', $profile->no_vak) }}">
-                                    </div>
-                        
-                                    @error('no_vak')
-                                        <div class="alert-danger"> {{ $message }}</div>
-                                    @enderror
-                        
-                                    <div class="form-group mx-4 my-2">
-                                        <label for="nama" class="text-md font-weight-bold">No. Kontrak</label>
-                                        <input type="text" name="no_kontrak" class="form-control" value="{{ old('no_kontrak', $profile->no_kontrak) }}">
-                                    </div>
-                        
-                                    @error('no_kontrak')
-                                        <div class="alert-danger"> {{ $message }}</div>
-                                    @enderror
-                        
-                                    <div class="form-group mx-4 my-2">
-                                        <label for="nama" class="text-md font-weight-bold">Kategori</label>
-                                        <input type="text" name="kategori" class="form-control" value="{{ old('kategori', $profile->kategori) }}">
-                                    </div>
-                        
-                                    @error('kategori')
-                                        <div class="alert-danger"> {{ $message }}</div>
-                                    @enderror
 
                                     <div class="form-group mx-4 my-2">
                                         <label for="nama" class="text-md font-weight-bold">Kecamatan</label>

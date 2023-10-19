@@ -126,6 +126,7 @@
                                         <th colspan="6">JUMLAH :</th>
                                     </tr>
                                 </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>

@@ -30,20 +30,19 @@
                             <h4 class="card-title">Daftar Pinjaman Anda</h4>
 
                             <div class="col-md-2 mb-3">
-                                <a href="{{ url('ajuan_pinjaman/create') }}" class="btn btn-success btn-md active" role="button" aria-pressed="true">
-                                    + Tambah Pinjaman
-                                </a>
+                                <a href="{{ url('ajuan_pinjaman/create') }}" class="btn btn-success btn-sm" tabindex="-1" role="button" aria-disabled="true">+ Tambah</a>
+                                <a href="{{ url('ajuan_pinjaman/cetak_kartu') }}" class="btn btn-primary btn-sm" tabindex="-1" role="button" aria-disabled="true">
+                                    <i class="fas fa-print"></i> Cetak</a>
                             </div>
                             <table class="table">
-
-                                    <thead>
+                                <thead>
                                         <tr>
                                             <th>Tanggal</th>
                                             <th>No. Bukti</th>
                                             <th>Jumlah Pinjaman</th>
                                             <th>Uraian</th>
                                         </tr>
-                                    </thead>
+                                </thead>
                                     <tbody>
                                         @foreach ($data as $item)
                                             <tr>
@@ -52,7 +51,7 @@
                                                 <td>{{ $item->jumlah_pinjaman }}</td>
                                                 <td>{{ $item->uraian }}</td>
                                             </tr>
-                                            @endforeach
+                                        @endforeach
                                     </tbody>
                             </table>
 

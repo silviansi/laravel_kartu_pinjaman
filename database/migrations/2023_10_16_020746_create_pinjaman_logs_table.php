@@ -13,8 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('pinjaman', function (Blueprint $table) {
+        Schema::create('pinjaman_logs', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->date('tanggal');
             $table->string('no_bukti');
             $table->string('jumlah_pinjaman');
@@ -30,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pinjaman_detail');
+        Schema::dropIfExists('pinjaman_logs');
     }
 };

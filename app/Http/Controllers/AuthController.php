@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Profile;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -50,38 +51,73 @@ class AuthController extends Controller
         return view('auth/register');
     }
     public function create(Request $request) {
-        Session::flash('username', $request->name);
-        Session::flash('email', $request->email);
+        Session::flash('username', $request->username);
+        Session::flash('nama', $request->nama);
+        Session::flash('kebun', $request->kebun);
+        Session::flash('luas_kebun', $request->luas_kebun);
+        Session::flash('kecamatan', $request->kecamatan);
+        Session::flash('kota', $request->kota);
         $request->validate([
             'username' => 'required|unique:users',
-            'email' => 'required|email|unique:users',
+            'nama' => 'required',
+            'kebun' => 'required',
+            'luas_kebun' => 'required',
+            'kecamatan' => 'required',
+            'kota' => 'required',
             'password' => 'required|min:6'
         ], [
             'username.required' => 'Usernama wajib diisi',
-            'email.required' => 'Email wajib diisi',
-            'email.email' => 'Silahkan masukkan email yang valid',
-            'email.unique' => 'Email sudah pernah digunakan, silahkan gunakan email yang lain',
+            'username.unique' => 'Username sudah pernah digunakan, silahkan gunakan email yang lain',
+            'nama.required' => 'Nama Lengkap wajib diisi',
+            'kebun.required' => 'Nama Kebun wajib diisi',
+            'luas_kebun.required' => 'Luas Kebun wajib diisi',
+            'kecamatan.required' => 'Kecamatan wajib diisi',
+            'kota.required' => 'Kota wajib diisi',
             'password.required' => 'Password wajib diisi',
             'password.min' => 'Minimum password yang diizinkan adalah 6 karakter'
         ]);
 
-        $data = [
-            'username' => $request->username,
-            'email' => $request->email,
-            'password' => Hash::make($request->password)
-        ];
-        User::create($data);
+        $data = User::create([
+            'username' => $request['username'],
+            'password' => Hash::make($request['password'])
+        ]);
 
-        $infologin = [
-            'username' => $request->username,
-            'email' => $request->email,
-            'password' => $request->password
-        ];
+        Profile::create([
+            'nama' => $request['nama'],
+            'kebun' => $request['kebun'],
+            'luas_kebun' => $request['luas_kebun'],
+            'kecamatan' => $request['kecamatan'],
+            'kota' => $request['kota'],
+            'user_id' => $data->id,
+        ]);
 
-        if (Auth::attempt($infologin)) {
-            return redirect('auth/login');
-        } else {
-            return redirect('auth/register')->withErrors('Email dan password tidak valid');
-        }
+        return redirect('auth/login');
+
+        // $data = [
+        //     'username' => $request->username,
+        //     'password' => Hash::make($request->password)
+        // ];
+        // User::create($data);
+
+        // $profile = [
+        //     'nama' => $request->nama,
+        //     'kebun' => $request->kebun,
+        //     'luas_kebun' => $request->luas_kebun,
+        //     'kecamatan' => $request->kecamatan,
+        //     'kota' => $request->kota,
+        //     'user_id' => 
+        // ];
+        // Profile::create($profile);
+
+        // $infologin = [
+        //     'username' => $request->username,
+        //     'password' => $request->password
+        // ];
+
+        // if (Auth::attempt($infologin)) {
+        //     return redirect('auth/login');
+        // } else {
+        //     return redirect('auth/register')->withErrors('Email dan password tidak valid');
+        // }
     }
 }   

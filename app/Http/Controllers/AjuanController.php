@@ -2,14 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Pinjaman;
+use App\Models\LogsPinjaman;
+use App\Models\Profile;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class AjuanController extends Controller
 {
     public function index() {
-        $data = Pinjaman::orderBy('id')->get();
-        return view('ajuan_pinjaman.index')->with('data', $data);
+        $user = Auth::user();
+        $data = LogsPinjaman::where('user_id', '=', $user->id)->get();
+        return view('ajuan_pinjaman.index', compact('user', 'data'));
     }
     public function create() {
         return view('ajuan_pinjaman.create');
@@ -32,8 +36,20 @@ class AjuanController extends Controller
             'no_bukti' => $request->no_bukti,
             'jumlah_pinjaman' => $request->jumlah_pinjaman,
             'uraian' => $request->uraian,
+            'user_id' => Auth::id()
         ];
-        Pinjaman::create($data);
-        return view('ajuan_pinjaman/index')->with('success', 'Berhasil menambahkan data');
+        LogsPinjaman::create($data);
+        return redirect()->to('ajuan_pinjaman');
+    }
+    public function show($id) {
+        $iduser = Auth::id();
+        $profile = Profile::where('user_id', $iduser)->first();
+
+        $user = Auth::user();
+        $data = LogsPinjaman::where('user_id', '=', $user->id)->get();
+
+        $q = DB::table('pinjaman_logs')->where('user_id', '=', $user->id)->sum('jumlah_pinjaman');
+                //dd([$q, $profile, $data]);
+        return view('ajuan_pinjaman.cetak_kartu',['profile' => $profile, 'data' => $data, 'q' => $q]);
     }
 }

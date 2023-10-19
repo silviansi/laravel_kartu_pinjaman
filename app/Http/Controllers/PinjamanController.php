@@ -2,53 +2,44 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Anggota;
-use App\Models\Pinjaman;
-use App\Models\User;
+use App\Models\LogsPinjaman;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
 class PinjamanController extends Controller
 {
     public function index() {
-        $data = Pinjaman::orderBy('id')->get();
+        $data = LogsPinjaman::orderBy('id')->get();
         return view('pinjaman.index')->with('data', $data);
     }
-    public function store(Request $request) {
-        Session::flash('tanggal', $request->tanggal);
-            Session::flash('noBukti', $request->noBukti);
-            Session::flash('debet', $request->debet);
-            Session::flash('kredit', $request->kredit);
-            Session::flash('uraian', $request->uraian);
-            $request->validate([
-                'tanggal' => 'required',
-                'noBukti' => 'required',
-                'debet' => 'required',
-                'kredit' => 'required',
-                'uraian' => 'required'
-            ], [
-                'tanggal.required' => 'Tanggal wajib diisi',
-                'noBukti.required' => 'No Bukti wajib diisi',
-                'debet.required' => 'Debet wajib diisi',
-                'kredit.required' => 'Kredit wajib diisi',
-                'uraian.required' => 'Uraian wajib diisi'
-            ]);
-            $data = [
-                'tanggal' => $request->tanggal,
-                'noBukti' => $request->noBukti,
-                'debet' => $request->debet,
-                'kredit' => $request->kredit,
-                'uraian' => $request->uraian
-            ];
-            $data = Pinjaman::create($data);
-            return redirect()->to('pinjaman.show')->with('success', 'Berhasil menambahkan data');
+    public function edit($id) {
+        $data = LogsPinjaman::where('id', $id)->first();
+        return view('pinjaman.create')->with('data', $data);
     }
-    public function show($id) {
-        $data = Pinjaman::where('id', $id)->first();
-        return view('pinjaman.show')->with('data', $data);
+    public function update(Request $request, $id) {
+        $data = LogsPinjaman::find($id);
+        $request->validate([
+            'tanggal' => 'required',
+            'no_bukti' => 'required',
+            'jumlah_pinjaman' => 'required',
+            'uraian' => 'required'
+        ], [
+            'tanggal.required' => 'Tanggal wajib diisi',
+            'no_bukti.required' => 'No. Bukti wajib diisi',
+            'jumlah_pinjaman.required' => 'Jumlah Pinjaman wajib diisi',
+            'uraian.required' => 'Uraian wajib diisi'
+        ]);
+        $data = [
+            'tanggal' => $request->input('tanggal'),
+            'no_bukti' => $request->input('no_bukti'),
+            'jumlah_pinjaman' => $request->input('jumlah_pinjaman'),
+            'uraian' => $request->input('uraian')
+        ];
+        LogsPinjaman::where('id', $id)->update($data);
+        return redirect()->to('pinjaman')->with('success', 'Berhasil melakukan update data');
     }
-    public function create() {
-        $anggota = Anggota::all();
-        return view('pinjaman.create', ['anggota_id' => $anggota]);
+    public function destroy($id) {
+        LogsPinjaman::where('id', $id)->delete();
+        return redirect()->to('pinjaman')->with('success', 'Berhasil menghapus data');
     }
 }
