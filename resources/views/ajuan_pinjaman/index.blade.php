@@ -48,7 +48,7 @@
                                             <tr>
                                                 <td>{{ $item->tanggal }}</td>
                                                 <td>{{ $item->no_bukti }}</td>
-                                                <td>{{ $item->jumlah_pinjaman }}</td>
+                                                <td>{{ number_format($item->jumlah_pinjaman,0,'','.') }}</td>
                                                 <td>{{ $item->uraian }}</td>
                                             </tr>
                                         @endforeach

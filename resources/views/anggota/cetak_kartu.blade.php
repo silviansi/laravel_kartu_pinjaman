@@ -178,7 +178,7 @@
             <div class="row">
                 <div class="col-5">Tebu Di Giling</div>
                 <div class="col-1">:</div>
-                <div class="col-3" style="text-align: right;">2.432 Ku</div>
+                <div class="col-3" style="text-align: right;">{{ number_format($pabrikasi->tebu_giling,0,'','.') }} Ku</div>
             </div>
             <div class="row">
                 <div class="col-5">
@@ -186,7 +186,7 @@
                 </div>
                 <div class="col-1">:</div>
                 <div class="col-3" style="text-align: right;">
-                  4,90 %
+                  {{ $pabrikasi->rendemen_petani }} %
                 </div>
             </div>
             <div class="row">
@@ -195,18 +195,22 @@
                 </div>
                 <div class="col-1">:</div>
                 <div class="col-3" style="text-align: right;">
-                  119,17 Ku
+                  {{ $pabrikasi->gula_petani }} Ku
                 </div>
             </div>
         </div>
         <div class="col">
+            @php
+                $sembilan = $pabrikasi->gula_petani*0.9;
+                $satu = $pabrikasi->gula_petani*0.1;
+            @endphp
             <div class="row">
                 <div class="col-4">
                   Gula Petani 90%
                 </div>
                 <div class="col-1">:</div>
                 <div class="col-3" style="text-align: right;">
-                  107,25 Ku
+                  {{ $sembilan }} Ku
                 </div>
             </div>
             <div class="row">
@@ -215,7 +219,7 @@
                 </div>
                 <div class="col-1">:</div>
                 <div class="col-3" style="text-align: right;">
-                  11,92 Ku
+                  {{ $satu }} Ku
                 </div>
             </div>
             <div class="row">
@@ -224,7 +228,7 @@
                 </div>
                 <div class="col-1">:</div>
                 <div class="col-3" style="text-align: right;">
-                  7.296 Kg
+                  {{ number_format($pabrikasi->tetes_petani,0,'','.') }} Kg
                 </div>
             </div>
           </div>
@@ -233,24 +237,28 @@
     </div>
     <div class="container-fluid">
         <b>Pendapatan Petani</b>
+        @php
+            $nilai_gula = $sembilan*1216000;
+            $nilai_tetes = $pabrikasi->tetes_petani*1700;
+            $jumlah_pendapatan_petani = $nilai_gula+$nilai_tetes;
+        @endphp
         <hr class="line2" style="width: 20%">
             <div class="row">
               <div class="col-3">Nilai Gula Petani</div>
               <div class="col-1">:</div>
-              <div class="col-2" style="text-align: right;">107,25 Ku</div>
+              <div class="col-2" style="text-align: right;">{{ $sembilan }} Ku</div>
               <div class="col-1">X RP.</div>
               <div class="col-2" style="text-align: right;">1.216.000</div>
-              <div class="col-3">= Rp. 130.416.000</div>
-              <div class="col-1"></div>
+              <div class="col-3">= Rp. {{ number_format($nilai_gula,0,'','.') }}</div>
+              
             </div>
             <div class="row">
-              <div class="col-3">Nilai Tetes Petani</div>
+              <div class="col-3">Nilai Tetes Petani </div>
               <div class="col-1">:</div>
-              <div class="col-2" style="text-align: right;">7.296 Kg</div>
+              <div class="col-2" style="text-align: right;"> {{ $pabrikasi->tetes_petani }} Kg</div>
               <div class="col-1">X RP.</div>
               <div class="col-2" style="text-align: right;">1.700</div>
-              <div class="col-3">= Rp. 12.403.200</div>
-              <div class="col-1"></div>
+              <div class="col-3">= Rp. {{ number_format($nilai_tetes,0,'','.') }}</div>
             </div>
             <div class="row">
                 <div class="col-9"></div>
@@ -260,17 +268,25 @@
                 <div class="col-5"></div>
                 <div class="col-4" style="text-align: right;">Jumlah Pendapatan Petani &nbsp;&nbsp;&nbsp;=</div>
                 <div class="col-1" style="text-align: right;">Rp. </div>
-                <div class="col-2" style="text-align: right;">142.819.200</div>
+                <div class="col-2" style="text-align: right;">{{ number_format($jumlah_pendapatan_petani,0,'','.') }}</div>
             </div>
     </div>
 
     <div class="container-fluid">
         <b>Hutang Petani</b>
         <hr class="line2" style="width: 20%">
+        @php
+            $angkut1 = $pabrikasi->gula_masuk*5850;
+            $eksplo = $pabrikasi->tetes_petani*10;
+            $lintringan = $pabrikasi->tebu_giling*170;
+            $karung = $pabrikasi->gula_petani*9300;
+            $iuran = $pabrikasi->tebu_giling*20;
+            $umbal = $pabrikasi->tebu_giling*5;
+        @endphp
         <div class="row">
             <div class="col-3">1. Biaya Upah Tebang</div>
             <div class="col-1">:</div>
-            <div class="col-2" style="text-align: right;">2.331 Ku</div>
+            <div class="col-2" style="text-align: right;">{{ number_format($pabrikasi->gula_masuk,0,'','.') }} Ku</div>
             <div class="col-2">tebu masuk</div>
             <div class="col-1">= Rp. </div>
             <div class="col-2" style="text-align: right;">26.502.030</div>
@@ -279,11 +295,11 @@
         <div class="row">
             <div class="col-3">2. Biaya Angkut Truk 1</div>
             <div class="col-1">:</div>
-            <div class="col-2" style="text-align: right;">2.331 Ku</div>
+            <div class="col-2" style="text-align: right;">{{ number_format($pabrikasi->gula_masuk,0,'','.') }} Ku</div>
             <div class="col-1">X Rp. </div>
             <div class="col-1" style="text-align: right;">5.850</div>
             <div class="col-1">= Rp. </div>
-            <div class="col-2" style="text-align: right;">13.519.350</div>
+            <div class="col-2" style="text-align: right;">{{ number_format($angkut1,0,'','.') }}</div>
             <div class="col-1"></div>
         </div>
         <div class="row">
@@ -299,11 +315,11 @@
         <div class="row">
             <div class="col-3">4. Biaya Eksplo. Tetes</div>
             <div class="col-1">:</div>
-            <div class="col-2" style="text-align: right;">7.296 Kg</div>
+            <div class="col-2" style="text-align: right;">{{ number_format($pabrikasi->tetes_petani,0,'','.') }} Kg</div>
             <div class="col-1">X Rp. </div>
             <div class="col-1" style="text-align: right;">10</div>
             <div class="col-1">= Rp. </div>
-            <div class="col-2" style="text-align: right;">72960</div>
+            <div class="col-2" style="text-align: right;">{{ number_format($eksplo,0,'','.') }}</div>
             <div class="col-1"></div>
         </div>
         <div class="row">
@@ -319,31 +335,31 @@
         <div class="row">
             <div class="col-3">6. Beban Lintringan</div>
             <div class="col-1">:</div>
-            <div class="col-2" style="text-align: right;">2.432 Ku</div>
+            <div class="col-2" style="text-align: right;">{{ number_format($pabrikasi->tebu_giling,0,'','.') }} Ku</div>
             <div class="col-1">X Rp. </div>
             <div class="col-1" style="text-align: right;">170</div>
             <div class="col-1">= Rp. </div>
-            <div class="col-2" style="text-align: right;">423.000</div>
+            <div class="col-2" style="text-align: right;">{{ number_format($lintringan,0,'','.') }}</div>
             <div class="col-1"></div>
         </div>
         <div class="row">
             <div class="col-3">7. Penggantian Karung </div>
             <div class="col-1">:</div>
-            <div class="col-2" style="text-align: right;">119,17 Ku</div>
+            <div class="col-2" style="text-align: right;">{{ $pabrikasi->gula_petani }} Ku</div>
             <div class="col-1">X Rp. </div>
-            <div class="col-1" style="text-align: right;">9300</div>
+            <div class="col-1" style="text-align: right;">9.300</div>
             <div class="col-1">= Rp.</div>
-            <div class="col-2" style="text-align: right;">1.108.281</div>
+            <div class="col-2" style="text-align: right;">{{ number_format($karung,0,'','.') }}</div>
             <div class="col-1"></div>
         </div>
         <div class="row">
             <div class="col-3">8. Iuran APTRI</div>
             <div class="col-1">:</div>
-            <div class="col-2" style="text-align: right;">2,432 Ku</div>
+            <div class="col-2" style="text-align: right;">{{ number_format($pabrikasi->tebu_giling,0,'','.') }} Ku</div>
             <div class="col-1">X Rp. </div>
             <div class="col-1" style="text-align: right;">20</div>
             <div class="col-1">= Rp. </div>
-            <div class="col-2" style="text-align: right;">48.640</div>
+            <div class="col-2" style="text-align: right;">{{ number_format($iuran,0,'','.') }}</div>
             <div class="col-1"></div>
         </div>
         <div class="row">
@@ -351,7 +367,7 @@
             <div class="col-1">:</div>
             <div class="col-4" style="text-align: center;">-------------------></div>
             <div class="col-1">= Rp.</div>
-            <div class="col-2" style="text-align: right;">94.962.320</div>
+            <div class="col-2" style="text-align: right;">{{ number_format($q,0,'','.') }}</div>
             <div class="col-1"></div>
         </div>
         <div class="row">
@@ -379,11 +395,11 @@
         <div class="row">
             <div class="col-3">13. Biaya Umbal Crane</div>
             <div class="col-1">:</div>
-            <div class="col-2" style="text-align: right;">2,432 Ku</div>
+            <div class="col-2" style="text-align: right;">{{ number_format($pabrikasi->tebu_giling,0,'','.') }} Ku</div>
             <div class="col-1">X Rp. </div>
             <div class="col-1" style="text-align: right;">5</div>
             <div class="col-1">= Rp.</div>
-            <div class="col-2" style="text-align: right;">12.160</div>
+            <div class="col-2" style="text-align: right;">{{ number_format($umbal,0,'','.') }}</div>
             <div class="col-1"></div>
         </div>
         <div class="row">

@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\LogsPinjaman;
-use App\Models\Pinjaman;
+use App\Models\Pabrikasi;
 use App\Models\Profile;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\DB;
 
 class AnggotaController extends Controller
 {
@@ -54,8 +53,14 @@ class AnggotaController extends Controller
     }
     public function show($id) {
         $profile = Profile::where('user_id', $id)->first();
-        return view('anggota/cetak_kartu', ['profile' => $profile]);
-    }
+        $pabrikasi = Pabrikasi::where('user_id', $id)->first();
+        $q = DB::table('pinjaman_logs')->where('user_id', $id)->sum('jumlah_pinjaman');
+
+        if($pabrikasi == null) {
+            return redirect()->back()->with('alert','Isi Data Pabrikasi');
+        } else {
+        return view('anggota/cetak_kartu', ['profile' => $profile, 'pabrikasi' => $pabrikasi, 'q' => $q]);
+    }}
     public function destroy($id) {
         Profile::where('id', $id)->delete();
         return redirect()->to('anggota')->with('success', 'Berhasil menghapus data');

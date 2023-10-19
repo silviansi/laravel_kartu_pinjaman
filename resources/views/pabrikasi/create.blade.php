@@ -9,7 +9,7 @@
                 <form action="pabrikasi" method="POST">
                     @csrf
                         <div class="row mb-3">
-                            <label for="user" class="col-sm-2 col-form-label">Usernama</label>
+                            <label for="user" class="col-sm-2 col-form-label">Username</label>
                             <div class="col-sm-10">
                                 <select class="form-control" name="user_id" id="user">
                                     <option>Pilih Username Anggota</option>

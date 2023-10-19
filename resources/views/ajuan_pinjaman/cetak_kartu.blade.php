@@ -84,7 +84,7 @@
                 <td style="border-bottom: hidden">{{ $item->tanggal }}</td>
                 <td style="border-bottom: hidden">{{ $item->no_bukti }}</td>
                 <td style="text-align:left;border-bottom: hidden">{{ $item->uraian }}</td>
-                <td style="text-align:right;border-bottom: hidden">{{ $item->jumlah_pinjaman }}</td>
+                <td style="text-align:right;border-bottom: hidden">{{ number_format($item->jumlah_pinjaman,0,'','.') }}</td>
                 <td style="text-align:right;border-bottom: hidden">0</td>
                 <td style="text-align:right;border-bottom: hidden">{{ $item->jumlah_pinjaman }}</td>
                 <td style="border-bottom: hidden"></td>
@@ -94,7 +94,7 @@
               <th>JUMLAH :</th>
               <td></td>
               <td></td>
-              <td style="text-align:right">{{ $q }}</td>
+              <td style="text-align:right">{{ number_format($q,0,'','.') }}</td>
               <td style="text-align:right">101.303.387</td>
               <td style="text-align:center">-</td>
               <td style="text-align:right">6.938.338</td>
