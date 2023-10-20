@@ -15,7 +15,6 @@
                                     <label for="username" class="col-sm-2 col-form-label">Username</label>
                                     <div class="col-sm-10">
                                         {{ $item->user->username }}
-                                        {{-- <input class="form-control" name="tanggal" type="text" value="{{ $item->tanggal }}" id="tanggal"> --}}
                                     </div>
                                 </div>
                                 <div class="row mb-3">

@@ -432,7 +432,7 @@
             <div class="col-3" style="font-size:smaller">Lembar 1 untuk Petani</div>
             <div class="col-2"></div>
             <div class="col-2"></div>
-            <div class="col-5" style="text-align: center;">Sidoarjo, 4-Sep-2023</div>
+            <div class="col-5" style="text-align: center;">Sidoarjo, {{ date('d-M-Y') }}</div>
         </div>
         <div class="row">
             <div class="col-3" style="font-size:smaller">Lembar 1 untuk Arsip ATR</div>

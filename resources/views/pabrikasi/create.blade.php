@@ -28,13 +28,13 @@
                         <div class="row mb-3">
                             <label for="rendemen_petani" class="col-sm-2 col-form-label">Rendemen Petani</label>
                             <div class="col-sm-10">
-                                <input class="form-control" name="rendemen_petani" type="number" value="" id="rendemen_petani">
+                                <input class="form-control" name="rendemen_petani" type="number" min="0" step="0.01" value="" id="rendemen_petani">
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label for="gula_petani" class="col-sm-2 col-form-label">Gula Petani</label>
                             <div class="col-sm-10">
-                                <input class="form-control" name="gula_petani" type="number" value="" id="gula_petani">
+                                <input class="form-control" name="gula_petani" type="number" min="0" step="0.01" value="" id="gula_petani">
                             </div>
                         </div>
                         <div class="row mb-3">

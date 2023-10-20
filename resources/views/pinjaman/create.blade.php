@@ -12,25 +12,25 @@
                             @csrf
                             @method("PUT")
                                 <div class="row mb-3">
-                                    <label for="example-text-input" class="col-sm-2 col-form-label">Tanggal</label>
+                                    <label for="tanggal" class="col-sm-2 col-form-label">Tanggal</label>
                                     <div class="col-sm-10">
                                         <input class="form-control" name="tanggal" type="text" value="{{ $item->tanggal }}" id="tanggal">
                                     </div>
                                 </div>
                                 <div class="row mb-3">
-                                    <label for="example-search-input" class="col-sm-2 col-form-label">No. Bukti</label>
+                                    <label for="no_bukti" class="col-sm-2 col-form-label">No. Bukti</label>
                                     <div class="col-sm-10">
                                         <input class="form-control" name="no_bukti" type="text" value="{{ $item->no_bukti }}" id="no_bukti">
                                     </div>
                                 </div>
                                 <div class="row mb-3">
-                                    <label for="example-url-input" class="col-sm-2 col-form-label">Jumlah Pinjaman</label>
+                                    <label for="jumlah_pinjaman" class="col-sm-2 col-form-label">Jumlah Pinjaman</label>
                                     <div class="col-sm-10">
                                         <input class="form-control" name="jumlah_pinjaman" type="text" value="{{ $item->jumlah_pinjaman }}" id="jumlah_pinjaman">
                                     </div>
                                 </div>
                                 <div class="row mb-3">
-                                    <label for="example-email-input" class="col-sm-2 col-form-label">Uraian</label>
+                                    <label for="uraian" class="col-sm-2 col-form-label">Uraian</label>
                                     <div class="col-sm-10">
                                         <input class="form-control" name="uraian" type="text" value="{{ $item->uraian }}" id="uraian">
                                     </div>

@@ -18,8 +18,8 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->integer('tebu_giling');
-            $table->float('rendemen_petani');
-            $table->integer('gula_petani');
+            $table->decimal('rendemen_petani');
+            $table->decimal('gula_petani');
             $table->integer('tetes_petani');
             $table->integer('gula_masuk');
             $table->timestamps();

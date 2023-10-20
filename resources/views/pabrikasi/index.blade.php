@@ -71,11 +71,11 @@
                                             <td>{{ $item->gula_masuk }}</td>
 
                                             <td>
-                                                <a href="{{ url('pinjaman/'.$item->id) }}"
+                                                <a href="{{ url('pabrikasi/'.$item->id) }}"
                                                     data-bs-toggle="modal" data-bs-target="#ModalEditPabrikasi-{{ $item->id }}" class="btn btn-warning btn-sm">
                                                    <i class="fas fa-pencil-alt"></i>
                                                </a>
-                                                <form onsubmit="return confirm('Yakin mau hapus data?')" class='d-inline' action="{{ 'pinjaman/'.$item->id }}" method='post'>
+                                                <form onsubmit="return confirm('Yakin mau hapus data?')" class='d-inline' action="{{ 'pabrikasi/'.$item->id }}" method='post'>
                                                     @csrf
                                                     @method('DELETE')
                                                     <button class="btn btn-danger btn-sm" type="submit"><i class="fas fa-trash-alt"></i></button>

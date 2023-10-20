@@ -34,7 +34,8 @@
                                 <a href="{{ url('ajuan_pinjaman/cetak_kartu') }}" class="btn btn-primary btn-sm" tabindex="-1" role="button" aria-disabled="true">
                                     <i class="fas fa-print"></i> Cetak</a>
                             </div>
-                            <table class="table">
+                              
+                            <table style="width:100%; text-align:center">
                                 <thead>
                                         <tr>
                                             <th>Tanggal</th>

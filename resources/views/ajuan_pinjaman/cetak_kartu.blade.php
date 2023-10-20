@@ -90,6 +90,7 @@
                 <td style="border-bottom: hidden"></td>
             </tr>
             @endforeach
+            <tr></tr>
             <tr>
               <th>JUMLAH :</th>
               <td></td>
