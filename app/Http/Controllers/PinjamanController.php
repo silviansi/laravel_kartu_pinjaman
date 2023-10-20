@@ -38,6 +38,13 @@ class PinjamanController extends Controller
         LogsPinjaman::where('id', $id)->update($data);
         return redirect()->to('pinjaman')->with('success', 'Berhasil melakukan update data');
     }
+    public function approve($id) {
+        $pinjaman = LogsPinjaman::where('id', $id)->first();
+        $pinjaman->status = 'approve';
+        $pinjaman->save();
+
+        return redirect()->to('pinjaman')->with('success', 'Pinjaman disetujui');
+    }
     public function destroy($id) {
         LogsPinjaman::where('id', $id)->delete();
         return redirect()->to('pinjaman')->with('success', 'Berhasil menghapus data');

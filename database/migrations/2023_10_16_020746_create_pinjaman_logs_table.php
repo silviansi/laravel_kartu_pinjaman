@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('no_bukti');
             $table->string('jumlah_pinjaman');
             $table->text('uraian');
+            $table->string('status');
             $table->timestamps();
         });
     }

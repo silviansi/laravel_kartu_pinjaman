@@ -12,7 +12,10 @@ class AjuanController extends Controller
 {
     public function index() {
         $user = Auth::user();
-        $data = LogsPinjaman::where('user_id', '=', $user->id)->get();
+        $data = LogsPinjaman::where([
+            ['user_id', '=', $user->id],
+            ['status', '=', 'approve']
+            ])->get();
         return view('ajuan_pinjaman.index', compact('user', 'data'));
     }
     public function create() {
@@ -46,10 +49,12 @@ class AjuanController extends Controller
         $profile = Profile::where('user_id', $iduser)->first();
 
         $user = Auth::user();
-        $data = LogsPinjaman::where('user_id', '=', $user->id)->get();
+        $data = LogsPinjaman::where([
+            ['user_id', '=', $user->id],
+            ['status', '=', 'approve']
+            ])->get();
 
         $q = DB::table('pinjaman_logs')->where('user_id', '=', $user->id)->sum('jumlah_pinjaman');
-                //dd([$q, $profile, $data]);
         return view('ajuan_pinjaman.cetak_kartu',['profile' => $profile, 'data' => $data, 'q' => $q]);
     }
 }

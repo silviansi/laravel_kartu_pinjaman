@@ -21,7 +21,7 @@
             </div>
             <!-- end page title -->
 
-            <!-- start page content -->      
+            <!-- start page content -->     
                                     <div class="row pt-3">
                                         <div class="col-12">
                                             <div class="card">
@@ -70,6 +70,12 @@
                                                                             @method('DELETE')
                                                                             <button class="btn btn-danger btn-sm" type="submit"><i class="fas fa-trash-alt"></i></button>
                                                                         </form>
+                                                                        @if ($item->status == 'pending')
+                                                                            <a href="{{ route('pinjaman.approve',$item->id)}}" class="btn btn-success btn-sm">
+                                                                               <i class="mdi mdi-check"></i>
+                                                                           </a>
+                                                                        </div>
+                                                                        @endif
                                                                     </td>
                                                                 </tr>
                                                                 @endforeach
