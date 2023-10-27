@@ -16,6 +16,7 @@ class AjuanController extends Controller
             ['user_id', '=', $user->id],
             ['status', '=', 'approve']
             ])->get();
+            
         return view('ajuan_pinjaman.index', compact('user', 'data'));
     }
     public function create() {
@@ -44,7 +45,7 @@ class AjuanController extends Controller
         LogsPinjaman::create($data);
         return redirect()->to('ajuan_pinjaman');
     }
-    public function show($id) {
+    public function show() {
         $iduser = Auth::id();
         $profile = Profile::where('user_id', $iduser)->first();
 
@@ -54,7 +55,14 @@ class AjuanController extends Controller
             ['status', '=', 'approve']
             ])->get();
 
+        // $arr=([$data[0]['jumlah_pinjaman'],$data[1]['jumlah_pinjaman'],$data[2]['jumlah_pinjaman'],$data[3]['jumlah_pinjaman']]);
+        // $result = [];
+        // $previous = 0;
+        // foreach ($arr as $value) {
+        //     $result[$previous += $value] = $value;
+        // }
+        // $result;
         $q = DB::table('pinjaman_logs')->where('user_id', '=', $user->id)->sum('jumlah_pinjaman');
-        return view('ajuan_pinjaman.cetak_kartu',['profile' => $profile, 'data' => $data, 'q' => $q]);
+         return view('ajuan_pinjaman.cetak_kartu',['profile' => $profile, 'data' => $data, 'q' => $q]);
     }
 }

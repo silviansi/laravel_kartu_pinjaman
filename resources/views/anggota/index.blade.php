@@ -33,6 +33,11 @@
                                 </div>
                                     
                                 @endif
+                                @if (Session::has('message'))
+                                <div class="alert alert-danger">
+                                    {{ Session::get('message') }}
+                                </div>
+                                @endif
                                 @if($errors->any())
                                     <div class="alert alert-danger">
                                         <ul>

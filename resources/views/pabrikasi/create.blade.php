@@ -9,12 +9,12 @@
                 <form action="pabrikasi" method="POST">
                     @csrf
                         <div class="row mb-3">
-                            <label for="user" class="col-sm-2 col-form-label">Username</label>
+                            <label for="user" class="col-sm-2 col-form-label">Nama</label>
                             <div class="col-sm-10">
                                 <select class="form-control" name="user_id" id="user">
-                                    <option>Pilih Username Anggota</option>
+                                    <option value="">Pilih Nama Anggota</option>
                                     @foreach($user as $item)
-                                        <option value="{{ $item->id }}">{{ $item->username }}</option>
+                                        <option value="{{ $item->id }}">{{ $item->profile->nama }} - {{ $item->username }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -58,3 +58,4 @@
         </div>
     </div>
 </div>
+

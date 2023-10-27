@@ -67,7 +67,7 @@ class AuthController extends Controller
             'password' => 'required|min:6'
         ], [
             'username.required' => 'Usernama wajib diisi',
-            'username.unique' => 'Username sudah pernah digunakan, silahkan gunakan email yang lain',
+            'username.unique' => 'Username sudah pernah digunakan, silahkan gunakan username yang lain',
             'nama.required' => 'Nama Lengkap wajib diisi',
             'kebun.required' => 'Nama Kebun wajib diisi',
             'luas_kebun.required' => 'Luas Kebun wajib diisi',
@@ -88,36 +88,10 @@ class AuthController extends Controller
             'luas_kebun' => $request['luas_kebun'],
             'kecamatan' => $request['kecamatan'],
             'kota' => $request['kota'],
+            'no_vak' => $request['no_vak'],
+            'no_kontrak' => $request['no_kontrak'],
             'user_id' => $data->id,
         ]);
-
         return redirect('auth/login');
-
-        // $data = [
-        //     'username' => $request->username,
-        //     'password' => Hash::make($request->password)
-        // ];
-        // User::create($data);
-
-        // $profile = [
-        //     'nama' => $request->nama,
-        //     'kebun' => $request->kebun,
-        //     'luas_kebun' => $request->luas_kebun,
-        //     'kecamatan' => $request->kecamatan,
-        //     'kota' => $request->kota,
-        //     'user_id' => 
-        // ];
-        // Profile::create($profile);
-
-        // $infologin = [
-        //     'username' => $request->username,
-        //     'password' => $request->password
-        // ];
-
-        // if (Auth::attempt($infologin)) {
-        //     return redirect('auth/login');
-        // } else {
-        //     return redirect('auth/register')->withErrors('Email dan password tidak valid');
-        // }
     }
 }   

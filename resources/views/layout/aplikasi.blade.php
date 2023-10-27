@@ -23,6 +23,8 @@
         <link href="/assets/css/icons.min.css" rel="stylesheet" type="text/css">
         <!-- App Css-->
         <link href="/assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css">
+        <!-- Select2 -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css">
     
     </head>
 
@@ -74,7 +76,14 @@
         <script src="/assets/js/pages/dashboard.init.js"></script>
 
         <script src="/assets/js/app.js"></script>
-
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+        <script>
+        $(function(){
+        $('#user').select2({
+            dropdownParent: $('#ModalEdit')
+        });
+        }); 
+        </script>
     </body>
 
 </html>

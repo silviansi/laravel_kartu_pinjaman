@@ -21,6 +21,13 @@
             </div>
             <!-- end page title -->
 
+            <div class="col-md-2 mb-3">
+                <a href=""
+                    data-bs-toggle="modal" data-bs-target="#ModalEdit" class="btn btn-success btn-md">
+                   + Tambah Data
+               </a>
+            </div>
+
             <!-- start page content -->     
                                     <div class="row pt-3">
                                         <div class="col-12">
@@ -46,20 +53,20 @@
                                                     <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                                             <thead>
                                                                 <tr>
+                                                                    <th>Nama</th>
                                                                     <th>Tanggal</th>
                                                                     <th>No. Bukti</th>
                                                                     <th>Jumlah Pinjaman</th>
-                                                                    <th>Uraian</th>
                                                                     <th>Aksi</th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
                                                                 @foreach ($data as $item)
                                                                 <tr>
+                                                                    <td>{{ $item->user->profile->nama }}</td>
                                                                     <td>{{ $item->tanggal }}</td>
                                                                     <td>{{ $item->no_bukti }}</td>
-                                                                    <td>{{ $item->jumlah_pinjaman }}</td>
-                                                                    <td>{{ $item->uraian }}</td>
+                                                                    <td>{{ number_format($item->jumlah_pinjaman) }}</td>
                                                                     <td>
                                                                         <a href="{{ url('pinjaman/'.$item->id) }}"
                                                                             data-bs-toggle="modal" data-bs-target="#ModalEditPinjaman-{{ $item->id }}" class="btn btn-warning btn-sm">
@@ -89,6 +96,7 @@
                                         </div> <!-- end col -->
                                 </div>
 <!-- End Page-content -->
+@include('pinjaman.edit')
 @include('pinjaman.create')
 
 @endsection

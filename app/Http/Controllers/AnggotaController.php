@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\LogsPinjaman;
 use App\Models\Pabrikasi;
 use App\Models\Profile;
+use App\Models\Tutupan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
+use PDO;
 
 class AnggotaController extends Controller
 {
@@ -54,12 +58,23 @@ class AnggotaController extends Controller
     public function show($id) {
         $profile = Profile::where('user_id', $id)->first();
         $pabrikasi = Pabrikasi::where('user_id', $id)->first();
-        $q = DB::table('pinjaman_logs')->where('user_id', $id)->sum('jumlah_pinjaman');
+        $q = DB::table('pinjaman_logs')
+        ->where([['user_id', $id],
+                ['status', '=', 'approve']])
+        ->sum('jumlah_pinjaman');
+        $data = LogsPinjaman::where([
+            ['user_id', '=', $id],
+            ['status', '=', 'approve']
+            ])->get();
+
+        $tutupan = Tutupan::where('user_id', $id)->get();
+        $r = DB::table('tutupan')->where('user_id', $id)->sum('jumlah_tutupan');
 
         if($pabrikasi == null) {
-            return redirect()->back()->with('alert','Isi Data Pabrikasi');
+            Session::flash('message', "Data Pabrikasi belum di input, Input data terlebih dahulu untuk mencetak kartu");
+            return redirect('anggota');
         } else {
-        return view('anggota/cetak_kartu', ['profile' => $profile, 'pabrikasi' => $pabrikasi, 'q' => $q]);
+        return view('anggota/cetak_kartu', ['profile' => $profile, 'pabrikasi' => $pabrikasi, 'q' => $q, 'data' => $data, 'tutupan' => $tutupan, 'r' => $r]);
     }}
     public function destroy($id) {
         Profile::where('id', $id)->delete();

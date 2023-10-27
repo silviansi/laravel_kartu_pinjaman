@@ -94,6 +94,13 @@
               </li>
 
               <li>
+                <a href="tutupan" class="waves-effect">
+                    <i class="ti-notepad"></i>
+                    <span>Data Tutupan</span>
+                </a>
+              </li>
+
+              <li>
                 <a href="pabrikasi" class=" waves-effect">
                     <i class="ti-clipboard"></i>
                     <span>Data Pabrikasi</span>

@@ -195,13 +195,7 @@ $( document ).ready(function() {
 
   <!-- Template Main JS File -->
   <script src="/assets/js/main.js"></script>
-  <script>
-  jQuery(document).ready(function () {
-    jQuery('#tanggal').datepicker({
-        format: 'yyyy-mm-dd',
-        startDate: '+1d'
-    });
-});</script>
+
 
 </body>
 

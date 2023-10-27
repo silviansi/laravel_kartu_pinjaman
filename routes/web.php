@@ -3,6 +3,7 @@
 use App\Http\Controllers\AjuanController;
 use App\Http\Controllers\DepanController;
 use App\Http\Controllers\PabrikasiController;
+use App\Http\Controllers\TutupanController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AnggotaController;
 use App\Http\Controllers\DashboardController;
@@ -55,9 +56,11 @@ Route::middleware('auth')->group(function () {
         Route::resource('pinjaman', PinjamanController::class);
         Route::get('pinjaman/{pinjaman}/approve', [PinjamanController::class, 'approve'])->name('pinjaman.approve');
         Route::get('pinjaman/{id}', [PinjamanController::class, 'store']);
-        Route::put('pinjaman/{id}', [PinjamanController::class, 'create']);
 
         Route::resource('pabrikasi', PabrikasiController::class);
         Route::post('pabrikasi', [PabrikasiController::class, 'store']);
+
+        Route::resource('tutupan', TutupanController::class);
+        Route::post('tutupan', [TutupanController::class, 'store']);
     });
 });

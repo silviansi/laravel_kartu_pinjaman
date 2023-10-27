@@ -22,9 +22,12 @@
                                             <input placeholder="Select your date" type="text" name="tanggal" id="datepicker" value="" class="form-control"></i>
                                         </div>
     
+                                        @php
+                                            $randomNum = 'KSB' . date('ymdd') . 0;
+                                        @endphp
                                     <div class="mb-3">
                                         <label class="form-label">No. Bukti</label>
-                                        <input type="text" class="form-control" name="no_bukti" id="no_bukti">
+                                        <input type="text" class="form-control" value="{{$randomNum}}" name="no_bukti" id="no_bukti" readonly>
                                     </div>
     
                                     <div class="mb-3">

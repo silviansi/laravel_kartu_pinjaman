@@ -6,17 +6,17 @@ use App\Models\Pabrikasi;
 use App\Models\Profile;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\Session;
 
 class PabrikasiController extends Controller
 {
     public function index() {
+        $profile = Profile::all();
         $user = User::where([
             ['role_id', '!=', 1],
         ])->get();
         $data = Pabrikasi::all();
-        return view('pabrikasi.index', ['user' => $user, 'data' => $data]);
+        return view('pabrikasi.index', ['user' => $user, 'data' => $data, 'profile' => $profile]);
     }
     public function create() {
         $user = User::where([
@@ -26,6 +26,12 @@ class PabrikasiController extends Controller
         return view('pabrikasi.create', ['user'=>$user, 'peminjam'=>$peminjam]);
     }
     public function store(Request $request) {
+        $count = Pabrikasi::where('user_id', $request->user_id)->count();
+        if($count >= 1) {
+            Session::flash('message', "Data Pabrikasi sudah ada");
+            return redirect('pabrikasi');
+        }
+        else {
         $request->validate([
             'tebu_giling' => 'required',
             'rendemen_petani' => 'required',
@@ -40,11 +46,10 @@ class PabrikasiController extends Controller
             'gula_masuk.required' => 'Gula masuk wajib diisi'
         ]);
 
-
         $data = $request->all();
         Pabrikasi::create($data);
         return redirect()->to('pabrikasi')->with('success', 'Berhasil menambahkan data');
-    }
+    }}
     public function update(Request $request, $id) {
         $data = Pabrikasi::find($id);
         $request->validate([

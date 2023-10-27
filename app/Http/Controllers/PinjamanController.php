@@ -3,18 +3,30 @@
 namespace App\Http\Controllers;
 
 use App\Models\LogsPinjaman;
+use App\Models\Profile;
+use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session;
 
 class PinjamanController extends Controller
 {
     public function index() {
+        $profile = Profile::all();
+        $user = User::where([
+            ['role_id', '!=', 1],
+        ])->get();
         $data = LogsPinjaman::orderBy('id')->get();
-        return view('pinjaman.index')->with('data', $data);
+        return view('pinjaman.index')->with(['data' => $data, 'profile' => $profile, 'user' => $user]);
+    }
+    public function create() {
+        $user = User::where([
+            ['role_id', '!=', 1],
+        ])->get();
+        $profile = Profile::where('user_id','>','1')->get();
+        return view('pinjaman.create', ['user'=>$user, 'profile'=>$profile]);
     }
     public function edit($id) {
         $data = LogsPinjaman::where('id', $id)->first();
-        return view('pinjaman.create')->with('data', $data);
+        return view('pinjaman.edit')->with('data', $data);
     }
     public function update(Request $request, $id) {
         $data = LogsPinjaman::find($id);
