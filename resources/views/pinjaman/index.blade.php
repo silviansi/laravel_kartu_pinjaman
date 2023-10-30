@@ -13,8 +13,7 @@
                         <h6 class="page-title">Data Anggota Pinjaman</h6>
                         <ol class="breadcrumb m-0">
                             <li class="breadcrumb-item"><a href="#">DashLoan</a></li>
-                            <li class="breadcrumb-item"><a href="#">Data Anggota</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Data Anggota Pinjaman</li>
+                            <li class="breadcrumb-item active" aria-current="page">Data Pinjaman</li>
                         </ol>
                     </div>
                 </div>

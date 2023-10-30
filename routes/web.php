@@ -45,11 +45,9 @@ Route::middleware('auth')->group(function () {
     });
 
     Route::middleware('isLogin')->group(function () {
-        Route::get('dashboard', [DashboardController::class, 'dashboard']);
+        Route::resource('dashboard', DashboardController::class);
 
         Route::resource('anggota', AnggotaController::class);
-        Route::get('anggota/{id}', [AnggotaController::class, 'edit']); 
-        Route::post('anggota/{id}', [AnggotaController::class, 'create']);
         Route::put('anggota/{id}', [AnggotaController::class, 'update']);
         Route::get('anggota/{user_id}', [AnggotaController::class, 'show']);
 

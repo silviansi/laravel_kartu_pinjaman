@@ -70,8 +70,8 @@
                                             <div class="float-start mini-stat-img me-4">
                                                 <img src="assets/images/services-icon/003.png" alt="">
                                             </div>
-                                            <h5 class="font-size-16 text-uppercase text-white-50">Log Pinj.</h5>
-                                            <h4 class="fw-medium font-size-24"> </h4>
+                                            <h5 class="font-size-16 text-uppercase text-white-50">Pabrikasi</h5>
+                                            <h4 class="fw-medium font-size-24">{{ $pabrikasi_count }} </h4>
                                         </div>
                                         <div class="pt-2">
                                             <div class="float-end">
@@ -90,8 +90,8 @@
                                             <div class="float-start mini-stat-img me-4">
                                                 <img src="assets/images/services-icon/004.png" height="50" alt="">
                                             </div>
-                                            <h5 class="font-size-16 text-uppercase text-white-50">Per. Hasil</h5>
-                                            <h4 class="fw-medium font-size-24"></h4>
+                                            <h5 class="font-size-16 text-uppercase text-white-50">Tutupan</h5>
+                                            <h4 class="fw-medium font-size-24">{{ $tutupan }}</h4>
                                         </div>
                                         <div class="pt-2">
                                             <div class="float-end">
@@ -106,7 +106,52 @@
                         </div>
                         <!-- end row -->
 
+                        <!-- start page content -->     
+                        <div class="row pt-3">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body">
 
+                                        <!-- start page title -->
+                                        <div class="page-title-box">
+                                            <div class="row align-items-center">
+                                                <div class="col-md-8">
+                                                    <h6 class="page-title">Data Pinjaman</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- end page title -->
+
+                                        <table id="table" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                                <thead style="background-color: #626ed4; color: white; text-align:center">
+                                                    <tr>
+                                                        <th>Nama</th>
+                                                        <th>Tanggal</th>
+                                                        <th>No. Bukti</th>
+                                                        <th>Jumlah Pinjaman</th>
+                                                        <th>Uraian</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach ($data as $item)
+                                                    <tr>
+                                                        <td>{{ $item->user->profile->nama }}</td>
+                                                        <td>{{ $item->tanggal }}</td>
+                                                        <td>{{ $item->no_bukti }}</td>
+                                                        <td>{{ number_format($item->jumlah_pinjaman) }}</td>
+                                                        <td width="180px">{{ $item->uraian }}</td>
+                                                    </tr>
+                                                    @endforeach
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </form>
+    
+                                    </div>
+                                </div>
+                            </div> <!-- end col -->
+                    </div>
+<!-- End Page-content -->
 
                     </div> <!-- container-fluid -->
                 </div>

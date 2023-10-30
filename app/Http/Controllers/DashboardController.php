@@ -3,14 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\LogsPinjaman;
-use App\Models\User;
-use Illuminate\Http\Request;
+use App\Models\Pabrikasi;
+use App\Models\Profile;
+use App\Models\Tutupan;
 
 class DashboardController extends Controller
 {
-    function dashboard() {
-        $userCount = User::count();
+    public function index() {
+        $userCount = Profile::count();
         $LogsPinjaman = LogsPinjaman::count();
-        return view('dashboard/home', ['user_count' => $userCount, 'pinjaman_count' => $LogsPinjaman]);
+        $lapPabrikasi = Pabrikasi::count();
+        $tutupan = Tutupan::count();
+        $data = LogsPinjaman::orderBy('id')->get();
+        return view('dashboard/home', ['user_count' => $userCount, 'pinjaman_count' => $LogsPinjaman, 'pabrikasi_count' => $lapPabrikasi, 'tutupan' => $tutupan, 'data' => $data]);
     }
 }
