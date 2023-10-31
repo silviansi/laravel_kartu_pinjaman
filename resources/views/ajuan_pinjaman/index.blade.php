@@ -31,8 +31,6 @@
 
                             <div class="col-md-2 mb-3">
                                 <a href="{{ url('ajuan_pinjaman/create') }}" class="btn btn-success btn-sm" tabindex="-1" role="button" aria-disabled="true">+ Tambah</a>
-                                <a href="{{ url('ajuan_pinjaman/cetak_kartu') }}" class="btn btn-primary btn-sm" tabindex="-1" role="button" aria-disabled="true">
-                                    <i class="fas fa-print"></i> Cetak</a>
                             </div>
                               
                             <table style="width:100%; text-align:center">

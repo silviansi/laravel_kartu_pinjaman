@@ -24,6 +24,24 @@ class PinjamanController extends Controller
         $profile = Profile::where('user_id','>','1')->get();
         return view('pinjaman.create', ['user'=>$user, 'profile'=>$profile]);
     }
+    public function store(Request $request){
+        $request->validate([
+            'tanggal' => 'required',
+            'no_bukti' => 'required',
+            'jumlah_pinjaman' => 'required',
+            'uraian' => 'required'
+        ], [
+            'tanggal.required' => 'Tanggal wajib diisi',
+            'no_bukti.required' => 'No. Bukti wajib diisi',
+            'jumlah_pinjaman.required' => 'Jumlah pinjaman wajib diisi',
+            'uraian.required' => 'Uraian wajib diisi' 
+        ]);
+        
+        $data = $request->all();
+        LogsPinjaman::create($data);
+        return redirect()->to('pinjaman')->with('success', 'Berhasil menambahkan data');
+        
+    }
     public function edit($id) {
         $data = LogsPinjaman::where('id', $id)->first();
         return view('pinjaman.edit')->with('data', $data);

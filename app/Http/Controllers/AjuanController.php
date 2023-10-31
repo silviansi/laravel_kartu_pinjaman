@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\LogsPinjaman;
-use App\Models\Profile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 
 class AjuanController extends Controller
 {
@@ -44,25 +42,5 @@ class AjuanController extends Controller
         ];
         LogsPinjaman::create($data);
         return redirect()->to('ajuan_pinjaman');
-    }
-    public function show() {
-        $iduser = Auth::id();
-        $profile = Profile::where('user_id', $iduser)->first();
-
-        $user = Auth::user();
-        $data = LogsPinjaman::where([
-            ['user_id', '=', $user->id],
-            ['status', '=', 'approve']
-            ])->get();
-
-        // $arr=([$data[0]['jumlah_pinjaman'],$data[1]['jumlah_pinjaman'],$data[2]['jumlah_pinjaman'],$data[3]['jumlah_pinjaman']]);
-        // $result = [];
-        // $previous = 0;
-        // foreach ($arr as $value) {
-        //     $result[$previous += $value] = $value;
-        // }
-        // $result;
-        $q = DB::table('pinjaman_logs')->where('user_id', '=', $user->id)->sum('jumlah_pinjaman');
-         return view('ajuan_pinjaman.cetak_kartu',['profile' => $profile, 'data' => $data, 'q' => $q]);
-    }
+    }                                                                  
 }

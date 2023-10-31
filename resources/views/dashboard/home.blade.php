@@ -35,7 +35,7 @@
                                         </div>
                                         <div class="pt-2">
                                             <div class="float-end">
-                                                <a href="#" class="text-white-50"><i class="mdi mdi-arrow-right h5"></i></a>
+                                                <a href="anggota" class="text-white-50"><i class="mdi mdi-arrow-right h5"></i></a>
                                             </div>
 
                                             <p class="text-white-50 mb-0 mt-1">Since last month</p>
@@ -55,7 +55,7 @@
                                         </div>
                                         <div class="pt-2">
                                             <div class="float-end">
-                                                <a href="#" class="text-white-50"><i class="mdi mdi-arrow-right h5"></i></a>
+                                                <a href="pinjaman" class="text-white-50"><i class="mdi mdi-arrow-right h5"></i></a>
                                             </div>
 
                                             <p class="text-white-50 mb-0 mt-1">Since last month</p>
@@ -75,7 +75,7 @@
                                         </div>
                                         <div class="pt-2">
                                             <div class="float-end">
-                                                <a href="#" class="text-white-50"><i class="mdi mdi-arrow-right h5"></i></a>
+                                                <a href="pabrikasi" class="text-white-50"><i class="mdi mdi-arrow-right h5"></i></a>
                                             </div>
 
                                             <p class="text-white-50 mb-0 mt-1">Since last month</p>
@@ -95,7 +95,7 @@
                                         </div>
                                         <div class="pt-2">
                                             <div class="float-end">
-                                                <a href="#" class="text-white-50"><i class="mdi mdi-arrow-right h5"></i></a>
+                                                <a href="tutupan" class="text-white-50"><i class="mdi mdi-arrow-right h5"></i></a>
                                             </div>
 
                                             <p class="text-white-50 mb-0 mt-1">Since last month</p>
@@ -125,6 +125,7 @@
                                         <table id="table" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                                 <thead style="background-color: #626ed4; color: white; text-align:center">
                                                     <tr>
+                                                        <th>No.</th>
                                                         <th>Nama</th>
                                                         <th>Tanggal</th>
                                                         <th>No. Bukti</th>
@@ -135,6 +136,7 @@
                                                 <tbody>
                                                     @foreach ($data as $item)
                                                     <tr>
+                                                        <td style="text-align: center">{{ $loop->iteration }}
                                                         <td>{{ $item->user->profile->nama }}</td>
                                                         <td>{{ $item->tanggal }}</td>
                                                         <td>{{ $item->no_bukti }}</td>
