@@ -9,7 +9,6 @@ use App\Models\Tutupan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
-use PDO;
 
 class AnggotaController extends Controller
 {
