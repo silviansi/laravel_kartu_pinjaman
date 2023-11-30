@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AjuanController;
 use App\Http\Controllers\DepanController;
+use App\Http\Controllers\HelpController;
 use App\Http\Controllers\PabrikasiController;
 use App\Http\Controllers\TutupanController;
 use Illuminate\Support\Facades\Route;
@@ -59,5 +60,7 @@ Route::middleware('auth')->group(function () {
 
         Route::resource('tutupan', TutupanController::class);
         Route::post('tutupan', [TutupanController::class, 'store']);
+
+        Route::resource('help', HelpController::class);
     });
 });

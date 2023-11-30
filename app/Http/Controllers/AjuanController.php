@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\LogsPinjaman;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class AjuanController extends Controller
 {
@@ -33,13 +34,20 @@ class AjuanController extends Controller
             'uraian.required' => 'Uraian wajib diisi' 
         ]);
 
+        $total = DB::table('pinjaman_logs')
+                ->where('user_id', Auth::id())
+                ->sum('jumlah_pinjaman');
+        $total += $request->jumlah_pinjaman;
+        $total = (string)$total;
         $data = [
             'tanggal' => $request->tanggal,
             'no_bukti' => $request->no_bukti,
             'jumlah_pinjaman' => $request->jumlah_pinjaman,
             'uraian' => $request->uraian,
-            'user_id' => Auth::id()
+            'user_id' => Auth::id(),
+            'total' => $total
         ];
+        ($data);
         LogsPinjaman::create($data);
         return redirect()->to('ajuan_pinjaman');
     }                                                                  

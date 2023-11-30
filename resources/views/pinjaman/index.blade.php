@@ -67,10 +67,6 @@
                                                                     <td>{{ $item->no_bukti }}</td>
                                                                     <td>{{ number_format($item->jumlah_pinjaman) }}</td>
                                                                     <td>
-                                                                        <a href="{{ url('pinjaman/'.$item->id) }}"
-                                                                            data-bs-toggle="modal" data-bs-target="#ModalEditPinjaman-{{ $item->id }}" class="btn btn-warning btn-sm">
-                                                                           <i class="fas fa-pencil-alt"></i>
-                                                                       </a>
                                                                         <form onsubmit="return confirm('Yakin mau hapus data?')" class='d-inline' action="{{ 'pinjaman/'.$item->id }}" method='post'>
                                                                             @csrf
                                                                             @method('DELETE')

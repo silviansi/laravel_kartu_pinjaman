@@ -67,10 +67,6 @@
                                             <td>{{ number_format($item->jumlah_tutupan) }}</td>
 
                                             <td>
-                                                <a href="{{ url('tutupan/'.$item->id) }}"
-                                                    data-bs-toggle="modal" data-bs-target="#ModalEditTutupan-{{ $item->id }}" class="btn btn-warning btn-sm">
-                                                   <i class="fas fa-pencil-alt"></i>
-                                               </a>
                                                 <form onsubmit="return confirm('Yakin mau hapus data?')" class='d-inline' action="{{ 'tutupan/'.$item->id }}" method='post'>
                                                     @csrf
                                                     @method('DELETE')

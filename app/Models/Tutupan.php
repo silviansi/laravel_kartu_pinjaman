@@ -11,7 +11,7 @@ class Tutupan extends Model
 {
     use HasFactory;
     protected $table = 'tutupan';
-    protected $fillable = ['user_id', 'tgl', 'no_bukti', 'jumlah_tutupan', 'uraian'];
+    protected $fillable = ['user_id', 'tgl', 'no_bukti', 'jumlah_tutupan', 'total', 'uraian'];
 
     public function user(): BelongsTo
     {

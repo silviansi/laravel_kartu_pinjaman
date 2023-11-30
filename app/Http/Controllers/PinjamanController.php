@@ -6,6 +6,7 @@ use App\Models\LogsPinjaman;
 use App\Models\Profile;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PinjamanController extends Controller
 {
@@ -24,6 +25,10 @@ class PinjamanController extends Controller
         $profile = Profile::where('user_id','>','1')->get();
         return view('pinjaman.create', ['user'=>$user, 'profile'=>$profile]);
     }
+    public function total($user_id){
+        $total = LogsPinjaman::where('user_id', $user_id)->sum('jumlah_pinjaman');
+        dd($total);
+    }
     public function store(Request $request){
         $request->validate([
             'tanggal' => 'required',
@@ -36,37 +41,27 @@ class PinjamanController extends Controller
             'jumlah_pinjaman.required' => 'Jumlah pinjaman wajib diisi',
             'uraian.required' => 'Uraian wajib diisi' 
         ]);
-        
-        $data = $request->all();
+
+        $total = DB::table('pinjaman_logs')
+                ->where('user_id', $request->user_id)
+                ->where('status', 'approve')
+                ->sum('jumlah_pinjaman');
+       // dd($total);
+        $total += $request->jumlah_pinjaman;
+        $total = (string)$total;
+        $data = [
+            'tanggal' => $request->tanggal,
+            'no_bukti' => $request->no_bukti,
+            'jumlah_pinjaman' => $request->jumlah_pinjaman,
+            'uraian' => $request->uraian,
+            'user_id' => $request->user_id,
+            'status' => 'approve',
+            'total' => $total
+        ];
+        // dd($data);
         LogsPinjaman::create($data);
         return redirect()->to('pinjaman')->with('success', 'Berhasil menambahkan data');
         
-    }
-    public function edit($id) {
-        $data = LogsPinjaman::where('id', $id)->first();
-        return view('pinjaman.edit')->with('data', $data);
-    }
-    public function update(Request $request, $id) {
-        $data = LogsPinjaman::find($id);
-        $request->validate([
-            'tanggal' => 'required',
-            'no_bukti' => 'required',
-            'jumlah_pinjaman' => 'required',
-            'uraian' => 'required'
-        ], [
-            'tanggal.required' => 'Tanggal wajib diisi',
-            'no_bukti.required' => 'No. Bukti wajib diisi',
-            'jumlah_pinjaman.required' => 'Jumlah Pinjaman wajib diisi',
-            'uraian.required' => 'Uraian wajib diisi'
-        ]);
-        $data = [
-            'tanggal' => $request->input('tanggal'),
-            'no_bukti' => $request->input('no_bukti'),
-            'jumlah_pinjaman' => $request->input('jumlah_pinjaman'),
-            'uraian' => $request->input('uraian')
-        ];
-        LogsPinjaman::where('id', $id)->update($data);
-        return redirect()->to('pinjaman')->with('success', 'Berhasil melakukan update data');
     }
     public function approve($id) {
         $pinjaman = LogsPinjaman::where('id', $id)->first();

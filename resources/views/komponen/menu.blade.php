@@ -38,18 +38,19 @@
                     </button>
                 </div>
 
-                <div class="drorpdown d-inline-block">
-                    <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
-                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <div class="d-inline-block">
+                    <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown">
                         <img class="rounded-circle header-profile-user" src="assets/images/avatar-admin.jpg"
                             alt="Header Avatar"> {{ Auth::user()->username }}
                     </button>
-                    <div class="dropdown-menu dropdown-menu-end">
-                        <!-- item-->
-                        <a class="dropdown-item text-danger" href="logout"><i class="bx bx-power-off font-size-17 align-middle me-1 text-danger"></i> 
-                            Logout</a>
-                    </div>
                 </div>
+
+                <div class="d-none d-lg-inline-block">
+                    <button type="button" class="btn header-item waves-effect">
+                        <i class="mdi mdi-export"> <a class="text-danger" href="logout">LogOut</i></a>
+                    </button>
+                </div>
+
 
                 <div class="dropdown d-inline-block">
                     <button type="button" class="btn header-item noti-icon right-bar-toggle waves-effect">
@@ -94,16 +95,16 @@
               </li>
 
               <li>
-                <a href="tutupan" class="waves-effect">
-                    <i class="ti-notepad"></i>
-                    <span>Data Tutupan</span>
+                <a href="pabrikasi" class=" waves-effect">
+                    <i class="ti-clipboard"></i>
+                    <span>Data Pabrikasi</span>
                 </a>
               </li>
 
               <li>
-                <a href="pabrikasi" class=" waves-effect">
-                    <i class="ti-clipboard"></i>
-                    <span>Data Pabrikasi</span>
+                <a href="tutupan" class="waves-effect">
+                    <i class="ti-notepad"></i>
+                    <span>Data Tutupan</span>
                 </a>
               </li>
 
@@ -115,7 +116,7 @@
             </li>
 
               <li>
-                  <a href="pages-help.html" class=" waves-effect">
+                  <a href="help" class=" waves-effect">
                       <i class="ti-help-alt"></i>
                       <span>Help</span>
                   </a>

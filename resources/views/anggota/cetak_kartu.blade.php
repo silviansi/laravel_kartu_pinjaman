@@ -134,16 +134,12 @@
         <tbody>
           @foreach ($data as $item)
             <tr>
-              @php
-                  $a = 0;
-                  $a += $item['jumlah_pinjaman']
-              @endphp
                 <td style="border-bottom: hidden">{{ \Carbon\Carbon::parse($item->tanggal)->format('d/m/Y') }}</td>
                 <td style="border-bottom: hidden">{{ $item->no_bukti }}</td>
                 <td style="text-align:left;border-bottom: hidden;padding-left: 5px">{{ $item->uraian }}</td>
                 <td style="text-align:right;border-bottom: hidden;padding-right: 5px">{{ number_format($item->jumlah_pinjaman,0,'',',') }}</td>
                 <td style="text-align:right;border-bottom: hidden;padding-right: 5px">0</td>
-                <td style="text-align:right;border-bottom: hidden;padding-right: 5px">{{ number_format($a) }}<br><b>{{ number_format($item->jumlah_pinjaman,0,'',',') }}</b></td>
+                <td style="text-align:right;border-bottom: hidden;padding-right: 5px">{{ number_format($item->total) }}<br><b>{{ number_format($item->jumlah_pinjaman,0,'',',') }}</b></td>
                 <td style="border-bottom: hidden"></td>
               @endforeach
                   @empty($tutupan)
@@ -156,7 +152,7 @@
                   <td style="text-align:left;border-bottom: hidden;padding-left: 5px">{{ $item->uraian }}</td>
                   <td style="text-align:right;border-bottom: hidden;padding-right: 5px">0</td>
                   <td style="text-align:right;border-bottom: hidden;padding-right: 5px">{{ number_format($item->jumlah_tutupan,0,'',',') }}</td>
-                  <td style="text-align:right;border-bottom: hidden;padding-right: 5px"><br><b>{{ number_format($item->jumlah_tutupan,0,'',',') }}</b></td>
+                  <td style="text-align:right;border-bottom: hidden;padding-right: 5px">{{ number_format($item->total) }}<br><b>{{ number_format($item->jumlah_tutupan,0,'',',') }}</b></td>
                   <td style="border-bottom: hidden"></td>
               @endforeach
               </tr>

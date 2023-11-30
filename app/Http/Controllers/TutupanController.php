@@ -7,6 +7,7 @@ use App\Models\Tutupan;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class TutupanController extends Controller
 {
@@ -32,32 +33,41 @@ class TutupanController extends Controller
             'jumlah_tutupan.required' => 'Jumlah Tutupan wajib diisi'
         ]);
 
-        $request['tgl'] = Carbon::now()->toDateString();
-        $data = $request->all();
+        $tgl = Carbon::now()->toDateString();
+        $tutupan = Tutupan::where('user_id', $request->user_id)
+                    ->whereNotNull('jumlah_tutupan')
+                    ->get(['jumlah_tutupan']);
+        if ($tutupan->isEmpty()){
+        $total = DB::table('pinjaman_logs')
+                ->where('user_id', $request->user_id)
+                ->where('status', 'approve')
+                ->sum('jumlah_pinjaman');
+        
+        $total -= $request->jumlah_tutupan;
+        $total = (string)$total;
+        } else {
+            $total = DB::table('tutupan')
+            ->where('user_id', $request->user_id)
+            ->first(['total'])->total;
+
+            $tutup = DB::table('tutupan')
+            ->where('user_id', $request->user_id)
+            ->sum('jumlah_tutupan');
+
+            $total -= $tutup;
+            $total = (string)$total;
+        
+        }
+        $data = [
+            'tgl' => $tgl,
+            'no_bukti' => $request->no_bukti,
+            'jumlah_tutupan' => $request->jumlah_tutupan,
+            'uraian' => $request->uraian,
+            'user_id' => $request->user_id,
+            'total' => $total
+        ];
         Tutupan::create($data);
         return redirect()->to('tutupan')->with('success', 'Berhasil menambahkan data');
-    }
-    public function update(Request $request, $id) {
-        $data = Tutupan::find($id);
-        $request->validate([
-            'tgl' => 'required',
-            'no_bukti' => 'required',
-            'jumlah_tutupan' => 'required',
-            'uraian' => 'required'
-        ], [
-            'tgl.required' => 'Tanggal wajib diisi',
-            'no_bukti.required' => 'No Bukti wajib diisi',
-            'jumlah_tutupan.required' => 'Jumlah Tutupan wajib diisi',
-            'uraian.required' => 'Uraian wajib diisi'
-        ]);
-        $data = [
-            'tgl' => $request->input('tgl'),
-            'no_bukti' => $request->input('no_bukti'),
-            'jumlah_tutupan' => $request->input('jumlah_tutupan'),
-            'uraian' => $request->input('uraian')
-        ];
-        Tutupan::where('id', $id)->update($data);
-        return redirect()->to('tutupan')->with('success', 'Berhasil melakukan update data');
     }
     public function destroy($id) {
         Tutupan::where('id', $id)->delete();
