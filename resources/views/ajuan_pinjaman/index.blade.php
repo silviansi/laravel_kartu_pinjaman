@@ -40,6 +40,7 @@
                                             <th>No. Bukti</th>
                                             <th>Jumlah Pinjaman</th>
                                             <th>Uraian</th>
+                                            <th>Status</th>
                                         </tr>
                                 </thead>
                                     <tbody>
@@ -49,10 +50,18 @@
                                                 <td>{{ $item->no_bukti }}</td>
                                                 <td>{{ number_format($item->jumlah_pinjaman,0,'','.') }}</td>
                                                 <td>{{ $item->uraian }}</td>
+                                                <td>{{ $item->status }}</td>
                                             </tr>
                                         @endforeach
                                     </tbody>
                             </table>
+
+                            <div class="keterangan pt-5">
+                                <h6><b>Keterangan Status</b></h6>
+                                <p style="margin-bottom: 0">1. approve = ajuan pinjaman disetujui</p>
+                                <p style="margin-bottom: 0">2. pending = ajuan pinjaman diproses</p>
+                                <p>3. reject  = ajuan pinjaman ditolak</p>
+                            </div>
 
                         </div>
                     </div>
