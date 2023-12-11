@@ -15,4 +15,5 @@ class Pinjaman extends Model
     public function pinjaman():BelongsToMany {
         return $this->belongsToMany(User::class, 'pinjaman', 'user_id', 'pinjaman_id');
     }
+    public $timestamps = false;
 }
