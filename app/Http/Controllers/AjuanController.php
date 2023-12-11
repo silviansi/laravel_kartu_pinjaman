@@ -12,8 +12,7 @@ class AjuanController extends Controller
     public function index() {
         $user = Auth::user();
         $data = LogsPinjaman::where([
-            ['user_id', '=', $user->id],
-            ['status', '=', 'approve']
+            ['user_id', '=', $user->id]
             ])->get();
             
         return view('ajuan_pinjaman.index', compact('user', 'data'));
