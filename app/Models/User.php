@@ -61,4 +61,5 @@ class User extends Authenticatable
     public function pinjaman():BelongsToMany {
         return $this->belongsToMany(Pinjaman::class, 'pinjaman', 'user_id', 'pinjaman_id');
     }
+    public $timestamps = false;
 }
