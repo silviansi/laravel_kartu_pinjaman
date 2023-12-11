@@ -68,7 +68,6 @@ $( document ).ready(function() {
           <li><a class="nav-link scrollto" href="depan">About</a></li>
           <li><a class="nav-link scrollto" href="depan">Product</a></li>
           <li><a class="nav-link scrollto" href="depan">Portfolio</a></li>
-          <li><a class="nav-link scrollto" href="depan">Team</a></li>
           <li><a class="nav-link scrollto" href="depan">Blog</a></li>
           <li class="dropdown"><a href="#"><span>Services</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
@@ -90,8 +89,10 @@ $( document ).ready(function() {
             </ul>
           </li>
         @else
-        <li><a class="getstarted scrollto" href="auth/login">
-          Login</a></li>
+        <a class="getstarted scrollto" href="auth/login">
+          Login</a>
+        <a class="getstarted scrollto" href="auth/register">
+          Register</a>
         @endif
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
