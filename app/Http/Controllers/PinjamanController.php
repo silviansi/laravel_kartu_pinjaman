@@ -68,7 +68,14 @@ class PinjamanController extends Controller
         $pinjaman->status = 'approve';
         $pinjaman->save();
 
-        return redirect()->to('pinjaman')->with('success', 'Pinjaman disetujui');
+        return redirect()->to('pinjaman')->with('success', 'Ajuan Pinjaman disetujui');
+    }
+    public function reject($id) {
+        $pinjaman = LogsPinjaman::where('id', $id)->first();
+        $pinjaman->status = 'reject';
+        $pinjaman->save();
+
+        return redirect()->to('pinjaman')->with('danger', 'Ajuan Pinjaman Ditolak');
     }
     public function destroy($id) {
         LogsPinjaman::where('id', $id)->delete();
