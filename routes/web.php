@@ -53,6 +53,7 @@ Route::middleware('auth')->group(function () {
 
         Route::resource('pinjaman', PinjamanController::class);
         Route::get('pinjaman/{pinjaman}/approve', [PinjamanController::class, 'approve'])->name('pinjaman.approve');
+        Route::get('pinjaman/{pinjaman}/reject', [PinjamanController::class, 'reject'])->name('pinjaman.reject');
         Route::get('pinjaman/{id}', [PinjamanController::class, 'store']);
 
         Route::resource('pabrikasi', PabrikasiController::class);
