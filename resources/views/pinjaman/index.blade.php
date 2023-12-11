@@ -56,6 +56,7 @@
                                                                     <th>Tanggal</th>
                                                                     <th>No. Bukti</th>
                                                                     <th>Jumlah Pinjaman</th>
+                                                                    <th>Status</th>
                                                                     <th>Aksi</th>
                                                                 </tr>
                                                             </thead>
@@ -66,6 +67,7 @@
                                                                     <td>{{ $item->tanggal }}</td>
                                                                     <td>{{ $item->no_bukti }}</td>
                                                                     <td>{{ number_format($item->jumlah_pinjaman) }}</td>
+                                                                    <td>{{ $item->status }}</td>
                                                                     <td>
                                                                         <form onsubmit="return confirm('Yakin mau hapus data?')" class='d-inline' action="{{ 'pinjaman/'.$item->id }}" method='post'>
                                                                             @csrf
@@ -73,10 +75,11 @@
                                                                             <button class="btn btn-danger btn-sm" type="submit"><i class="fas fa-trash-alt"></i></button>
                                                                         </form>
                                                                         @if ($item->status == 'pending')
+                                                                            <a href="{{ route('pinjaman.reject',$item->id)}}" class="btn btn-danger btn-sm">
+                                                                                <i class="mdi mdi-close"></i>
                                                                             <a href="{{ route('pinjaman.approve',$item->id)}}" class="btn btn-success btn-sm">
                                                                                <i class="mdi mdi-check"></i>
                                                                            </a>
-                                                                        </div>
                                                                         @endif
                                                                     </td>
                                                                 </tr>
