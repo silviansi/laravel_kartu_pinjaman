@@ -1,5 +1,5 @@
 @extends('layout/aplikasi')
-@section('title', 'Laporan Pabrikasi | DashLoan')
+@section('title', 'Data Tutupan | DashLoan')
 @section('konten')
 <div class="main-content">
 
