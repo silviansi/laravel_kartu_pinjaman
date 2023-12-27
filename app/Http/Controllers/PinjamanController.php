@@ -25,10 +25,6 @@ class PinjamanController extends Controller
         $profile = Profile::where('user_id','>','1')->get();
         return view('pinjaman.create', ['user'=>$user, 'profile'=>$profile]);
     }
-    public function total($user_id){
-        $total = LogsPinjaman::where('user_id', $user_id)->sum('jumlah_pinjaman');
-        dd($total);
-    }
     public function store(Request $request){
         $request->validate([
             'tanggal' => 'required',

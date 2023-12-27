@@ -387,12 +387,19 @@
         <b>Hutang Petani</b>
         <hr class="line2" style="width: 20%">
         @php
+            $tebu_masuk = $pabrikasi->gula_masuk*11500;
             $angkut1 = $pabrikasi->gula_masuk*5850;
             $eksplo = $pabrikasi->tetes_petani*10;
             $lintringan = $pabrikasi->tebu_giling*170;
             $karung = $pabrikasi->gula_petani*9300;
             $iuran = $pabrikasi->tebu_giling*20;
             $umbal = $pabrikasi->tebu_giling*5;
+            $bunga_pinjaman = $q*0.06;
+            $bunga_tebang = $angkut1*0.01;
+            $semua = $tebu_masuk + $angkut1 + $lintringan + $karung + $karung + $iuran + $umbal + $q + $bunga_pinjaman + $bunga_tebang;
+            $pinjaman_ktpr = $jumlah_pendapatan_petani - $semua;
+            $hutang_petani = $semua + $pinjaman_ktpr;
+            $jumlah_pendapatan_petani_ab = $jumlah_pendapatan_petani - $hutang_petani;
         @endphp
         <div class="hutang">
         <div class="row">
@@ -401,7 +408,7 @@
             <div class="col-2" style="text-align: right;">{{ number_format($pabrikasi->gula_masuk,0,'','.') }} Ku</div>
             <div class="col-2">tebu masuk</div>
             <div class="col-1">= Rp. </div>
-            <div class="col-2" style="text-align: right;">26.502.030</div>
+            <div class="col-2" style="text-align: right;">{{ number_format($tebu_masuk,0,'','.') }}</div>
             <div class="col-1"></div>
         </div>
         <div class="row">
@@ -487,21 +494,21 @@
             <div class="col-1">:</div>
             <div class="col-4" style="text-align: center;">-------------------></div>
             <div class="col-1">= Rp.</div>
-            <div class="col-2" style="text-align: right;">5.935.145</div>
+            <div class="col-2" style="text-align: right;">{{ number_format($bunga_pinjaman,0,'','.') }}</div>
             <div class="col-1"></div>
         </div>
         <div class="row">
             <div class="col-4">11. Biaya Bunga Teb & Ang </div>
             <div class="col-4" style="text-align: center;">-------------------></div>
             <div class="col-1">= Rp. </div>
-            <div class="col-2" style="text-align: right;">133.405</div>
+            <div class="col-2" style="text-align: right;">{{ number_format($bunga_tebang,0,'','.') }}</div>
             <div class="col-1"></div>
         </div>
         <div class="row">
             <div class="col-4">12. Pinjaman KPTR &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Kont </div>
             <div class="col-4" style="text-align: center;">...................................................</div>
             <div class="col-1">= Rp.</div>
-            <div class="col-2" style="text-align: right;">111.469</div>
+            <div class="col-2" style="text-align: right;">{{ number_format($pinjaman_ktpr,0,'','.') }}</div>
             <div class="col-1"></div>
         </div>
         <div class="row">
@@ -522,7 +529,7 @@
             <div class="col-5"></div>
             <div class="col-4" style="text-align: right;">Jumlah Hutang Petani Pada PG &nbsp;&nbsp;&nbsp;=</div>
             <div class="col-1" style="text-align: right;">Rp. </div>
-            <div class="col-2" style="text-align: right;">142.819.200</div>
+            <div class="col-2" style="text-align: right;">{{ number_format($hutang_petani,0,'','.') }}</div>
         </div>
         <div class="row">
             <div class="col-10"></div>
@@ -533,7 +540,7 @@
             <div class="col-1">0</div>
             <div class="col-5" style="text-align: right;">Jumlah Pendapatan Petani (A - B) &nbsp;&nbsp;&nbsp;=</div>
             <div class="col-1" style="text-align: right;">Rp. </div>
-            <div class="col-2" style="text-align: right;">0</div>
+            <div class="col-2" style="text-align: right;">{{ number_format($jumlah_pendapatan_petani_ab,0,'','.') }}</div>
         </div>
         </div>
         <div class="hr">
