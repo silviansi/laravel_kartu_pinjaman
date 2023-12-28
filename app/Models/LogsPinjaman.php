@@ -13,7 +13,7 @@ class LogsPinjaman extends Model
     protected $table = 'pinjaman_logs';
 
     protected $fillable = [
-        'user_id', 'tanggal', 'no_bukti', 'jumlah_pinjaman', 'total', 'uraian', 'status'
+        'user_id', 'tanggal', 'no_bukti', 'jumlah_pinjaman', 'total', 'uraian', 'no_rek'
     ];
 
     public function user(): BelongsTo

@@ -64,7 +64,7 @@
                                         <tbody>
                                             @foreach ($data as $item)
                                             <tr>
-                                                <td>{{ $item->nama }}</td>
+                                                <td>{{ $item->user->nama }}</td>
                                                 <td>{{ $item->kebun }}</td>
                                                 <td>{{ $item->no_vak }}</td>
                                                 <td>{{ $item->no_kontrak }}</td>

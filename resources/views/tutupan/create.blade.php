@@ -9,12 +9,12 @@
                 <form action="tutupan" method="POST">
                     @csrf
                     <div class="row mb-3">
-                        <label for="user" class="col-sm-2 col-form-label">Nama</label>
+                        <label for="user" class="col-sm-2 col-form-label">Nomor Kontrak</label>
                         <div class="col-sm-10">
                             <select class="form-control" name="user_id" id="user">
-                                <option>Pilih Nama Anggota</option>
-                                @foreach($user as $item)
-                                    <option value="{{ $item->id }}">{{ $item->profile->nama }} - {{ $item->username }}</option>
+                                <option>Pilih Nomor Kontrak</option>
+                                @foreach($profile as $item)
+                                    <option value="{{ $item->id }}">{{ $item->no_kontrak }} - {{ $item->user->nama }}</option>
                                 @endforeach
                             </select>
                         </div>

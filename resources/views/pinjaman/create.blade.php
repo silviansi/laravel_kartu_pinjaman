@@ -9,12 +9,12 @@
                 <form action="pinjaman" method="POST">
                     @csrf
                         <div class="row mb-3">
-                            <label for="user" class="col-sm-2 col-form-label">Nama</label>
+                            <label for="user" class="col-sm-2 col-form-label">Nomor Kontrak</label>
                             <div class="col-sm-10">
                                 <select class="form-control" name="user_id" id="user">
-                                    <option value="">Pilih Nama Anggota</option>
-                                    @foreach($user as $item)
-                                        <option value="{{ $item->id }}">{{ $item->profile->nama }} - {{ $item->username }}</option>
+                                    <option value="">Pilih Nomor Kontrak</option>
+                                    @foreach($profile as $item)
+                                        <option value="{{ $item->id }}">{{ $item->no_kontrak }} - {{ $item->user->nama }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -25,7 +25,7 @@
                         <div class="row mb-3">
                             <label for="tanggal" class="col-sm-2 col-form-label">Tanggal</label>
                             <div class="col-sm-10">
-                                <input class="form-control" name="tanggal" type="text" value="{{ $tgl }}" id="tanggal" placeholder="Select your date">
+                                <input class="form-control" name="tanggal" type="text" value="{{ $tgl }}" id="tanggal">
                             </div>
                         </div>
                         @php
@@ -35,6 +35,12 @@
                             <label for="no_bukti" class="col-sm-2 col-form-label">No. Bukti</label>
                             <div class="col-sm-10">
                                 <input class="form-control" name="no_bukti" type="text" value="{{ $randomNum }}" id="no_bukti" readonly>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="no_rek" class="col-sm-2 col-form-label">No. Rek</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" name="no_rek" type="text" value="" id="no_rek">
                             </div>
                         </div>
                         <div class="row mb-3">

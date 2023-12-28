@@ -30,17 +30,18 @@ class PinjamanController extends Controller
             'tanggal' => 'required',
             'no_bukti' => 'required',
             'jumlah_pinjaman' => 'required',
+            'no_rek' => 'required',
             'uraian' => 'required'
         ], [
             'tanggal.required' => 'Tanggal wajib diisi',
             'no_bukti.required' => 'No. Bukti wajib diisi',
             'jumlah_pinjaman.required' => 'Jumlah pinjaman wajib diisi',
+            'no_rek' => 'No. Rekening wajib diisi',
             'uraian.required' => 'Uraian wajib diisi' 
         ]);
 
         $total = DB::table('pinjaman_logs')
                 ->where('user_id', $request->user_id)
-                ->where('status', 'approve')
                 ->sum('jumlah_pinjaman');
        // dd($total);
         $total += $request->jumlah_pinjaman;
@@ -49,29 +50,15 @@ class PinjamanController extends Controller
             'tanggal' => $request->tanggal,
             'no_bukti' => $request->no_bukti,
             'jumlah_pinjaman' => $request->jumlah_pinjaman,
+            'no_rek' => $request->no_rek,
             'uraian' => $request->uraian,
             'user_id' => $request->user_id,
-            'status' => 'approve',
             'total' => $total
         ];
         // dd($data);
         LogsPinjaman::create($data);
         return redirect()->to('pinjaman')->with('success', 'Berhasil menambahkan data');
         
-    }
-    public function approve($id) {
-        $pinjaman = LogsPinjaman::where('id', $id)->first();
-        $pinjaman->status = 'approve';
-        $pinjaman->save();
-
-        return redirect()->to('pinjaman')->with('success', 'Ajuan Pinjaman disetujui');
-    }
-    public function reject($id) {
-        $pinjaman = LogsPinjaman::where('id', $id)->first();
-        $pinjaman->status = 'reject';
-        $pinjaman->save();
-
-        return redirect()->to('pinjaman')->with('danger', 'Ajuan Pinjaman Ditolak');
     }
     public function destroy($id) {
         LogsPinjaman::where('id', $id)->delete();

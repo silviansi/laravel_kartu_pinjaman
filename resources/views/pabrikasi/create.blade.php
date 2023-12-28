@@ -2,7 +2,7 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Tambah Data Pabrikasi</h5>
+                <h5 class="modal-title">Tambah Data Laporan Harian</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -12,9 +12,9 @@
                             <label for="user" class="col-sm-2 col-form-label">Nama</label>
                             <div class="col-sm-10">
                                 <select class="form-control" name="user_id" id="user">
-                                    <option value="">Pilih Nama Anggota</option>
-                                    @foreach($user as $item)
-                                        <option value="{{ $item->id }}">{{ $item->profile->nama }} - {{ $item->username }}</option>
+                                    <option value="">Pilih Nomor Kontrak</option>
+                                    @foreach($profile as $item)
+                                        <option value="{{ $item->id }}">{{ $item->no_kontrak }} - {{ $item->user->nama }}</option>
                                     @endforeach
                                 </select>
                             </div>

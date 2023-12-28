@@ -61,7 +61,7 @@
                                     <tbody>
                                         @foreach ($data as $item)
                                         <tr>
-                                            <td>{{ $item->user->profile->nama }}</td>
+                                            <td>{{ $item->user->nama }}</td>
                                             <td>{{ $item->tgl }}</td>
                                             <td>{{ $item->no_bukti }}</td>
                                             <td>{{ number_format($item->jumlah_tutupan) }}</td>

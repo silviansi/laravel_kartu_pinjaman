@@ -11,7 +11,7 @@ class Pinjaman extends Model
 {
     use HasFactory;
     protected $table = 'pinjaman';
-    protected $fillable = ['tanggal', 'no_bukti', 'jumlah_pinjaman', 'uraian'];
+    protected $fillable = ['tanggal', 'no_bukti', 'jumlah_pinjaman', 'no_rek' , 'uraian'];
     public function pinjaman():BelongsToMany {
         return $this->belongsToMany(User::class, 'pinjaman', 'user_id', 'pinjaman_id');
     }

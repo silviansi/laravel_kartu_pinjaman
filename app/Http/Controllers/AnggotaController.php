@@ -6,6 +6,7 @@ use App\Models\LogsPinjaman;
 use App\Models\Pabrikasi;
 use App\Models\Profile;
 use App\Models\Tutupan;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
@@ -13,8 +14,9 @@ use Illuminate\Support\Facades\Session;
 class AnggotaController extends Controller
 {
     public function index() {
+        $user = User::all();
         $data = Profile::orderBy('id')->get();
-        return view('anggota.index')->with('data', $data);
+        return view('anggota.index')->with(['data' => $data, 'user' => $user]);
     }
     public function edit($id) {
         $data = Profile::where('id', $id)->first();
@@ -58,12 +60,10 @@ class AnggotaController extends Controller
         $profile = Profile::where('user_id', $id)->first();
         $pabrikasi = Pabrikasi::where('user_id', $id)->first();
         $q = DB::table('pinjaman_logs')
-        ->where([['user_id', $id],
-                ['status', '=', 'approve']])
+        ->where('user_id', $id)
         ->sum('jumlah_pinjaman');
         $data = LogsPinjaman::where([
-            ['user_id', '=', $id],
-            ['status', '=', 'approve']
+            ['user_id', '=', $id]
             ])->get();
 
         $tutupan = Tutupan::where('user_id', $id)->get();

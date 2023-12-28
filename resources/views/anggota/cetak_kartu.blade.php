@@ -91,7 +91,7 @@
       <div class="container-fluid mb-3">
         <div class="row">
           <div class="col-2">Nama</div>
-          <div class="col-4">: {{ $profile->nama }}</div>
+          <div class="col-4">: {{ $profile->user->nama }}</div>
           <div class="col-2">Luas Baku</div>
           <div class="col-4">: {{ $profile->luas_kebun }}</div>
         </div>
@@ -186,7 +186,7 @@
                   Nama
                 </div>
                 <div class="col-3">
-                  : {{ $profile->nama }}
+                  : {{ $profile->user->nama }}
                 </div>
                 <div class="col-2">
                     

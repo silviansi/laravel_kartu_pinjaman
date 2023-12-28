@@ -10,10 +10,10 @@
             <div class="page-title-box">
                 <div class="row align-items-center">
                     <div class="col-md-8">
-                        <h6 class="page-title">Laporan Pabrikasi</h6>
+                        <h6 class="page-title">Data Laporan Harian</h6>
                         <ol class="breadcrumb m-0">
                             <li class="breadcrumb-item"><a href="#">DashLoan</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Laporan Pabrikasi</li>
+                            <li class="breadcrumb-item active" aria-current="page">Data Laporan Harian</li>
                         </ol>
                     </div>
                 </div>
@@ -54,7 +54,7 @@
                             <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                     <thead>
                                         <tr>
-                                            <th>Username</th>
+                                            <th>Nama</th>
                                             <th>Tebu Giling</th>
                                             <th>Rendemen Petani</th>
                                             <th>Gula Petani</th>
@@ -66,7 +66,7 @@
                                     <tbody>
                                         @foreach ($data as $item)
                                         <tr>
-                                            <td>{{ $item->user->profile->nama }}</td>
+                                            <td>{{ $item->user->nama }}</td>
                                             <td>{{ $item->tebu_giling }}</td>
                                             <td>{{ $item->rendemen_petani }}</td>
                                             <td>{{ $item->gula_petani }}</td>

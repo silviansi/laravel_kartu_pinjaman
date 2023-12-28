@@ -97,7 +97,7 @@
               <li>
                 <a href="pabrikasi" class=" waves-effect">
                     <i class="ti-clipboard"></i>
-                    <span>Data Pabrikasi</span>
+                    <span>Data Laporan Harian</span>
                 </a>
               </li>
 

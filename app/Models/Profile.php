@@ -11,7 +11,7 @@ class Profile extends Model
 
     protected $table = "profile";
     protected $fillable =[
-    'nama',
+    'no_kontrak',
     'kebun',
     'luas_kebun',
     'no_vak',

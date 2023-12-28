@@ -56,18 +56,20 @@
                                                                     <th>Tanggal</th>
                                                                     <th>No. Bukti</th>
                                                                     <th>Jumlah Pinjaman</th>
-                                                                    <th>Status</th>
+                                                                    <th>No. Kontrak</th>
+                                                                    <th>No. Rek</th>
                                                                     <th>Aksi</th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
                                                                 @foreach ($data as $item)
                                                                 <tr>
-                                                                    <td>{{ $item->user->profile->nama }}</td>
+                                                                    <td>{{ $item->user->nama }}</td>
                                                                     <td>{{ $item->tanggal }}</td>
                                                                     <td>{{ $item->no_bukti }}</td>
                                                                     <td>{{ number_format($item->jumlah_pinjaman) }}</td>
-                                                                    <td>{{ $item->status }}</td>
+                                                                    <td>{{ $item->user->profile->no_kontrak }}</td>
+                                                                    <td>{{ $item->no_rek }}</td>
                                                                     <td>
                                                                         <form onsubmit="return confirm('Yakin mau hapus data?')" class='d-inline' action="{{ 'pinjaman/'.$item->id }}" method='post'>
                                                                             @csrf
