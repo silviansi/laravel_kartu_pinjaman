@@ -23,38 +23,19 @@ class ProfileController extends Controller
     public function update(request $request, $id){
         $request->validate([
             'nama' => 'required',
-            'kebun' => 'required',
-            'luas_kebun' => 'required',
-            'no_vak' => 'nullable',
-            'no_kontrak' => 'nullable',
-            'kategori' => 'nullable',
-            'kecamatan' => 'required',
-            'kota' => 'required',
+            'username' => 'required',
         ],
         [
             'nama.required' => "Nama tidak boleh kosong",
-            'kebun.required' => "Nama Kebun tidak boleh kosong",
-            'luas_kebun.required' => "Luas Kebun tidak boleh kosong",
-            'kecamatan.required' => "Kecamatan tidak boleh kosong",
-            'kota.required' => "Kota Telepon tidak boleh kosong",
+            'username.required' => "Username tidak boleh kosong",
         ]);
         $iduser = Auth::id();
         $profile = Profile::where('user_id', $iduser)->first();
 
-        if($request->has(['no_vak', 'no_kontrak', 'kategori'])){
-            $profile->no_vak = $request->no_vak;
-            $profile->no_kontrak = $request->no_kontrak;
-            $profile->kategori = $request->kategori;
-   
-            $profile->update();
-           }
-        $profile->nama = $request->nama;
-        $profile->kebun = $request->kebun;
-        $profile->luas_kebun = $request->luas_kebun;
-        $profile->kecamatan = $request->kecamatan;
-        $profile->kota = $request->kota;
+        $profile->user->nama = $request->nama;
+        $profile->user->username = $request->username;
 
-        $profile->update();
+        $profile->user->update();
         return redirect()->to('anggota')->with('success', 'Berhasil melakukan update data');
     }
 }

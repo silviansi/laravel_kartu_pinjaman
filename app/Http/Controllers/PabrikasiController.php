@@ -26,12 +26,12 @@ class PabrikasiController extends Controller
         return view('pabrikasi.create', ['user'=>$user, 'peminjam'=>$peminjam]);
     }
     public function store(Request $request) {
-        $count = Pabrikasi::where('user_id', $request->user_id)->count();
-        if($count >= 1) {
-            Session::flash('message', "Data Pabrikasi sudah ada");
-            return redirect('pabrikasi');
-        }
-        else {
+        // $count = Pabrikasi::where('user_id', $request->user_id)->count();
+        // if($count >= 1) {
+        //     Session::flash('message', "Data Pabrikasi sudah ada");
+        //     return redirect('pabrikasi');
+        // }
+        // else {
         $request->validate([
             'tebu_giling' => 'required',
             'rendemen_petani' => 'required',
@@ -46,10 +46,19 @@ class PabrikasiController extends Controller
             'gula_masuk.required' => 'Gula masuk wajib diisi'
         ]);
 
-        $data = $request->all();
+        $data = [
+            'tebu_giling' => $request->tebu_giling,
+            'rendemen_petani' => $request->rendemen_petani,
+            'gula_petani' => $request->gula_petani,
+            'tetes_petani' => $request->tetes_petani,
+            'gula_masuk' => $request->gula_masuk,
+            'profile_id' => $request->profile_id,
+            'user_id' => $request->user_id
+        ];
+        //dd($data);
         Pabrikasi::create($data);
         return redirect()->to('pabrikasi')->with('success', 'Berhasil menambahkan data');
-    }}
+    }
     public function update(Request $request, $id) {
         $data = Pabrikasi::find($id);
         $request->validate([

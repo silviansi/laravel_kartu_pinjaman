@@ -78,20 +78,18 @@ class AuthController extends Controller
         ]);
 
         $data = User::create([
+            'nama' => $request['nama'],
             'username' => $request['username'],
             'password' => Hash::make($request['password'])
         ]);
 
-        Profile::create([
-            'nama' => $request['nama'],
-            'kebun' => $request['kebun'],
-            'luas_kebun' => $request['luas_kebun'],
-            'kecamatan' => $request['kecamatan'],
-            'kota' => $request['kota'],
-            'no_vak' => $request['no_vak'],
-            'no_kontrak' => $request['no_kontrak'],
-            'user_id' => $data->id,
-        ]);
+        // Profile::create([
+        //     'kebun' => $request['kebun'],
+        //     'luas_kebun' => $request['luas_kebun'],
+        //     'kecamatan' => $request['kecamatan'],
+        //     'kota' => $request['kota'],
+        //     'user_id' => $data->id,
+        // ]);
         return redirect('auth/login');
     }
 }   

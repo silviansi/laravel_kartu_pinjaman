@@ -52,7 +52,7 @@
                                                     <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                                             <thead>
                                                                 <tr>
-                                                                    <th>Nama</th>
+                                                                    <th>No. Kontrak</th>
                                                                     <th>Tanggal</th>
                                                                     <th>No. Bukti</th>
                                                                     <th>Jumlah Pinjaman</th>
@@ -64,11 +64,11 @@
                                                             <tbody>
                                                                 @foreach ($data as $item)
                                                                 <tr>
-                                                                    <td>{{ $item->user->nama }}</td>
+                                                                    <td>{{ $item->profile->user->nama }}</td>
                                                                     <td>{{ $item->tanggal }}</td>
                                                                     <td>{{ $item->no_bukti }}</td>
                                                                     <td>{{ number_format($item->jumlah_pinjaman) }}</td>
-                                                                    <td>{{ $item->user->profile->no_kontrak }}</td>
+                                                                    <td>{{ $item->profile->no_kontrak }}</td>
                                                                     <td>{{ $item->no_rek }}</td>
                                                                     <td>
                                                                         <form onsubmit="return confirm('Yakin mau hapus data?')" class='d-inline' action="{{ 'pinjaman/'.$item->id }}" method='post'>

@@ -15,10 +15,9 @@ return new class extends Migration
     {
         Schema::create('profile', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
             $table->string('kebun');
             $table->string('no_vak')->nullable();
-            $table->string('no_kontrak')->nullable();
+            $table->string('no_kontrak');
             $table->string('kategori')->nullable();
             $table->integer('luas_kebun');
             $table->string('kecamatan');

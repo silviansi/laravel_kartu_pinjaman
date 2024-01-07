@@ -14,7 +14,7 @@
                                 <div class="row mb-3">
                                     <label for="example-text-input" class="col-sm-2 col-form-label">Nama</label>
                                     <div class="col-sm-10">
-                                        <input class="form-control" name="nama" type="text" value="{{ $item->nama }}" id="nama">
+                                        <input class="form-control" name="nama" type="text" value="{{ $item->user->nama }}" id="nama">
                                     </div>
                                 </div>
                                 <div class="row mb-3">

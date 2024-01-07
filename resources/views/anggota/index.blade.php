@@ -20,6 +20,14 @@
             </div>
             <!-- end page title -->
 
+            <div class="col-md-2 mb-3">
+                <a href=""
+                    data-bs-toggle="modal" data-bs-target="#ModalEdit" class="btn btn-success btn-md">
+                   + Tambah Kontrak
+               </a>
+            </div>
+
+
             <!-- TOMBOL TAMBAH DATA -->
 
             <div class="container">
@@ -54,9 +62,7 @@
                                             <tr>
                                                 <th>Nama Lengkap</th>
                                                 <th>Kebun</th>
-                                                <th>No. Vak</th>
                                                 <th>No. Kontrak</th>
-                                                <th>Kategori</th>
                                                 <th>Kecamatan</th>
                                                 <th>Aksi</th>
                                             </tr>
@@ -66,9 +72,7 @@
                                             <tr>
                                                 <td>{{ $item->user->nama }}</td>
                                                 <td>{{ $item->kebun }}</td>
-                                                <td>{{ $item->no_vak }}</td>
                                                 <td>{{ $item->no_kontrak }}</td>
-                                                <td>{{ $item->kategori }}</td>
                                                 <td>{{ $item->kecamatan }}</td>
                                                 <td>
                                                     <a href="{{ url('anggota/'.$item->id) }}"
@@ -98,4 +102,5 @@
                 
                 <!-- End Page-content -->
                 @include('anggota.update')
+                @include('anggota.create')
 @endsection

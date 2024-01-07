@@ -61,7 +61,7 @@
                                             <input type="text" name="nama" value="{{ Session::get('nama') }}" class="form-control" id="nama" placeholder="Enter nama lengkap">
                                         </div>
 
-                                        <div class="mb-3">
+                                        {{-- <div class="mb-3">
                                             <label class="form-label" for="kebun">Kebun</label>
                                             <input type="text" name="kebun" value="{{ Session::get('kebun') }}" class="form-control" id="kebun" placeholder="Enter kebun">
                                         </div>
@@ -79,15 +79,7 @@
                                         <div class="mb-3">
                                             <label class="form-label" for="kota">Kota</label>
                                             <input type="text" name="kota" value="{{ Session::get('kota') }}" class="form-control" id="kota" placeholder="Enter kota">
-                                        </div>
-
-                                        @php
-                                            $noVak = number_format(mt_rand(10000,99999),1,'','-');
-                                            $noKontrak = number_format(mt_rand(170000,179000),2,'','.');
-                                        @endphp
-                                            <input type="hidden" name="no_vak" value="{{ $noVak }}" class="form-control" id="no_vak">
-          
-                                            <input type="hidden" name="no_kontrak" value="{{ $noKontrak }}" class="form-control" id="no_kontrak">
+                                        </div> --}}
     
                                         <div class="mb-3">
                                             <label class="form-label" for="password">Password</label>

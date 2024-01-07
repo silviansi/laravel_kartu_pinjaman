@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\DB;
 class PinjamanController extends Controller
 {
     public function index() {
-        $profile = Profile::all();
+        $profile = Profile::orderBy('id')->get();
         $user = User::where([
             ['role_id', '!=', 1],
         ])->get();
@@ -41,7 +41,7 @@ class PinjamanController extends Controller
         ]);
 
         $total = DB::table('pinjaman_logs')
-                ->where('user_id', $request->user_id)
+                ->where('profile_id', $request->profile_id)
                 ->sum('jumlah_pinjaman');
        // dd($total);
         $total += $request->jumlah_pinjaman;
@@ -52,10 +52,11 @@ class PinjamanController extends Controller
             'jumlah_pinjaman' => $request->jumlah_pinjaman,
             'no_rek' => $request->no_rek,
             'uraian' => $request->uraian,
+            'profile_id' => $request->profile_id,
             'user_id' => $request->user_id,
             'total' => $total
         ];
-        // dd($data);
+        //dd($data);
         LogsPinjaman::create($data);
         return redirect()->to('pinjaman')->with('success', 'Berhasil menambahkan data');
         

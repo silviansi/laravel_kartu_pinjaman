@@ -40,7 +40,6 @@ class TutupanController extends Controller
         if ($tutupan->isEmpty()){
         $total = DB::table('pinjaman_logs')
                 ->where('user_id', $request->user_id)
-                ->where('status', 'approve')
                 ->sum('jumlah_pinjaman');
         
         $total -= $request->jumlah_tutupan;

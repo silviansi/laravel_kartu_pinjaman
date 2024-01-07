@@ -18,7 +18,7 @@
                         
                                     <div class="form-group mx-4 my-2">
                                         <label for="nama" class="text-md font-weight-bold mt-2">Nama Lengkap</label>
-                                        <input type="text" name="nama" class="form-control" value="{{ old('name', $profile->nama) }}">
+                                        <input type="text" name="nama" class="form-control" value="{{ old('nama', $profile->user->nama) }}">
                                     </div>
                         
                                     @error('name')
@@ -26,38 +26,11 @@
                                     @enderror
                         
                                     <div class="form-group mx-4 my-2">
-                                        <label for="npm" class="text-md font-weight-bold">Kebun</label>
-                                        <input type="text" name="kebun" class="form-control" value="{{ old('kebun', $profile->kebun) }}">
+                                        <label for="username" class="text-md font-weight-bold">Username</label>
+                                        <input type="text" name="username" class="form-control" value="{{ old('username', $profile->user->username) }}">
                                     </div>
                         
-                                    @error('kebun')
-                                        <div class="alert-danger"> {{ $message }}</div>
-                                    @enderror
-                        
-                                    <div class="form-group mx-4 my-2">
-                                        <label for="nama" class="text-md font-weight-bold">Luas Kebun</label>
-                                        <input type="text" name="luas_kebun" class="form-control" value="{{ old('luas_kebun', $profile->luas_kebun) }}">
-                                    </div>
-                        
-                                    @error('luas_kebun')
-                                        <div class="alert-danger mx-2"> {{ $message }}</div>
-                                    @enderror
-
-                                    <div class="form-group mx-4 my-2">
-                                        <label for="nama" class="text-md font-weight-bold">Kecamatan</label>
-                                        <input type="text" name="kecamatan" class="form-control" value="{{ old('kecamatan', $profile->kecamatan) }}">
-                                    </div>
-                        
-                                    @error('kecamatan')
-                                        <div class="alert-danger"> {{ $message }}</div>
-                                    @enderror
-
-                                    <div class="form-group mx-4 my-2">
-                                        <label for="nama" class="text-md font-weight-bold">Kota</label>
-                                        <input type="text" name="kota" class="form-control" value="{{ old('kota', $profile->kota) }}">
-                                    </div>
-                        
-                                    @error('kota')
+                                    @error('username')
                                         <div class="alert-danger"> {{ $message }}</div>
                                     @enderror
                         

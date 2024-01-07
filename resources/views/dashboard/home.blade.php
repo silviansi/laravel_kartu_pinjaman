@@ -129,6 +129,7 @@
                                                         <th>Nama</th>
                                                         <th>Tanggal</th>
                                                         <th>No. Bukti</th>
+                                                        <th>No. Kontrak</th>
                                                         <th>Jumlah Pinjaman</th>
                                                         <th>Uraian</th>
                                                     </tr>
@@ -137,9 +138,10 @@
                                                     @foreach ($data as $item)
                                                     <tr>
                                                         <td style="text-align: center">{{ $loop->iteration }}
-                                                        <td>{{ $item->user->profile->nama }}</td>
+                                                        <td>{{ $item->user->nama }}</td>
                                                         <td>{{ $item->tanggal }}</td>
                                                         <td>{{ $item->no_bukti }}</td>
+                                                        <td>{{ $item->profile->no_kontrak }}</td>
                                                         <td>{{ number_format($item->jumlah_pinjaman) }}</td>
                                                         <td width="180px">{{ $item->uraian }}</td>
                                                     </tr>

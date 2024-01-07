@@ -17,12 +17,14 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
+            $table->unsignedBigInteger('profile_id');
+            $table->foreign('profile_id')->references('id')->on('profile');
             $table->date('tanggal');
             $table->string('no_bukti');
             $table->string('jumlah_pinjaman');
             $table->string('no_rek');
+            $table->integer('total');
             $table->text('uraian');
-            $table->timestamps();
         });
     }
 

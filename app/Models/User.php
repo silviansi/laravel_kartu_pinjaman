@@ -59,7 +59,7 @@ class User extends Authenticatable
         return $this->hasOne(Profile::class, 'user_id');
     }
     public function pinjaman():BelongsToMany {
-        return $this->belongsToMany(Pinjaman::class, 'pinjaman', 'user_id', 'pinjaman_id');
+        return $this->belongsToMany(Pinjaman::class, 'pinjaman', 'profile_id', 'pinjaman_id');
     }
     public $timestamps = false;
 }

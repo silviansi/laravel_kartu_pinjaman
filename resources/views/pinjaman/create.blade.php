@@ -11,10 +11,21 @@
                         <div class="row mb-3">
                             <label for="user" class="col-sm-2 col-form-label">Nomor Kontrak</label>
                             <div class="col-sm-10">
-                                <select class="form-control" name="user_id" id="user">
+                                <select class="form-control" name="profile_id" id="profile">
                                     <option value="">Pilih Nomor Kontrak</option>
                                     @foreach($profile as $item)
                                         <option value="{{ $item->id }}">{{ $item->no_kontrak }} - {{ $item->user->nama }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="user" class="col-sm-2 col-form-label">Nama</label>
+                            <div class="col-sm-10">
+                                <select class="form-control" name="user_id" id="user">
+                                    <option value="">Pilih Nama</option>
+                                    @foreach($user as $item)
+                                        <option value="{{ $item->id }}">{{ $item->nama }}</option>
                                     @endforeach
                                 </select>
                             </div>
