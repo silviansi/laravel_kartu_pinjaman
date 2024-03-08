@@ -1,5 +1,5 @@
 
-# TUGAS MAGANG / PRAKTIK
+# TUGAS MAGANG / PRAKTIK INDUSTRI
 
 ## Use Case Sistem
 
