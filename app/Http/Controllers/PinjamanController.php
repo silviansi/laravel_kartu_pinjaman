@@ -65,4 +65,12 @@ class PinjamanController extends Controller
         LogsPinjaman::where('id', $id)->delete();
         return redirect()->to('pinjaman')->with('success', 'Berhasil menghapus data');
     }
+    public function getNama($id) {
+        $profile = Profile::find($id);
+        if ($profile && $profile->user) {
+            return response()->json(['nama' => $profile->user->nama]);
+        }
+
+        return response()->json(['nama' => 'Data not found'], 404);
+    }
 }

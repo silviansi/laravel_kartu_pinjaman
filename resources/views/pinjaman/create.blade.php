@@ -9,25 +9,20 @@
                 <form action="pinjaman" method="POST">
                     @csrf
                         <div class="row mb-3">
-                            <label for="user" class="col-sm-2 col-form-label">Nomor Kontrak</label>
+                            <label for="profile" class="col-sm-2 col-form-label">Nomor Kontrak</label>
                             <div class="col-sm-10">
-                                <select class="form-control" name="profile_id" id="profile">
+                                <select class="form-control" name="profile" id="profile">
                                     <option value="">Pilih Nomor Kontrak</option>
                                     @foreach($profile as $item)
-                                        <option value="{{ $item->id }}">{{ $item->no_kontrak }} - {{ $item->user->nama }}</option>
+                                        <option value="{{ $item->id }}">{{ $item->no_kontrak }}</option>
                                     @endforeach
                                 </select>
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="user" class="col-sm-2 col-form-label">Nama</label>
+                            <label for="nama" class="col-sm-2 col-form-label">Nama</label>
                             <div class="col-sm-10">
-                                <select class="form-control" name="user_id" id="user">
-                                    <option value="">Pilih Nama</option>
-                                    @foreach($user as $item)
-                                        <option value="{{ $item->id }}">{{ $item->nama }}</option>
-                                    @endforeach
-                                </select>
+                                <input class="form-control" name="nama" type="text" value="" id="nama">
                             </div>
                         </div>
                         @php
@@ -68,7 +63,7 @@
                         </div>
 
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
                             <button type="submit" class="btn btn-primary">Tambah</button>
                         </div>
                     </form>
@@ -76,3 +71,28 @@
         </div>
     </div>
 </div>
+
+@push('script')
+<script>
+    $(document).ready(function () {
+        $('#profile').change(function () {
+            var id = $(this).val();
+            if (id) {
+                $.ajax({
+                    url: '/get-nama/' + id,
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (data) {
+                        $('#nama').val(data.nama).attr('readonly', true);
+                    },
+                    error: function () {
+                        alert('Gagal mengambil data nama.');
+                    }
+                });
+            } else {
+                $('#nama').val('').removeAttr('readonly');
+            }
+        });
+    });
+</script>
+@endpush

@@ -1,8 +1,8 @@
 <?php
 
 use App\Http\Controllers\AjuanController;
-use App\Http\Controllers\DepanController;
 use App\Http\Controllers\HelpController;
+use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\PabrikasiController;
 use App\Http\Controllers\TutupanController;
 use Illuminate\Support\Facades\Route;
@@ -23,10 +23,10 @@ use App\Http\Controllers\ProfileController;
 |
 */
 Route::get('/', function () {
-    return view('depan/index');
+    return view('landingpage/index');
 });
 
-Route::get('depan', [DepanController::class, 'index']);
+Route::get('landingpage', [LandingPageController::class, 'index']);
 
 Route::middleware('guest')->group(function(){
 Route::get('auth/login', [AuthController::class, 'index'])->name('login');
@@ -52,15 +52,15 @@ Route::middleware('auth')->group(function () {
         Route::get('anggota/{user_id}', [AnggotaController::class, 'show']);
 
         Route::resource('pinjaman', PinjamanController::class);
-        Route::get('pinjaman/{pinjaman}/approve', [PinjamanController::class, 'approve'])->name('pinjaman.approve');
-        Route::get('pinjaman/{pinjaman}/reject', [PinjamanController::class, 'reject'])->name('pinjaman.reject');
         Route::get('pinjaman/{id}', [PinjamanController::class, 'store']);
+        Route::get('get-nama/{id}', [PinjamanController::class, 'getNama']);
 
         Route::resource('pabrikasi', PabrikasiController::class);
         Route::post('pabrikasi', [PabrikasiController::class, 'store']);
 
         Route::resource('tutupan', TutupanController::class);
         Route::post('tutupan', [TutupanController::class, 'store']);
+        Route::get('get-nama/{id}', [TutupanController::class, 'getNama']);
 
         Route::resource('help', HelpController::class);
     });
