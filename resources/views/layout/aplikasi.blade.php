@@ -28,7 +28,7 @@
     
     </head>
 
-    <body data-sidebar="light">
+    <body data-sidebar="dark">
 
         @if (Auth::check())
             @include('komponen/menu')
@@ -69,14 +69,12 @@
         <!-- Datatable init js -->
         <script src="assets/js/pages/datatables.init.js"></script> 
 
-
         <!-- Peity chart-->
         <script src="/assets/libs/peity/jquery.peity.min.js"></script>
 
-        <script src="/assets/js/pages/dashboard.init.js"></script>
-
         <script src="/assets/js/app.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+        @stack('script')
         <script>
         $(function(){
         $('#profile').select2({
