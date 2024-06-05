@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class DepanController extends Controller
+class LandingPageController extends Controller
 {
     public function index() {
-        return view('depan.index');
+        return view('landingpage.index');
     }
 }

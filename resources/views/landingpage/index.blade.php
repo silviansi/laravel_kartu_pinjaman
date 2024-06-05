@@ -605,4 +605,69 @@
 
   </main><!-- End #main -->
 
+    <!-- ======= Footer ======= -->
+    <footer id="footer" class="footer">
+      <div class="footer-top">
+        <div class="container">
+          <div class="row gy-4">
+            <div class="col-lg-5 col-md-12 footer-info">
+              <a href="depan" class="logo d-flex align-items-center mb-5">
+                <img src="/assets/images/logo-cb.png" alt="">
+              </a>
+              <div class="social-links mt-3">
+                <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+                <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+                <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+                <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+              </div>
+            </div>
+  
+            <div class="col-lg-2 col-6 footer-links">
+              <h4>Menu</h4>
+              <ul>
+                <li><i class="bi bi-chevron-right"></i> <a href="#">Home</a></li>
+                <li><i class="bi bi-chevron-right"></i> <a href="#">About us</a></li>
+                <li><i class="bi bi-chevron-right"></i> <a href="#">Services</a></li>
+                <li><i class="bi bi-chevron-right"></i> <a href="#">Terms of service</a></li>
+                <li><i class="bi bi-chevron-right"></i> <a href="#">Privacy policy</a></li>
+              </ul>
+            </div>
+  
+            <div class="col-lg-2 col-6 footer-links">
+              <h4>Produk Kami</h4>
+              <ul>
+                <li><i class="bi bi-chevron-right"></i> <a href="#">Produk Gula</a></li>
+                <li><i class="bi bi-chevron-right"></i> <a href="#">Produk Tetes</a></li>
+                <li><i class="bi bi-chevron-right"></i> <a href="#">Produk Ampas</a></li>
+              </ul>
+            </div>
+  
+            <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
+              <h4>Kontak Kami</h4>
+              <p>
+                Jl Raya Candi No. 10 Sidoarjo <br>
+                (61271) Jawa Timur<br>
+                Indonesia <br><br>
+                <strong>Telepon:</strong> +62318921003<br>
+                <strong>Email:</strong> pgcandibaru@gmail.com<br>
+              </p>
+  
+            </div>
+  
+          </div>
+        </div>
+      </div>
+  
+      <div class="container">
+        <div class="copyright">
+          &copy; Copyright <strong><span>IT Support Intern PG CB 2023</span></strong>. All Rights Reserved
+        </div>
+        <div class="credits">
+          Designed by <a href="#">Silvia Nanda Syafa Iswahyudi</a>
+        </div>
+      </div>
+    </footer><!-- End Footer -->
+  
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
   @endsection
