@@ -28,75 +28,78 @@
             </div>
 
             <!-- start page content -->     
-                                    <div class="row pt-3">
-                                        <div class="col-12">
-                                            <div class="card">
-                                                <div class="card-body">
-                                                    @if (Session::has('success'))
-                                                    <div class="alert alert-success">
-                                                        {{ Session::get('success') }}
-                                                    </div>
-                                                        
-                                                    @endif
-                                                    @if($errors->any())
-                                                        <div class="alert alert-danger">
-                                                            <ul>
-                                                            @foreach ($errors->all() as $item)
-                                                                <li>{{ $item }}</li>
-                                                            @endforeach
-                                                            </ul>
-                                                        </div>
-                        
-                                                    @endif
+            <div class="row pt-3">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                        @if (Session::has('success'))
+                            <div class="alert alert-success">
+                                {{ Session::get('success') }}
+                            </div>
+                        @endif
+                        @if($errors->any())
+                            <div class="alert alert-danger">
+                            <ul>
+                        @foreach ($errors->all() as $item)
+                            <li>{{ $item }}</li>
+                        @endforeach
+                            </ul>
+                            </div>
+                        @endif
 
-                                                    <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-                                                            <thead>
-                                                                <tr>
-                                                                    <th>No. Kontrak</th>
-                                                                    <th>Tanggal</th>
-                                                                    <th>No. Bukti</th>
-                                                                    <th>Jumlah Pinjaman</th>
-                                                                    <th>No. Kontrak</th>
-                                                                    <th>No. Rek</th>
-                                                                    <th>Aksi</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                @foreach ($data as $item)
-                                                                <tr>
-                                                                    <td>{{ $item->profile->user->nama }}</td>
-                                                                    <td>{{ $item->tanggal }}</td>
-                                                                    <td>{{ $item->no_bukti }}</td>
-                                                                    <td>{{ number_format($item->jumlah_pinjaman) }}</td>
-                                                                    <td>{{ $item->profile->no_kontrak }}</td>
-                                                                    <td>{{ $item->no_rek }}</td>
-                                                                    <td>
-                                                                        <form onsubmit="return confirm('Yakin mau hapus data?')" class='d-inline' action="{{ 'pinjaman/'.$item->id }}" method='post'>
-                                                                            @csrf
-                                                                            @method('DELETE')
-                                                                            <button class="btn btn-danger btn-sm" type="submit"><i class="fas fa-trash-alt"></i></button>
-                                                                        </form>
-                                                                        @if ($item->status == 'pending')
-                                                                            <a href="{{ route('pinjaman.reject',$item->id)}}" class="btn btn-danger btn-sm">
-                                                                                <i class="mdi mdi-close"></i>
-                                                                            <a href="{{ route('pinjaman.approve',$item->id)}}" class="btn btn-success btn-sm">
-                                                                               <i class="mdi mdi-check"></i>
-                                                                           </a>
-                                                                        @endif
-                                                                    </td>
-                                                                </tr>
-                                                                @endforeach
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-                                                </form>
-                
-                                                </div>
-                                            </div>
-                                        </div> <!-- end col -->
-                                </div>
-<!-- End Page-content -->
+                        <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>No. Kontrak</th>
+                                    <th>Tanggal</th>
+                                    <th>No. Bukti</th>
+                                    <th>Jumlah Pinjaman</th>
+                                    <th>No. Kontrak</th>
+                                    <th>No. Rek</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            @foreach ($data as $item)
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $item->profile->user->nama }}</td>
+                                    <td>{{ $item->tanggal }}</td>
+                                    <td>{{ $item->no_bukti }}</td>
+                                    <td>{{ number_format($item->jumlah_pinjaman) }}</td>
+                                    <td>{{ $item->profile->no_kontrak }}</td>
+                                    <td>{{ $item->no_rek }}</td>
+                                    <td>
+                                        <form onsubmit="return confirm('Yakin mau hapus data?')" class='d-inline' action="{{ 'pinjaman/'.$item->id }}" method='post'>
+                                            @csrf
+                                            @method('DELETE')
+                                            <button class="btn btn-danger btn-sm" type="submit"><i class="fas fa-trash-alt"></i></button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+        </div>
+    </div>
+</div>
 @include('pinjaman.edit')
 @include('pinjaman.create')
 
 @endsection
+@push('script')
+    <script>
+        $(document).ready(function() {
+            $('#datatable').DataTable({
+                "language" : {
+                    "url" : "https://cdn.datatables.net/plug-ins/1.10.25/i18n/Indonesian.json"
+                }
+            });
+        });
+    </script>
+@endpush

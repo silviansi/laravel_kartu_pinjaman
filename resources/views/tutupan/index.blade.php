@@ -32,57 +32,71 @@
                     <div class="card">
                         <div class="card-body">
                             @if (Session::has('success'))
-                                                    <div class="alert alert-success">
-                                                        {{ Session::get('success') }}
-                                                    </div>
-                                                        
-                                                    @endif
-                                                    @if($errors->any())
-                                                        <div class="alert alert-danger">
-                                                            <ul>
-                                                            @foreach ($errors->all() as $item)
-                                                                <li>{{ $item }}</li>
-                                                            @endforeach
-                                                            </ul>
-                                                        </div>
-                        
-                                                    @endif
+                            <div class="alert alert-success">
+                                {{ Session::get('success') }}
+                            </div>
+                            @endif
+                            @if($errors->any())
+                            <div class="alert alert-danger">
+                            <ul>
+                            @foreach ($errors->all() as $item)
+                            <li>{{ $item }}</li>
+                            @endforeach
+                            </ul>
+                            </div>
+                            @endif
 
                             <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-                                    <thead>
-                                        <tr>
-                                            <th>Nama</th>
-                                            <th>Tanggal</th>
-                                            <th>No. Bukti</th>
-                                            <th>Jumlah Tutupan</th>
-                                            <th>Aksi</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($data as $item)
-                                        <tr>
-                                            <td>{{ $item->user->nama }}</td>
-                                            <td>{{ $item->tgl }}</td>
-                                            <td>{{ $item->no_bukti }}</td>
-                                            <td>{{ number_format($item->jumlah_tutupan) }}</td>
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Nama</th>
+                                        <th>Tanggal</th>
+                                        <th>No. Bukti</th>
+                                        <th>Jumlah Tutupan</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                @foreach ($data as $item)
+                                    <tr>
+                                        <td>{{ $loop->iteration }}
+                                        <td>{{ $item->user->nama }}</td>
+                                        <td>{{ $item->tgl }}</td>
+                                        <td>{{ $item->no_bukti }}</td>
+                                        <td>{{ number_format($item->jumlah_tutupan) }}</td>
 
-                                            <td>
-                                                <form onsubmit="return confirm('Yakin mau hapus data?')" class='d-inline' action="{{ 'tutupan/'.$item->id }}" method='post'>
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button class="btn btn-danger btn-sm" type="submit"><i class="fas fa-trash-alt"></i></button>
-                                                </form>
-                                            </td>
-                                        </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
-                        </form>
-
+                                        <td>
+                                            <form onsubmit="return confirm('Yakin mau hapus data?')" class='d-inline' action="{{ 'tutupan/'.$item->id }}" method='post'>
+                                                @csrf
+                                                @method('DELETE')
+                                                <button class="btn btn-danger btn-sm" type="submit"><i class="fas fa-trash-alt"></i></button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
                         </div>
                     </div>
-                </div> <!-- end col -->
-                @include('tutupan.create')
-                @include('tutupan.edit')
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@include('tutupan.create')
+@include('tutupan.edit')
 @endsection
+
+@push('script')
+    <script>
+        $(document).ready(function() {
+            $('#datatable').DataTable({
+                "language" : {
+                    "url" : "https://cdn.datatables.net/plug-ins/1.10.25/i18n/Indonesian.json"
+                }
+            });
+        });
+    </script>
+@endpush

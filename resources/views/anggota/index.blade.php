@@ -22,11 +22,9 @@
 
             <div class="col-md-2 mb-3">
                 <a href=""
-                    data-bs-toggle="modal" data-bs-target="#ModalEdit" class="btn btn-success btn-md">
-                   + Tambah Kontrak
-               </a>
+                    data-bs-toggle="modal" data-bs-target="#ModalEdit" class="btn btn-success btn-md">+ Tambah Kontrak
+                </a>
             </div>
-
 
             <!-- TOMBOL TAMBAH DATA -->
 
@@ -57,50 +55,63 @@
     
                                 @endif
                 
-                                        <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-                                        <thead>
-                                            <tr>
-                                                <th>Nama Lengkap</th>
-                                                <th>Kebun</th>
-                                                <th>No. Kontrak</th>
-                                                <th>Kecamatan</th>
-                                                <th>Aksi</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach ($data as $item)
-                                            <tr>
-                                                <td>{{ $item->user->nama }}</td>
-                                                <td>{{ $item->kebun }}</td>
-                                                <td>{{ $item->no_kontrak }}</td>
-                                                <td>{{ $item->kecamatan }}</td>
-                                                <td>
-                                                    <a href="{{ url('anggota/'.$item->id) }}"
-                                                        data-bs-toggle="modal" data-bs-target="#ModalEdit-{{ $item->id }}" class="btn btn-warning btn-sm">
-                                                       <i class="fas fa-pencil-alt"></i>
-                                                   </a>
-                                                    <form onsubmit="return confirm('Yakin mau hapus data?')" class='d-inline' action="{{ 'anggota/'.$item->id }}" method='post'>
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button class="btn btn-danger btn-sm" type="submit"><i class="fas fa-trash-alt"></i></button>
-                                                    </form>
-                                                    <a href="{{ url('anggota/'.$item->user_id) }}" class="btn btn-primary btn-sm" role="button" aria-disabled="true">
-                                                        <i class="fas fa-print"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </form>
-                
+                                <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Nama Lengkap</th>
+                                            <th>Kebun</th>
+                                            <th>No. Kontrak</th>
+                                            <th>Kecamatan</th>
+                                            <th>Aksi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach ($data as $item)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $item->user->nama }}</td>
+                                            <td>{{ $item->kebun }}</td>
+                                            <td>{{ $item->no_kontrak }}</td>
+                                            <td>{{ $item->kecamatan }}</td>
+                                            <td>
+                                                <a href="{{ url('anggota/'.$item->id) }}"
+                                                    data-bs-toggle="modal" data-bs-target="#ModalEdit-{{ $item->id }}" class="btn btn-warning btn-sm">
+                                                    <i class="fas fa-pencil-alt"></i>
+                                                </a>
+                                                <form onsubmit="return confirm('Yakin mau hapus data?')" class='d-inline' action="{{ 'anggota/'.$item->id }}" method='post'>
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button class="btn btn-danger btn-sm" type="submit"><i class="fas fa-trash-alt"></i></button>
+                                                </form>
+                                                <a href="{{ url('anggota/'.$item->user_id) }}" class="btn btn-primary btn-sm" role="button" aria-disabled="true">
+                                                    <i class="fas fa-print"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
-                    </div> <!-- end col -->
+                    </div>
                 </div>
-                
-                <!-- End Page-content -->
-                @include('anggota.update')
-                @include('anggota.create')
+            </div>
+        </div>
+    </div>
+</div>
+@include('anggota.update')
+@include('anggota.create')
 @endsection
+
+@push('script')
+    <script>
+        $(document).ready(function() {
+            $('#datatable').DataTable({
+                "language" : {
+                    "url" : "https://cdn.datatables.net/plug-ins/1.10.25/i18n/Indonesian.json"
+                }
+            });
+        });
+    </script>
+@endpush

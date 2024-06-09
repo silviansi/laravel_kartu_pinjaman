@@ -52,49 +52,63 @@
                            @endif
 
                             <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-                                    <thead>
-                                        <tr>
-                                            <th>Nama</th>
-                                            <th>Tebu Giling</th>
-                                            <th>Rendemen Petani</th>
-                                            <th>Gula Petani</th>
-                                            <th>Tetes Petani</th>
-                                            <th>Gula Masuk</th>
-                                            <th>Aksi</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($data as $item)
-                                        <tr>
-                                            <td>{{ $item->user->nama }}</td>
-                                            <td>{{ $item->tebu_giling }}</td>
-                                            <td>{{ $item->rendemen_petani }}</td>
-                                            <td>{{ $item->gula_petani }}</td>
-                                            <td>{{ $item->tetes_petani }}</td>
-                                            <td>{{ $item->gula_masuk }}</td>
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Nama</th>
+                                        <th>Tebu Giling</th>
+                                        <th>Rendemen Petani</th>
+                                        <th>Gula Petani</th>
+                                        <th>Tetes Petani</th>
+                                        <th>Gula Masuk</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                @foreach ($data as $item)
+                                    <tr>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $item->user->nama }}</td>
+                                        <td>{{ $item->tebu_giling }}</td>
+                                        <td>{{ $item->rendemen_petani }}</td>
+                                        <td>{{ $item->gula_petani }}</td>
+                                        <td>{{ $item->tetes_petani }}</td>
+                                        <td>{{ $item->gula_masuk }}</td>
 
-                                            <td>
-                                                <a href="{{ url('pabrikasi/'.$item->id) }}"
-                                                    data-bs-toggle="modal" data-bs-target="#ModalEditPabrikasi-{{ $item->id }}" class="btn btn-warning btn-sm">
-                                                   <i class="fas fa-pencil-alt"></i>
-                                               </a>
-                                                <form onsubmit="return confirm('Yakin mau hapus data?')" class='d-inline' action="{{ 'pabrikasi/'.$item->id }}" method='post'>
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button class="btn btn-danger btn-sm" type="submit"><i class="fas fa-trash-alt"></i></button>
-                                                </form>
-                                            </td>
-                                        </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
-                        </form>
-
+                                        <td>
+                                            <a href="{{ url('pabrikasi/'.$item->id) }}"
+                                                data-bs-toggle="modal" data-bs-target="#ModalEditPabrikasi-{{ $item->id }}" class="btn btn-warning btn-sm">
+                                                <i class="fas fa-pencil-alt"></i>
+                                            </a>
+                                            <form onsubmit="return confirm('Yakin mau hapus data?')" class='d-inline' action="{{ 'pabrikasi/'.$item->id }}" method='post'>
+                                                @csrf
+                                                @method('DELETE')
+                                                <button class="btn btn-danger btn-sm" type="submit"><i class="fas fa-trash-alt"></i></button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
                         </div>
                     </div>
-                </div> <!-- end col -->
-
-                @include('pabrikasi.create')
-                @include('pabrikasi.edit')
+                </div>
+            </div>
+        </div>
+    </div>
+</div>     
+@include('pabrikasi.create')
+@include('pabrikasi.edit')
 @endsection
+
+@push('script')
+    <script>
+        $(document).ready(function() {
+            $('#datatable').DataTable({
+                "language" : {
+                    "url" : "https://cdn.datatables.net/plug-ins/1.10.25/i18n/Indonesian.json"
+                }
+            });
+        });
+    </script>
+@endpush
