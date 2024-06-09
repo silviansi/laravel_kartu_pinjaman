@@ -1,4 +1,4 @@
-@extends('layout/depan')
+@extends('layout/base')
 @section('title', 'PG Candi Baru | Website')
 @section('konten')
 
