@@ -14,7 +14,7 @@
                                 <div class="row mb-3">
                                     <label for="username" class="col-sm-2 col-form-label">Username</label>
                                     <div class="col-sm-10">
-                                        {{ $item->user->username }}
+                                        <input class="form-control border-0" name="username" type="text" value="{{ $item->user->username }}" id="username" readonly>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
