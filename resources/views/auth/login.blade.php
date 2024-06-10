@@ -3,16 +3,6 @@
 @section('konten')
     <div class="account-pages my-5">
         <div class="container">
-            @if($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $item)
-                        <li>{{ $item }}</li>
-                    @endforeach
-                </ul>
-            </div>
-                
-            @endif
             <div class="row justify-content-center">
                 <div class="col-md-8 col-lg-6 col-xl-4">
                     <div class="card overflow-hidden">
@@ -31,7 +21,7 @@
                                 <form class="mt-4" action="" method="POST">
                                     @csrf
                                     <div class="mb-3">
-                                        <label class="form-label" for="email">Username</label>
+                                        <label class="form-label" for="username">Username</label>
                                         <input type="text" name="username" value="{{ Session::get('username') }}" class="form-control" id="username" placeholder="Enter username">
                                     </div>
 
@@ -63,3 +53,31 @@
         </div>
     </div>
 @endsection
+
+@push('script')
+    @if (session('success'))
+    <script>
+        Swal.fire({
+            position: "top-end",
+            title: "Sukses!",
+            text: "{{ session('success') }}",
+            icon: "success",
+            showConfirmButton: false,
+            timer: 2500,
+            width: '300px'
+        })
+    </script>
+    @endif
+    @if (session('error'))
+    <script>
+        Swal.fire({
+            title: "Error!",
+            text: "{{ session('error') }}",
+            icon: "error",
+            showConfirmButton: false,
+            timer: 2500,
+            width: '300px'
+        })
+    </script>
+    @endif
+@endpush

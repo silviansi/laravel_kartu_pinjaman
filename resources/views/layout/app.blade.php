@@ -32,9 +32,11 @@
 
 <script src="/assets/libs/parsleyjs/parsley.min.js"></script>
 
-<script src="/assets/js/pages/form-validation.init.js"></script>
-
 <script src="/assets/js/app.js"></script>
+<!-- Sweet Alert -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+@stack('script')
 
 </body>
 
