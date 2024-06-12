@@ -21,8 +21,8 @@
                                 <form class="mt-4" action="" method="POST">
                                     @csrf
                                     <div class="mb-3">
-                                        <label class="form-label" for="username">Username</label>
-                                        <input type="text" name="username" value="{{ Session::get('username') }}" class="form-control" id="username" placeholder="Enter username">
+                                        <label class="form-label" for="email">Email</label>
+                                        <input type="text" name="email" value="{{ Session::get('email') }}" class="form-control" id="email" placeholder="Enter email">
                                     </div>
 
                                     <div class="mb-3">
