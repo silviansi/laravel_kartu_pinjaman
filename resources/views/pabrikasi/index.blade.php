@@ -56,11 +56,11 @@
                                     <tr>
                                         <th>No</th>
                                         <th>Nama</th>
+                                        <th>Tebu Masuk</th>
                                         <th>Tebu Giling</th>
                                         <th>Rendemen Petani</th>
                                         <th>Gula Petani</th>
                                         <th>Tetes Petani</th>
-                                        <th>Gula Masuk</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -69,11 +69,11 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $item->user->nama }}</td>
+                                        <td>{{ $item->tebu_masuk }}</td>
                                         <td>{{ $item->tebu_giling }}</td>
                                         <td>{{ $item->rendemen_petani }}</td>
                                         <td>{{ $item->gula_petani }}</td>
                                         <td>{{ $item->tetes_petani }}</td>
-                                        <td>{{ $item->gula_masuk }}</td>
 
                                         <td>
                                             <a href="{{ url('pabrikasi/'.$item->id) }}"

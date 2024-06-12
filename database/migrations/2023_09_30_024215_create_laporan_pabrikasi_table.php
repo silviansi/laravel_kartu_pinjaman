@@ -21,7 +21,7 @@ return new class extends Migration
             $table->decimal('rendemen_petani');
             $table->decimal('gula_petani');
             $table->integer('tetes_petani');
-            $table->integer('gula_masuk');
+            $table->integer('tebu_masuk');
             $table->timestamps();
         });
     }
