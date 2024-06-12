@@ -39,7 +39,9 @@ Route::middleware('auth')->group(function () {
     Route::get('logout', [AuthController::class, 'logout']);
 
     Route::middleware('OnlyClient')->group(function () {
-        Route::resource('profile', ProfileController::class)->only('index','update','edit');
+        Route::get('profile', [ProfileController::class, 'index'])->name('profile.index');
+        Route::get('profile/{id}/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+        Route::put('profile/{id}', [ProfileController::class, 'update'])->name('profile.update');
         Route::resource('ajuan_pinjaman', AjuanController::class);
         Route::post('ajuan_pinjaman', [AjuanController::class, 'store']);
     });
