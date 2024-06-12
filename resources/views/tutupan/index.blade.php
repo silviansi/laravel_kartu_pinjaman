@@ -62,7 +62,7 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}
                                         <td>{{ $item->user->nama }}</td>
-                                        <td>{{ $item->tgl }}</td>
+                                        <td>{{ $item->tanggal }}</td>
                                         <td>{{ $item->no_bukti }}</td>
                                         <td>{{ number_format($item->jumlah_tutupan) }}</td>
 
