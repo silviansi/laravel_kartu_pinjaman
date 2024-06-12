@@ -21,14 +21,6 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'nama',
-        'kebun',
-        'luas_kebun',
-        'no_vak',
-        'no_kontrak',
-        'kategori',
-        'kecamatan',
-        'kota',
-        'username',
         'email',
         'password'
     ];
@@ -56,10 +48,7 @@ class User extends Authenticatable
         'role_id' => 2
     ];
     public function profile() {
-        return $this->hasOne(Profile::class, 'user_id');
-    }
-    public function pinjaman():BelongsToMany {
-        return $this->belongsToMany(Pinjaman::class, 'pinjaman', 'profile_id', 'pinjaman_id');
+        return $this->hasOne(Profile::class);
     }
     public $timestamps = false;
 }
