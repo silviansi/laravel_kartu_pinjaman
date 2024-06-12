@@ -80,21 +80,19 @@ $( document ).ready(function() {
           @if (Auth::check())
           <li class="dropdown"><a href="#"><span>
             <img class="rounded-circle header-profile-user" src="/assets/images/avatar-img.png"
-            alt="Header Avatar"> {{ Auth::user()->username }}</span> <i class="bi bi-chevron-down"></i></a>
+            alt="Header Avatar"> {{ Auth::user()->nama }}</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="profile">Profile</a></li>
               <li><a href="logout">Logout</a></li>
             </ul>
           </li>
         @else
-        <a class="getstarted scrollto" href="auth/login">
-          Login</a>
-        <a class="getstarted scrollto" href="auth/register">
-          Register</a>
+        <a class="getstarted scrollto" href="auth/login">Login</a>
+        <a class="getstarted scrollto" href="auth/register">Register</a>
         @endif
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
+      </nav>
 
     </div>
   </header><!-- End Header -->
@@ -112,7 +110,27 @@ $( document ).ready(function() {
 
   <!-- Template Main JS File -->
   <script src="/assets/js/main.js"></script>
+  <!-- Sweet Alert -->
+ <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+  @if (session('success'))
+    <script>
+        Swal.fire({
+            title: "Sukses!",
+            text: "{{ session('success') }}",
+            icon: "success"
+        })
+    </script>
+    @endif
+    @if (session('error'))
+    <script>
+        Swal.fire({
+            title: "Error!",
+            text: "{{ session('error') }}",
+            icon: "error",
+        })
+    </script>
+    @endif
 
 </body>
 
