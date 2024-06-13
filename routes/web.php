@@ -47,22 +47,32 @@ Route::middleware('auth')->group(function () {
     });
 
     Route::middleware('isLogin')->group(function () {
-        Route::resource('dashboard', DashboardController::class);
+        Route::get('dashboard', [DashboardController::class, 'index']);
 
-        Route::resource('anggota', AnggotaController::class);
-        Route::put('anggota/{id}', [AnggotaController::class, 'update']);
-        Route::get('anggota/{user_id}', [AnggotaController::class, 'show']);
+        Route::get('anggota', [AnggotaController::class, 'index'])->name('anggota.index');
+        Route::get('anggota/create', [AnggotaController::class, 'create'])->name('anggota.create');
+        Route::post('anggota', [AnggotaController::class, 'store'])->name('anggota.store');
+        Route::get('anggota/{id}/edit', [AnggotaController::class, 'edit'])->name('anggota.edit');
+        Route::put('anggota/{id}', [AnggotaController::class, 'update'])->name('anggota.update');
+        Route::delete('anggota/{id}', [AnggotaController::class, 'destroy'])->name('anggota.destroy');
+        Route::get('anggota/{user_id}', [AnggotaController::class, 'show'])->name('anggota.show');
 
-        Route::resource('pinjaman', PinjamanController::class);
-        Route::get('pinjaman/{id}', [PinjamanController::class, 'store']);
-        Route::get('get-nama/{id}', [PinjamanController::class, 'getNama']);
+        Route::get('pinjaman', [PinjamanController::class, 'index'])->name('pinjaman.index');
+        Route::get('pinjaman/create', [PinjamanController::class, 'create'])->name('pinjaman.create');
+        Route::post('pinjaman', [PinjamanController::class, 'store'])->name('pinjaman.store');
+        Route::delete('pinjaman/{id}', [PinjamanController::class, 'destroy'])->name('pinjaman.destroy');
 
-        Route::resource('pabrikasi', PabrikasiController::class);
-        Route::post('pabrikasi', [PabrikasiController::class, 'store']);
+        Route::get('pabrikasi', [PabrikasiController::class, 'index'])->name('pabrikasi.index');
+        Route::get('pabrikasi/create', [PabrikasiController::class, 'create'])->name('pabrikasi.create');
+        Route::post('pabrikasi', [PabrikasiController::class, 'store'])->name('pabrikasi.store');
+        Route::get('pabrikasi/{id}/edit', [PabrikasiController::class, 'edit'])->name('pabrikasi.edit');
+        Route::put('pabrikasi/{id}', [PabrikasiController::class, 'update'])->name('pabrikasi.update');
+        Route::delete('pabrikasi/{id}', [PabrikasiController::class, 'destroy'])->name('pabrikasi.destroy');
 
-        Route::resource('tutupan', TutupanController::class);
-        Route::post('tutupan', [TutupanController::class, 'store']);
-        Route::get('get-nama/{id}', [TutupanController::class, 'getNama']);
+        Route::get('tutupan', [TutupanController::class, 'index'])->name('tutupan.index');
+        Route::get('tutupan/create', [TutupanController::class, 'create'])->name('tutupan.create');
+        Route::post('tutupan', [TutupanController::class, 'store'])->name('tutupan.store');
+        Route::delete('tutupan/{id}', [TutupanController::class, 'destroy'])->name('tutupan.destroy');
 
         Route::resource('help', HelpController::class);
     });
