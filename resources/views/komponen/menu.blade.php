@@ -1,7 +1,6 @@
 <!-- Begin page -->
 <div id="layout-wrapper">
-
-            
+      
     <header id="page-topbar">
         <div class="navbar-header">
             <div class="d-flex">
@@ -83,7 +82,7 @@
                 <li>
                   <a href="anggota" class=" waves-effect">
                       <i class="ti-user"></i>
-                      <span>Data Anggota</span>
+                      <span>Data Mitra</span>
                   </a>
               </li>
 
@@ -128,8 +127,6 @@
     </div>
 </div>
 <!-- Left Sidebar End -->
-
-
 
 <!-- Right Sidebar -->
 <div class="right-bar">

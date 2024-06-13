@@ -3,16 +3,6 @@
 @section('konten')
 <div class="account-pages my-5">
     <div class="container">
-        @if($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $item)
-                        <li>{{ $item }}</li>
-                    @endforeach
-                </ul>
-            </div>
-                
-        @endif
         <div class="row justify-content-center">
             <div class="col-md-8 col-lg-6 col-xl-4">
                 <div class="card overflow-hidden">
@@ -56,20 +46,14 @@
                                         <p class="mb-0">By registering you agree to the DashLoan Terms of Use</p>
                                     </div>
                                 </div>
-    
                             </form>
-    
                         </div>
                     </div>
-    
                 </div>
-    
                 <div class="mt-5 text-center">
                     <p>Already have an account ? <a href="/auth/login" class="fw-medium text-primary"> Login </a> </p>
                     <p>© <script>document.write(new Date().getFullYear())</script> DashLoan. Crafted with <i class="mdi mdi-heart text-danger"></i> by IT Support Intern 2023</p>
                 </div>
-    
-    
             </div>
         </div>
     </div>
