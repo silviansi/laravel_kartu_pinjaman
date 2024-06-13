@@ -11,11 +11,11 @@ class Tutupan extends Model
 {
     use HasFactory;
     protected $table = 'tutupan';
-    protected $fillable = ['user_id', 'tgl', 'no_bukti', 'jumlah_tutupan', 'total', 'uraian'];
+    protected $fillable = ['user_id', 'tanggal', 'no_bukti', 'jumlah_tutupan', 'total', 'uraian'];
 
     public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'user_id', 'id');
+        return $this->belongsTo(User::class);
     }
     public $timestamps = false;
 }

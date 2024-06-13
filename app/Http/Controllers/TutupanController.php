@@ -12,28 +12,24 @@ use Illuminate\Support\Facades\DB;
 class TutupanController extends Controller
 {
     public function index() {
-        $profile = Profile::all();
         $user = User::where([
             ['role_id', '!=', 1]
         ])->get();
         $data = Tutupan::all();
-        return view('tutupan.index', ['user' => $user, 'profile' => $profile, 'data' => $data]);
+        return view('tutupan.index', ['user' => $user, 'data' => $data]);
     }
     public function create() {
         $user = User::where([
             ['role_id', '!=', 1]
         ])->get();
-        $profile = Profile::where('user_id','>','1')->get();
-        return view('tutupan.create', ['user' => $user, 'profile' => $profile]);
+        return view('tutupan.create', ['user' => $user]);
     }
     public function store(Request $request) {
         $request->validate([
             'jumlah_tutupan' => 'required'
-        ],[
-            'jumlah_tutupan.required' => 'Jumlah Tutupan wajib diisi'
         ]);
 
-        $tgl = Carbon::now()->toDateString();
+        $tanggal = Carbon::now()->toDateString();
         $tutupan = Tutupan::where('user_id', $request->user_id)
                     ->whereNotNull('jumlah_tutupan')
                     ->get(['jumlah_tutupan']);
@@ -58,7 +54,7 @@ class TutupanController extends Controller
         
         }
         $data = [
-            'tgl' => $tgl,
+            'tanggal' => $tanggal,
             'no_bukti' => $request->no_bukti,
             'jumlah_tutupan' => $request->jumlah_tutupan,
             'uraian' => $request->uraian,
@@ -71,13 +67,5 @@ class TutupanController extends Controller
     public function destroy($id) {
         Tutupan::where('id', $id)->delete();
         return redirect()->to('tutupan')->with('success', 'Berhasil menghapus data');
-    }
-    public function getNama($id) {
-        $profile = Profile::find($id);
-        if ($profile && $profile->user) {
-            return response()->json(['nama' => $profile->user->nama]);
-        }
-
-        return response()->json(['nama' => 'Data not found'], 404);
     }
 }

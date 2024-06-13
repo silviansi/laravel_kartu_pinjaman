@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('no_bukti');
             $table->string('jumlah_tutupan');
             $table->text('uraian');
+            $table->integer('total');
             $table->timestamps();
         });
     }

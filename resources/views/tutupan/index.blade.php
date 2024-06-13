@@ -2,7 +2,6 @@
 @section('title', 'Data Tutupan | DashLoan')
 @section('konten')
 <div class="main-content">
-
     <div class="page-content">
         <div class="container-fluid">
 
@@ -31,21 +30,6 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            @if (Session::has('success'))
-                            <div class="alert alert-success">
-                                {{ Session::get('success') }}
-                            </div>
-                            @endif
-                            @if($errors->any())
-                            <div class="alert alert-danger">
-                            <ul>
-                            @foreach ($errors->all() as $item)
-                            <li>{{ $item }}</li>
-                            @endforeach
-                            </ul>
-                            </div>
-                            @endif
-
                             <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                 <thead>
                                     <tr>
@@ -65,13 +49,12 @@
                                         <td>{{ $item->tanggal }}</td>
                                         <td>{{ $item->no_bukti }}</td>
                                         <td>{{ number_format($item->jumlah_tutupan) }}</td>
-
                                         <td>
-                                            <form onsubmit="return confirm('Yakin mau hapus data?')" class='d-inline' action="{{ 'tutupan/'.$item->id }}" method='post'>
-                                                @csrf
-                                                @method('DELETE')
-                                                <button class="btn btn-danger btn-sm" type="submit"><i class="fas fa-trash-alt"></i></button>
-                                            </form>
+                                            <button class="btn btn-danger btn-sm delete-btn" data-id="{{ $item->id }}"><i class="fas fa-trash-alt"></i></button>
+                                                <form id="delete-form-{{ $item->id }}" action="{{ route('tutupan.destroy', $item->id) }}" method="POST" style="display: none;">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                </form>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -86,7 +69,6 @@
 </div>
 
 @include('tutupan.create')
-@include('tutupan.edit')
 @endsection
 
 @push('script')
@@ -98,5 +80,43 @@
                 }
             });
         });
+
+        $('.delete-btn').on('click', function (e) {
+            e.preventDefault();
+            var id = $(this).data('id');
+            Swal.fire({
+                title: 'Yakin mau hapus data?',
+                text: "Data yang dihapus tidak dapat dikembalikan!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, hapus!',
+                cancelButtonText: 'Batal'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $('#delete-form-' + id).submit();
+                }
+            });
+        });
     </script>
+
+@if (session('success'))
+<script>
+    Swal.fire({
+        title: "Sukses!",
+        text: "{{ session('success') }}",
+        icon: "success"
+    })
+</script>
+@endif
+@if (session('error'))
+<script>
+    Swal.fire({
+        title: "Error!",
+        text: "{{ session('error') }}",
+        icon: "error",
+    })
+</script>
+@endif
 @endpush
