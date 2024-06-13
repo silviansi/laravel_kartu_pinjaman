@@ -1,5 +1,5 @@
 @extends('layout/base')
-@section('title', 'Detail Pinjaman | Website')
+@section('title', 'Transaksi Pinjaman | Website')
 @section('konten')
     
 <!-- ======= Hero Section ======= -->
@@ -25,7 +25,7 @@
                                 <tr>
                                     <td>{{ $item->tanggal }}</td>
                                     <td>{{ $item->no_bukti }}</td>
-                                    <td>{{ $item->profile->no_kontrak }}</td>
+                                    <td>{{ $item->user->profile->no_kontrak }}</td>
                                     <td>{{ number_format($item->jumlah_pinjaman,0,'','.') }}</td>
                                     <td>{{ $item->uraian }}</td>
                                 </tr>
