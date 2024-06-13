@@ -11,53 +11,47 @@ use Illuminate\Support\Facades\Session;
 class PabrikasiController extends Controller
 {
     public function index() {
-        $profile = Profile::all();
         $user = User::where([
             ['role_id', '!=', 1],
         ])->get();
         $data = Pabrikasi::all();
-        return view('pabrikasi.index', ['user' => $user, 'data' => $data, 'profile' => $profile]);
+        return view('pabrikasi.index', ['user' => $user, 'data' => $data]);
     }
     public function create() {
-        $user = User::where([
-            ['role_id', '!=', 1],
-        ])->get();
-        $peminjam = Profile::where('user_id','>','1')->get();
-        return view('pabrikasi.create', ['user'=>$user, 'peminjam'=>$peminjam]);
+        return view('pabrikasi.create');
     }
     public function store(Request $request) {
-        // $count = Pabrikasi::where('user_id', $request->user_id)->count();
-        // if($count >= 1) {
-        //     Session::flash('message', "Data Pabrikasi sudah ada");
-        //     return redirect('pabrikasi');
-        // }
-        // else {
         $request->validate([
+            'user_id' => 'required',
             'tebu_giling' => 'required',
             'rendemen_petani' => 'required',
             'gula_petani' => 'required',
             'tetes_petani' => 'required',
-            'gula_masuk' => 'required'
-        ], [
-            'tebu_giling.required' => 'Tebu giling wajib diisi',
-            'rendemen_petani.required' => 'Rendemen petani wajib diisi',
-            'gula_petani.required' => 'Gula petani wajib diisi',
-            'tetes_petani.required' => 'Tetes petani wajib diisi',
-            'gula_masuk.required' => 'Gula masuk wajib diisi'
+            'tebu_masuk' => 'required'
         ]);
+
+        // Periksa apakah user_id sudah ada di tabel pabrikasi
+        $existingPabrikasi = Pabrikasi::where('user_id', $request->user_id)->first();
+
+        if ($existingPabrikasi) {
+            return redirect()->back()->with('error', 'Data pabrikasi untuk user ini sudah ada.');
+        }
 
         $data = [
             'tebu_giling' => $request->tebu_giling,
             'rendemen_petani' => $request->rendemen_petani,
             'gula_petani' => $request->gula_petani,
             'tetes_petani' => $request->tetes_petani,
-            'gula_masuk' => $request->gula_masuk,
-            'profile_id' => $request->profile_id,
+            'tebu_masuk' => $request->tebu_masuk,
             'user_id' => $request->user_id
         ];
-        //dd($data);
+
         Pabrikasi::create($data);
         return redirect()->to('pabrikasi')->with('success', 'Berhasil menambahkan data');
+    }
+    public function edit($id) {
+        $data = Pabrikasi::find($id);
+        return view('pabrikasi.edit', ['data' => $data]);
     }
     public function update(Request $request, $id) {
         $data = Pabrikasi::find($id);
@@ -66,20 +60,14 @@ class PabrikasiController extends Controller
             'rendemen_petani' => 'required',
             'gula_petani' => 'required',
             'tetes_petani' => 'required',
-            'gula_masuk' => 'required'
-        ], [
-            'tebu_giling.required' => 'Tebu Giling wajib diisi',
-            'rendemen_petani.required' => 'Rendemen Petani wajib diisi',
-            'gula_petani.required' => 'Gula Petani wajib diisi',
-            'tetes_petani.required' => 'Tetes Petani wajib diisi',
-            'gula_masuk.required' => 'Gula Masuk wajib diisi'
+            'tebu_masuk' => 'required'
         ]);
         $data = [
             'tebu_giling' => $request->input('tebu_giling'),
             'rendemen_petani' => $request->input('rendemen_petani'),
             'gula_petani' => $request->input('gula_petani'),
             'tetes_petani' => $request->input('tetes_petani'),
-            'gula_masuk' => $request->input('gula_masuk')
+            'tebu_masuk' => $request->input('tebu_masuk')
         ];
         Pabrikasi::where('id', $id)->update($data);
         return redirect()->to('pabrikasi')->with('success', 'Berhasil melakukan update data');

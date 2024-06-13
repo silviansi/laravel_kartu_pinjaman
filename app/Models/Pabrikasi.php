@@ -11,11 +11,12 @@ class Pabrikasi extends Model
 {
     use HasFactory;
     protected $table = 'laporan_pabrikasi';
-    protected $fillable = ['user_id', 'tebu_giling', 'rendemen_petani', 'gula_petani', 'tetes_petani', 'tebu_masuk'];
+    protected $fillable = [
+        'user_id', 'tebu_giling', 'rendemen_petani', 'gula_petani', 'tetes_petani', 'tebu_masuk'];
 
     public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'user_id', 'id');
+        return $this->belongsTo(User::class);
     }
     public $timestamps = false;
 }

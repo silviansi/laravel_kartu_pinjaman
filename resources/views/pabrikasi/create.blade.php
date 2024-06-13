@@ -6,23 +6,23 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="pabrikasi" method="POST">
+                <form action="{{ route('pabrikasi.store') }}" method="POST">
                     @csrf
                         <div class="row mb-3">
-                            <label for="user" class="col-sm-2 col-form-label">Nomor Kontrak</label>
+                            <label for="user" class="col-sm-2 col-form-label">Nama</label>
                             <div class="col-sm-10">
-                                <select class="form-control" name="profile" id="profile">
-                                    <option value="">Pilih Nomor Kontrak</option>
-                                    @foreach($profile as $item)
-                                        <option value="{{ $item->id }}">{{ $item->no_kontrak }}</option>
+                                <select class="form-control" name="user_id" id="user">
+                                    <option value="">Pilih Nama Mitra</option>
+                                    @foreach($user as $item)
+                                        <option value="{{ $item->id }}">{{ $item->nama }}</option>
                                     @endforeach
                                 </select>
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="user" class="col-sm-2 col-form-label">Nama</label>
+                            <label for="tebu_masuk" class="col-sm-2 col-form-label">Tebu Masuk</label>
                             <div class="col-sm-10">
-                                <input class="form-control" name="nama" type="text" value="" id="nama">
+                                <input class="form-control" name="tebu_masuk" type="number" value="" id="tebu_masuk">
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -49,43 +49,12 @@
                                 <input class="form-control" name="tetes_petani" type="number" value="" id="tetes_petani">
                             </div>
                         </div>
-                        <div class="row mb-3">
-                            <label for="gula_masuk" class="col-sm-2 col-form-label">Gula Masuk</label>
-                            <div class="col-sm-10">
-                                <input class="form-control" name="gula_masuk" type="number" value="" id="gula_masuk">
-                            </div>
-                        </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                             <button type="submit" class="btn btn-primary">Tambah</button>
                         </div>
-                    </form>
+                </form>
             </div>
         </div>
     </div>
 </div>
-
-@push('script')
-<script>
-    $(document).ready(function () {
-        $('#profile').change(function () {
-            var id = $(this).val();
-            if (id) {
-                $.ajax({
-                    url: '/get-nama/' + id,
-                    type: 'GET',
-                    dataType: 'json',
-                    success: function (data) {
-                        $('#nama').val(data.nama).attr('readonly', true);
-                    },
-                    error: function () {
-                        alert('Gagal mengambil data nama.');
-                    }
-                });
-            } else {
-                $('#nama').val('').removeAttr('readonly');
-            }
-        });
-    });
-</script>
-@endpush

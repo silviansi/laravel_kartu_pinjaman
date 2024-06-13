@@ -4,17 +4,17 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Edit Data Pabrikasi</h5>
+                    <h5 class="modal-title">Edit Data Laporan Harian</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                        <form action="{{ url('pabrikasi/'.$item->id) }}" method="POST">
+                        <form action="{{ route('pabrikasi.update', $item->id) }}" method="POST">
                             @csrf
                             @method("PUT")
                                 <div class="row mb-3">
-                                    <label for="username" class="col-sm-2 col-form-label">Username</label>
+                                    <label for="nama" class="col-sm-2 col-form-label">Nama</label>
                                     <div class="col-sm-10">
-                                        <input class="form-control border-0" name="username" type="text" value="{{ $item->user->username }}" id="username" readonly>
+                                        <input class="form-control border-0" name="nama" type="text" value="{{ $item->user->nama }}" readonly>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
@@ -42,9 +42,9 @@
                                     </div>
                                 </div>
                                 <div class="row mb-3">
-                                    <label for="gula_masuk" class="col-sm-2 col-form-label">Gula Masuk</label>
+                                    <label for="tebu_masuk" class="col-sm-2 col-form-label">Tebu Masuk</label>
                                     <div class="col-sm-10">
-                                        <input class="form-control" name="gula_masuk" type="text" value="{{ $item->gula_masuk }}" id="gula_masuk">
+                                        <input class="form-control" name="tebu_masuk" type="text" value="{{ $item->tebu_masuk }}" id="gula_masuk">
                                     </div>
                                 </div>
                                 <div class="modal-footer">
