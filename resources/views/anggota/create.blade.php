@@ -44,7 +44,7 @@
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="no_kontrak" class="col-sm-2 col-form-label">Kategori</label>
+                            <label for="kategori" class="col-sm-2 col-form-label">Kategori</label>
                             <div class="col-sm-10">
                                 <input class="form-control" name="kategori" type="text" value="" id="kategori">
                             </div>

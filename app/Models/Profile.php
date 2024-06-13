@@ -16,6 +16,7 @@ class Profile extends Model
     'luas_kebun',
     'no_vak',
     'no_kontrak',
+    'kategori',
     'kecamatan',
     'kota',
     'user_id'

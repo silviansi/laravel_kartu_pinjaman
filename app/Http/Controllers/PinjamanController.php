@@ -34,6 +34,13 @@ class PinjamanController extends Controller
                 'no_rek' => 'required',
                 'uraian' => 'required'
             ]);
+
+            $profile = Profile::where('user_id', $request->user_id)->first();
+
+            // Cek jika profile masih kosong
+            if (is_null($profile) || is_null($profile->no_kontrak) || is_null($profile->kebun)) {
+                return redirect()->back()->with('error', 'Data profil tidak lengkap. Pastikan nomor kontrak, kebun, dll sudah terisi.');
+            }
         
             $total = DB::table('pinjaman_logs')
                     ->where('user_id', $request->user_id)
@@ -55,7 +62,6 @@ class PinjamanController extends Controller
         
             return redirect()->to('pinjaman')->with('success', 'Berhasil menambahkan data');
         }
-        
     }
     public function destroy($id) {
         LogsPinjaman::where('id', $id)->delete();
