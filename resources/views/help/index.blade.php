@@ -8,7 +8,7 @@
             <div class="page-title-box">
                 <div class="row align-items-center">
                     <div class="col-md-8">
-                        <h6 class="page-title">Help</h6>
+                        <h6 class="page-title">Bantuan</h6>
                         <ol class="breadcrumb m-0">
                             <li class="breadcrumb-item active">Berikut Panduan Menggunakan DashLoan</li>
                         </ol>

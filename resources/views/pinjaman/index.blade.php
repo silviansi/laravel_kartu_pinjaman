@@ -9,7 +9,7 @@
             <div class="page-title-box">
                 <div class="row align-items-center">
                     <div class="col-md-8">
-                        <h6 class="page-title">Data Anggota Pinjaman</h6>
+                        <h6 class="page-title">Data Transaksi Pinjaman</h6>
                         <ol class="breadcrumb m-0">
                             <li class="breadcrumb-item"><a href="#">DashLoan</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Data Pinjaman</li>

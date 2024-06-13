@@ -46,7 +46,7 @@
 
                 <div class="d-none d-lg-inline-block">
                     <button type="button" class="btn header-item waves-effect">
-                        <i class="mdi mdi-export"> <a class="text-danger" href="logout">LogOut</i></a>
+                        <i class="mdi mdi-export"> <a class="text-danger" href="logout">Keluar</i></a>
                     </button>
                 </div>
 
@@ -108,7 +108,7 @@
               </li>
 
               <li>
-                <a href="depan" class=" waves-effect">
+                <a href="landingpage" class=" waves-effect">
                     <i class="ti-new-window"></i>
                     <span>Website</span>
                 </a>
@@ -117,7 +117,7 @@
               <li>
                   <a href="help" class=" waves-effect">
                       <i class="ti-help-alt"></i>
-                      <span>Help</span>
+                      <span>Bantuan</span>
                   </a>
               </li>
 
@@ -135,12 +135,12 @@
             <a href="javascript:void(0);" class="right-bar-toggle float-end">
                 <i class="mdi mdi-close noti-icon"></i>
             </a>
-            <h5 class="m-0">Settings</h5>
+            <h5 class="m-0">Pengaturan</h5>
         </div>
 
         <!-- Settings -->
         <hr class="mt-0" />
-        <h6 class="text-center">Choose Layouts</h6>
+        <h6 class="text-center">Pilih Tema</h6>
 
         <div class="p-4">
             <div class="mb-2">
@@ -148,7 +148,7 @@
             </div>
             <div class="form-check form-switch mb-3">
                 <input type="checkbox" class="form-check-input theme-choice" id="light-mode-switch" checked />
-                <label class="form-check-label" for="light-mode-switch">Light Mode</label>
+                <label class="form-check-label" for="light-mode-switch">Terang</label>
             </div>
 
             <div class="mb-2">
@@ -157,7 +157,7 @@
             <div class="form-check form-switch mb-3">
                 <input type="checkbox" class="form-check-input theme-choice" id="dark-mode-switch" data-bsStyle="assets/css/bootstrap-dark.min.css" 
                     data-appStyle="assets/css/app-dark.min.css" />
-                <label class="form-check-label" for="dark-mode-switch">Dark Mode</label>
+                <label class="form-check-label" for="dark-mode-switch">Gelap</label>
             </div>
 
             <div class="mb-2">
@@ -165,7 +165,7 @@
             </div>
             <div class="form-check form-switch mb-5">
                 <input type="checkbox" class="form-check-input theme-choice" id="rtl-mode-switch" data-appStyle="assets/css/app-rtl.min.css" />
-                <label class="form-check-label" for="rtl-mode-switch">RTL Mode</label>
+                <label class="form-check-label" for="rtl-mode-switch">Mode RTL</label>
             </div>
         </div>
 

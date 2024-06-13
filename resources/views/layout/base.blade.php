@@ -62,33 +62,25 @@ $( document ).ready(function() {
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto" href="depan">Home</a></li>
-          <li><a class="nav-link scrollto" href="depan">About</a></li>
-          <li><a class="nav-link scrollto" href="depan">Product</a></li>
-          <li><a class="nav-link scrollto" href="depan">Portfolio</a></li>
-          <li><a class="nav-link scrollto" href="depan">Blog</a></li>
-          <li class="dropdown"><a href="#"><span>Services</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="ajuan_pinjaman">Pinjaman</a></li>
-              <li><a href="#">Pembelian Gula</a></li>
-              <li><a href="#">Pembelian Tetes</a></li>
-              <li><a href="#">Pembelian Ampas</a></li>
-            </ul>
-          </li>
-
-          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+          <li><a class="nav-link scrollto" href="landingpage">Beranda</a></li>
+          <li><a class="nav-link scrollto" href="#about">Tentang</a></li>
+          <li><a class="nav-link scrollto" href="#product">Produk</a></li>
+          <li><a class="nav-link scrollto" href="#portfolio">Portofolio</a></li>
+          <li><a class="nav-link scrollto" href="#blog">Blog</a></li>
+          <li><a class="nav-link scrollto" href="ajuan_pinjaman">Pinjaman</a></li>
+          <li><a class="nav-link scrollto" href="#contact">Kontak</a></li>
           @if (Auth::check())
           <li class="dropdown"><a href="#"><span>
             <img class="rounded-circle header-profile-user" src="/assets/images/avatar-img.png"
             alt="Header Avatar"> {{ Auth::user()->nama }}</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="profile">Profile</a></li>
-              <li><a href="logout">Logout</a></li>
+              <li><a href="profile">Profil</a></li>
+              <li><a href="logout">Keluar</a></li>
             </ul>
           </li>
         @else
-        <a class="getstarted scrollto" href="auth/login">Login</a>
-        <a class="getstarted scrollto" href="auth/register">Register</a>
+        <a class="getstarted scrollto" href="auth/login">Masuk</a>
+        <a class="getstarted scrollto" href="auth/register">Daftar</a>
         @endif
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>

@@ -8,8 +8,8 @@
                 <div class="card overflow-hidden">
                     <div class="bg-primary">
                         <div class="text-primary text-center p-4 pt-4">
-                            <h5 class="text-white font-size-20">Welcome Back !</h5>
-                            <p class="text-white-50">Sign in to continue to DashLoan.</p>
+                            <h5 class="text-white font-size-20">Selamat Datang!</h5>
+                            <p class="text-white-50">Masuk untuk melanjutkan ke DashLoan.</p>
                             <a href="" class="logo logo-admin">
                                 <img src="/assets/images/logo-sm-cb.png" height="32" alt="logo">
                             </a>
@@ -22,17 +22,17 @@
                                 @csrf
                                 <div class="mb-3">
                                     <label class="form-label" for="email">Email</label>
-                                    <input type="text" name="email" value="{{ Session::get('email') }}" class="form-control" id="email" placeholder="Enter email">
+                                    <input type="text" name="email" value="{{ Session::get('email') }}" class="form-control" id="email" placeholder="Masukkan email">
                                 </div>
 
                                 <div class="mb-3">
                                     <label class="form-label" for="password">Password</label>
-                                    <input type="password" name="password" class="form-control" id="password" placeholder="Enter password">
+                                    <input type="password" name="password" class="form-control" id="password" placeholder="Masukkan password">
                                 </div>
 
                                 <div class="mb-3 row">
                                     <div class="col-sm-12 text-end">
-                                        <button class="btn btn-primary w-md waves-effect waves-light" type="submit">Log In</button>
+                                        <button class="btn btn-primary w-md waves-effect waves-light" type="submit">Masuk</button>
                                     </div>
                                 </div>
                             </form>
@@ -40,7 +40,7 @@
                     </div>
                 </div>
                 <div class="mt-5 text-center">
-                    <p>Don't have an account ? <a href="/auth/register" class="fw-medium text-primary"> Signup now </a> </p>
+                    <p>Belum punya akun ? <a href="/auth/register" class="fw-medium text-primary"> Daftar Sekarang </a> </p>
                     <p class="mb-0">© <script>document.write(new Date().getFullYear())</script> DashLoan. Crafted with <i class="mdi mdi-heart text-danger"></i> by IT Support Intern 2023</p>
                 </div>
             </div>
