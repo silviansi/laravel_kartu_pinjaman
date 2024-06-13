@@ -26,8 +26,6 @@ Route::get('/', function () {
     return view('landingpage/index');
 });
 
-Route::get('landingpage', [LandingPageController::class, 'index']);
-
 Route::middleware('guest')->group(function(){
 Route::get('auth/login', [AuthController::class, 'index'])->name('login');
 Route::post('auth/login', [AuthController::class, 'login']);
@@ -42,8 +40,7 @@ Route::middleware('auth')->group(function () {
         Route::get('profile', [ProfileController::class, 'index'])->name('profile.index');
         Route::get('profile/{id}/edit', [ProfileController::class, 'edit'])->name('profile.edit');
         Route::put('profile/{id}', [ProfileController::class, 'update'])->name('profile.update');
-        Route::resource('ajuan_pinjaman', AjuanController::class);
-        Route::post('ajuan_pinjaman', [AjuanController::class, 'store']);
+        Route::get('ajuan_pinjaman', [AjuanController::class, 'index'])->name('ajuan_pinjaman.index');
     });
 
     Route::middleware('isLogin')->group(function () {
