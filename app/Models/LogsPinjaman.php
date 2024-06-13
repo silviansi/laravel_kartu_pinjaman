@@ -14,16 +14,13 @@ class LogsPinjaman extends Model
     protected $table = 'pinjaman_logs';
 
     protected $fillable = [
-        'user_id', 'profile_id', 'tanggal', 'no_bukti', 'jumlah_pinjaman', 'total', 'uraian', 'no_rek'
+        'user_id', 'tanggal', 'no_bukti', 'jumlah_pinjaman', 'total', 'uraian', 'no_rek'
     ];
 
     public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(User::class);
     }
-    public function profile(): BelongsTo
-    {
-        return $this->belongsTo(Profile::class, 'profile_id');
-    }
+
     public $timestamps = false;
 }
