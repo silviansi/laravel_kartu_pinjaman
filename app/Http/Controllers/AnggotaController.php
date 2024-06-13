@@ -2,49 +2,64 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\LogsPinjaman;
 use App\Models\Pabrikasi;
 use App\Models\Profile;
 use App\Models\Tutupan;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 
 class AnggotaController extends Controller
 {
     public function index() {
+        $profile = Profile::orderBy('id')->get();
         $user = User::where([
-            ['role_id', '!=', 1]
+            ['role_id', '!=', 1],
         ])->get();
-        $data = Profile::orderBy('id')->get();
-        return view('anggota.index')->with(['data' => $data, 'user' => $user]);
+        return view('anggota.index')->with(['profile' => $profile, 'user' => $user]);
     }
-    public function edit($id) {
-        $data = Profile::where('id', $id)->first();
-        return view('anggota.update')->with('data', $data);
+    public function create() {
+        return view('anggota.create');
     }
     public function store(Request $request) {
         $request->validate([
+            'user_id' => 'required|exists:users,id',
             'no_kontrak' => 'required',
+            'no_vak' => 'required',
             'kebun' => 'required',
             'luas_kebun' => 'required',
+            'kategori' => 'required',
             'kecamatan' => 'required',
             'kota' => 'required'
-        ], [
-            'no_kontrak' => 'No. Kontrak wajib diisi',
-            'kebun' => 'Nama Kebun wajib diisi',
-            'luas_kebun' => 'Luas Kebun wajib diisi',
-            'kecamatan' => 'Kecamatan wajib diisi',
-            'kota' => 'Kota wajib diisi'
         ]);
 
-        $data = $request->all();
-        Profile::create($data);
+        // Periksa apakah user_id sudah ada di tabel profiles
+        $existingProfile = Profile::where('user_id', $request->user_id)->first();
+
+        if ($existingProfile) {
+            return redirect()->back()->with('error', 'User sudah terdaftar sebagai mitra');
+        }
+
+        Profile::create([
+            'user_id' => $request->user_id,
+            'no_kontrak' => $request->no_kontrak,
+            'no_vak' => $request->no_vak,
+            'kebun' => $request->kebun,
+            'luas_kebun' => $request->luas_kebun,
+            'kategori' => $request->kategori,
+            'kecamatan' => $request->kecamatan,
+            'kota' => $request->kota
+        ]);
         return redirect()->to('anggota')->with('success', 'Berhasil menambahkan data');
     }
+    public function edit($id)
+    {
+        $profile = Profile::with('user')->findOrFail($id);
+        return view('anggota.edit', compact('profile'));
+    }
     public function update(Request $request, $id) {
-        $data = Profile::find($id);
         $request->validate([
             'nama' => 'required',
             'kebun' => 'required',
@@ -54,21 +69,14 @@ class AnggotaController extends Controller
             'kategori' => 'required',
             'kecamatan' => 'required',
             'kota' => 'required'
-        ], [
-            'nama.required' => 'Nama wajib diisi',
-            'kebun.required' => 'Kebun wajib diisi',
-            'luas_kebun.required' => 'Luas Kebun wajib diisi',
-            'no_vak.required' => 'No. Vak wajib diisi',
-            'no_kontrak.required' => 'No Kontrak wajib diisi',
-            'kategori.required' => 'Kategori wajib diisi',
-            'kecamatan.required' => 'Kecamatan wajib diisi',
-            'kota.required' => 'Kota wajib diisi'
         ]);
-
-        $user = User::find($id);
-        $user = User::where('id',$id)->first();
-        $user->nama = $request->input('nama');
-        $user->save();
+    
+        $profile = Profile::findOrFail($id);
+        $user = $profile->user;
+        $user->update([
+            'nama' => $request->input('nama')
+        ]);
+    
         $data = [
             'kebun' => $request->input('kebun'),
             'luas_kebun' => $request->input('luas_kebun'),
@@ -78,7 +86,8 @@ class AnggotaController extends Controller
             'kecamatan' => $request->input('kecamatan'),
             'kota' => $request->input('kota')
         ];
-        Profile::where('id', $id)->update($data);
+    
+        $profile->update($data);
         return redirect()->to('anggota')->with('success', 'Berhasil melakukan update data');
     }
     public function show($id) {
@@ -90,18 +99,16 @@ class AnggotaController extends Controller
         $data = DB::table('pinjaman_logs')
         ->where('user_id', $id)
         ->get();
-        //$data = LogsPinjaman::where('profile_id', '=', 'profile_id')->get();
 
         $tutupan = Tutupan::where('user_id', $id)->get();
         $r = DB::table('tutupan')->where('user_id', $id)->sum('jumlah_tutupan');
 
-        if($pabrikasi == null) {
-            Session::flash('message', "Data Laporan Harian belum di input, Input data terlebih dahulu untuk mencetak kartu");
-            return redirect('anggota');
+        if (!$pabrikasi) {
+            return redirect()->back()->with('error', 'Data pabrikasi tidak ditemukan.');
         } else {
-            //dd($data);
-        return view('anggota/cetak_kartu', ['profile' => $profile, 'pabrikasi' => $pabrikasi, 'q' => $q, 'data' => $data, 'tutupan' => $tutupan, 'r' => $r]);
-    }}
+            return view('anggota/cetak_kartu', ['profile' => $profile, 'pabrikasi' => $pabrikasi, 'q' => $q, 'data' => $data, 'tutupan' => $tutupan, 'r' => $r]);
+        }
+    }
     public function destroy($id) {
         Profile::where('id', $id)->delete();
         return redirect()->to('anggota')->with('success', 'Berhasil menghapus data');
