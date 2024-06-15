@@ -64,7 +64,6 @@
     
 <!-- ========== Left Sidebar Start ========== -->
  <div class="vertical-menu">
-
     <div data-simplebar class="h-100">
 
         <!--- Sidemenu -->
@@ -123,10 +122,8 @@
 
             </ul>
         </div>
-        <!-- Sidebar -->
     </div>
 </div>
-<!-- Left Sidebar End -->
 
 <!-- Right Sidebar -->
 <div class="right-bar">
@@ -169,9 +166,8 @@
             </div>
         </div>
 
-    </div> <!-- end slimscroll-menu-->
+    </div> 
 </div>
-<!-- /Right-bar -->
 
 <!-- Right bar overlay-->
 <div class="rightbar-overlay"></div>
