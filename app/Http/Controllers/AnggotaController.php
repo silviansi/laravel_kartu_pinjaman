@@ -8,8 +8,6 @@ use App\Models\Tutupan;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Session;
 
 class AnggotaController extends Controller
 {
@@ -112,5 +110,5 @@ class AnggotaController extends Controller
     public function destroy($id) {
         Profile::where('id', $id)->delete();
         return redirect()->to('anggota')->with('success', 'Berhasil menghapus data');
-     }
+    }
 }

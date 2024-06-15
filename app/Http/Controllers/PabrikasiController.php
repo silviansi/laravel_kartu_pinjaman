@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pabrikasi;
-use App\Models\Profile;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session;
 
 class PabrikasiController extends Controller
 {
