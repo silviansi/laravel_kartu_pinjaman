@@ -11,8 +11,6 @@
         <!-- App favicon -->
         <link rel="shortcut icon" href="/assets/images/logo-sm-cb.png">
     
-        <link href="/assets/libs/chartist/chartist.min.css" rel="stylesheet">
-    
         <!-- DataTables -->
         <link href="assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css">
         <link href="assets/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css">
@@ -68,20 +66,7 @@
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
         <script src="/assets/js/app.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-        <script>
-        $(function(){
-        $('#profile').select2({
-            dropdownParent: $('#ModalEdit')
-        });
-        }); 
-        $(function(){
-        $('#user').select2({
-            dropdownParent: $('#ModalEdit')
-        });
-        }); 
-        </script>
+
         @stack('script')
     </body>
-
 </html>
